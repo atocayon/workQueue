@@ -21,3 +21,5 @@
 /work-queue-system/npm-debug.log*
 /work-queue-system/yarn-debug.log*
 /work-queue-system/yarn-error.log*
+
+/work-queue-system/yarn.lock
