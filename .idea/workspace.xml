@@ -31,8 +31,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/tools/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/redux/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/ReactotronConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/tools/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/tools/server/workQueueDBServer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/tools/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/redux/configureStore.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +52,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -64,11 +71,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/work-queue-system/tools/server" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\aljon\Documents\Projects\workQueue\work-queue-system\tools\server" />
       <recent name="C:\Users\aljon\Documents\Projects\workQueue" />
     </key>
   </component>
@@ -82,7 +92,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594271704014</updated>
-      <workItem from="1594271706284" duration="3660000" />
+      <workItem from="1594271706284" duration="4436000" />
+      <workItem from="1594276822234" duration="910000" />
     </task>
     <servers />
   </component>
@@ -99,15 +110,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594274108142">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594274108142" />
-    <state x="739" y="265" key="FileChooserDialogImpl" timestamp="1594275487296">
+    <state x="739" y="265" key="FileChooserDialogImpl" timestamp="1594277270814">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="739" y="265" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594275487296" />
+    <state x="739" y="265" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594277270814" />
+    <state x="461" y="155" key="SettingsEditor" timestamp="1594276805508">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="155" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594276805508" />
   </component>
 </project>

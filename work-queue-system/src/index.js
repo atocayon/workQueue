@@ -2,10 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import "./ReactotronConfig";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Provider as ReduxProvider} from "react-redux";
+import {store} from "../redux/configureStore";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {SnackbarProvider} from "notistack";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <ReduxProvider store={store}>
+          <Router>
+              <SnackbarProvider maxSnack={2}>
+                  <App />
+              </SnackbarProvider>
+          </Router>
+      </ReduxProvider>
+
   </React.StrictMode>,
   document.getElementById('root')
 );
