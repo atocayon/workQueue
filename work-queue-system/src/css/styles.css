@@ -1,0 +1,44 @@
+
+
+nav{
+    overflow: hidden !important;
+    background-color: #2196F3 !important;
+    position: fixed !important;
+    width: 100vw !important;
+}
+
+.logo{
+
+    width: 2vw;
+}
+
+.user{
+    color: #fff !important;
+}
+
+.ButtonFilter{
+    background-color: #2196F3 ;
+    padding-top: 10vh;
+    margin-right: 0;
+    right: 0;
+}
+
+
+.filterLogo{
+    width: 1vw;
+}
+
+.printReports{
+    margin-top: 1vh;
+}
+
+.table th{
+    padding-left: 2vw !important;
+    font-size: 12px !important;
+    background-color: #2196F3 !important;
+}
+
+.table-data{
+    /*padding-left: 2vw;*/
+    /*padding-right: 2vw;*/
+}

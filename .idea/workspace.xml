@@ -31,14 +31,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/work-queue-system/redux/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/ReactotronConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/tools/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/tools/server/workQueueDBServer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/common/NavigationBar/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/TableData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/redux/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/redux/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/ReactotronConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/ReactotronConfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work-queue-system/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/tools/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/redux/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/tools/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/ButtonFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +59,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -70,16 +78,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/work-queue-system/tools/server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/work-queue-system/src/components/client" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/work-queue-system/src/components/client" />
+      <recent name="$PROJECT_DIR$/work-queue-system/src" />
       <recent name="C:\Users\aljon\Documents\Projects\workQueue\work-queue-system\tools\server" />
       <recent name="C:\Users\aljon\Documents\Projects\workQueue" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/work-queue-system" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -94,6 +108,13 @@
       <updated>1594271704014</updated>
       <workItem from="1594271706284" duration="4436000" />
       <workItem from="1594276822234" duration="910000" />
+      <workItem from="1594779432012" duration="2141000" />
+      <workItem from="1594782893945" duration="1389000" />
+      <workItem from="1595385044418" duration="1158000" />
+      <workItem from="1595818620705" duration="607000" />
+      <workItem from="1595826992585" duration="1163000" />
+      <workItem from="1595828818381" duration="4715000" />
+      <workItem from="1595833602300" duration="2803000" />
     </task>
     <servers />
   </component>
@@ -113,17 +134,28 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2460" y="391" width="256" height="323" key="#Notifications" timestamp="1594783015631">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2460" y="391" width="256" height="323" key="#Notifications/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1594783015631" />
     <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594274108142">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594274108142" />
-    <state x="739" y="265" key="FileChooserDialogImpl" timestamp="1594277270814">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="2339" y="273" width="379" height="404" key="FileChooserDialogImpl" timestamp="1595831698914">
+      <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="265" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594277270814" />
-    <state x="461" y="155" key="SettingsEditor" timestamp="1594276805508">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="2339" y="273" width="424" height="484" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1595831698914" />
+    <state x="4136" y="228" width="379" height="404" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@3520.0.1600.900" timestamp="1595385523825" />
+    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1594789591351">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1594789591350" />
+    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor" timestamp="1595827508653">
+      <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594276805508" />
+    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1595827508653" />
   </component>
 </project>
