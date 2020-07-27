@@ -31,22 +31,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/common/NavigationBar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/TableData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/redux/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/redux/configureStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/redux/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/ReactotronConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/ReactotronConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/tools/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/ButtonFilter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/ButtonFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/ButtonFilter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +100,7 @@
       <workItem from="1595818620705" duration="607000" />
       <workItem from="1595826992585" duration="1163000" />
       <workItem from="1595828818381" duration="4715000" />
-      <workItem from="1595833602300" duration="2803000" />
+      <workItem from="1595833602300" duration="3311000" />
     </task>
     <servers />
   </component>

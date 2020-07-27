@@ -59,60 +59,45 @@ function ButtonFilter(props){
     <div className={"ButtonFilter"}>
     <div className={"row"}>
       <div className={"col-md-4"}>
-        {/*<button className={"btn btn-lg"}>*/}
-        {/*  <NoteAddIcon />*/}
-        {/*</button>*/}
+        <button
+          title={"Add Task"}
+          className={"btn btn-lg"}
+          ref={anchorRef}
+          aria-controls={open ? 'menu-list-grow' : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+        >
+          Add Task&nbsp;<ArrowDropDownIcon/>
+        </button>
+        <Popper  open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+            >
+              <Paper className={"popOver"}>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                    <MenuItem onClick={handleClose}>IMS</MenuItem>
+                    <MenuItem onClick={handleClose}>SMTADOS</MenuItem>
+                    <MenuItem onClick={handleClose}>GSAS</MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
       </div>
-      <div className={"col-md-4"}></div>
       <div className={"col-md-4"}>
-        <div className={"row"}>
-          <div className={"col-md-6"}></div>
-          <div className={"col-md-6"}>
-
-
-                  <button
-                    title={"Add Task"}
-                    className={"btn btn-sm"}
-                    ref={anchorRef}
-                    aria-controls={open ? 'menu-list-grow' : undefined}
-                    aria-haspopup="true"
-                    onClick={handleToggle}
-                  >
-                    Add Task&nbsp;<ArrowDropDownIcon/>
-                  </button>
-                  <Popper  open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                    {({ TransitionProps, placement }) => (
-                      <Grow
-                        {...TransitionProps}
-                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-                      >
-                        <Paper className={"popOver"}>
-                          <ClickAwayListener onClickAway={handleClose}>
-                            <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                              <MenuItem onClick={handleClose}>IMS</MenuItem>
-                              <MenuItem onClick={handleClose}>SMTADOS</MenuItem>
-                              <MenuItem onClick={handleClose}>GSAS</MenuItem>
-                            </MenuList>
-                          </ClickAwayListener>
-                        </Paper>
-                      </Grow>
-                    )}
-                  </Popper>
-
-                &nbsp;&nbsp;
-
-                <button className={"btn btn-sm btn-outline-primary"} title={"Filter"}>
-                    <img src={filterLogo} className={"filterLogo"}/>
-                </button>
-
-                <div className={"printReports"}></div>
-                <button className={"btn btn-sm btn-outline-primary"} title={"Print Reports"}>
-                  Print reports
-                </button>
-
-
-          </div>
-        </div>
+        <button className={"btn btn-lg"} title={"Filter"}>
+          {/*<img src={filterLogo} className={"filterLogo"}/>*/}
+          Filter
+        </button>
+      </div>
+      <div className={"col-md-4"}>
+        <button className={"btn btn-lg "} title={"Print Reports"}>
+          Print reports
+        </button>
       </div>
     </div>
       <br/>
