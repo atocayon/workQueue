@@ -23,3 +23,4 @@
 /work-queue-system/yarn-error.log*
 
 /work-queue-system/yarn.lock
+.idea
