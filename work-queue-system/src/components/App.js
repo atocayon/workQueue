@@ -1,14 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./client/screens/HomePage";
 import "../css/styles.css";
+import Login from "./login";
+import AdminHomePage from "./admin/screens/HomePage";
+import NotFoundPage from "./404";
 export default function App() {
   return (
     <>
       <div>
-        <Router>
+        <Switch>
           <Route path={"/"} exact component={HomePage} />
-        </Router>
+          <Route path={"/admin"} component={AdminHomePage} />
+          <Route path={"/login"} component={Login} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
     </>
   );

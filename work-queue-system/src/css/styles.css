@@ -49,5 +49,17 @@ nav{
 
 .table-data{
     margin-top: 2vh;
+}
 
+.notFoundPage{
+    text-align: center;
+    color: #607D8B;
+
+}
+
+.logoOnNotFound{
+    margin-top: 12vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
