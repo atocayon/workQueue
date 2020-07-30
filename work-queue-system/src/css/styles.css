@@ -6,16 +6,8 @@ nav{
     width: 100vw !important;
 }
 
-.systemNavTitle h5{
-    /*font-size: 1rem;*/
-    margin-top: 2vh;
-    color: #fff;
-    /*font-weight: bold;*/
-    font-family: 'Special Elite', cursive;
-}
 
 .logo{
-
     width: 2vw;
 }
 
@@ -27,26 +19,18 @@ nav{
     position: fixed;
     right: 0;
     top: 25vh;
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*flex-direction: row;*/
-    /*justify-content: center;*/
-    /*background-color: #141F46 ;*/
-    /*padding-top: 5vh;*/
-    /*margin-top: -20vh;*/
-    /*margin-right: 0;*/
-    /*right: 0;*/
+
 }
 
 .horizontalLine{
-    /*margin-top: 5vh;*/
+    margin-top: 2vh;
 }
 
 
 .ButtonFilter button{
-    /*color: #fff;*/
-    width: 5vw;
+    width: 3vw;
     margin-top: 1vh;
+    border-radius: 0px;
 }
 
 .filterLogo{
@@ -60,10 +44,10 @@ nav{
 .table th{
     padding-left: 2vw !important;
     font-size: 12px !important;
-    /*background-color: #2196F3 !important;*/
+
 }
 
 .table-data{
-    /*padding-left: 2vw;*/
-    /*padding-right: 2vw;*/
+    margin-top: 2vh;
+
 }

@@ -66,7 +66,7 @@ function Buttons(props){
         <div>
           <button
             title={"Add Task"}
-            className={"btn btn-lg btn-primary"}
+            className={"btn btn-md btn-primary"}
             ref={anchorRef}
             aria-controls={open ? 'menu-list-grow' : undefined}
             aria-haspopup="true"
@@ -94,13 +94,13 @@ function Buttons(props){
               </Popper>
         </div>
         <div>
-          <button className={"btn btn-lg btn-warning"} title={"Filter"}>
+          <button className={"btn btn-md btn-warning"} title={"Filter"}>
             {/*<img src={filterLogo} className={"filterLogo"}/>*/}
             <FilterListIcon />
           </button>
         </div>
         <div>
-          <button className={"btn btn-lg btn-success"} title={"Print Reports"}>
+          <button className={"btn btn-md btn-success"} title={"Print Reports"}>
             <PrintIcon />
           </button>
         </div>
