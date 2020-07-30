@@ -31,12 +31,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/404/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/admin/screens/HomePage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/prepros-6.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/common/textField/InputField.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/clientHomePage.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/login.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/sass.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/sass.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/img/Untitled-1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/img/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/img/user.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/client/common/NavigationBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/common/NavigationBar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +65,7 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -66,24 +81,30 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../document-tracking" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/work-queue-system/src/img" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.prettier.on.save" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/work-queue-system/src/img" />
+      <recent name="$PROJECT_DIR$/work-queue-system/src/components/common" />
+      <recent name="$PROJECT_DIR$/work-queue-system" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/work-queue-system/src/components/common" />
       <recent name="$PROJECT_DIR$/work-queue-system/src/components/client" />
       <recent name="$PROJECT_DIR$/work-queue-system/src" />
       <recent name="C:\Users\aljon\Documents\Projects\workQueue\work-queue-system\tools\server" />
       <recent name="C:\Users\aljon\Documents\Projects\workQueue" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/work-queue-system" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -112,7 +133,8 @@
       <workItem from="1596068348767" duration="785000" />
       <workItem from="1596070814804" duration="165000" />
       <workItem from="1596072154123" duration="3030000" />
-      <workItem from="1596076775201" duration="1897000" />
+      <workItem from="1596076775201" duration="3136000" />
+      <workItem from="1596085997707" duration="8851000" />
     </task>
     <servers />
   </component>
@@ -131,29 +153,44 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="2460" y="391" width="256" height="323" key="#Notifications" timestamp="1594783015631">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="2460" y="391" width="256" height="323" key="#Notifications/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1594783015631" />
+    <state x="2232" y="435" width="713" height="235" key="#Prettier" timestamp="1596090890773">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2232" y="435" width="713" height="235" key="#Prettier/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596090890773" />
+    <state x="2371" y="261" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1596086265375">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2371" y="261" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596086265375" />
     <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594274108142">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594274108142" />
-    <state x="2339" y="273" width="379" height="404" key="FileChooserDialogImpl" timestamp="1596078337690">
+    <state x="2227" y="326" width="722" height="703" key="EditFileWatcherDialog" timestamp="1596086282623">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2227" y="326" width="722" height="703" key="EditFileWatcherDialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596086282623" />
+    <state x="2339" y="273" width="379" height="404" key="FileChooserDialogImpl" timestamp="1596089606648">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="739" y="265" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594277270814" />
-    <state x="2339" y="273" width="424" height="484" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596078337690" />
+    <state x="2339" y="273" width="424" height="484" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089606648" />
     <state x="4136" y="228" width="379" height="404" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@3520.0.1600.900" timestamp="1595385523825" />
-    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1594789591351">
+    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1596089669870">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
-    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1594789591350" />
-    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor" timestamp="1595827508653">
+    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089669870" />
+    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor" timestamp="1596089607820">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594276805508" />
-    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1595827508653" />
+    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089607820" />
   </component>
 </project>

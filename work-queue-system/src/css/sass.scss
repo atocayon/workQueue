@@ -1,0 +1,21 @@
+@import "login";
+@import "clientHomePage";
+body{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.loading{
+  h5{
+    margin-top: 30vh;
+    text-align: center;
+  }
+}
+
+.logoOnNotFound{
+  margin-top: 12vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

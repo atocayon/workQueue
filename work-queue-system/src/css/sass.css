@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+.copyrights {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 2vw; }
+
+.logoLogin {
+  margin-top: 32vh;
+  margin-left: -20vw;
+  -webkit-animation: loginLogo;
+  animation: loginLogo;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s; }
+
+.login-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2vw; }
+
+.paper-container {
+  margin-top: 15vh;
+  margin-left: -15vw; }
+
+.userAvatar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10vw; }
+
+.login-btn-container {
+  text-align: center;
+  margin-top: 2vh; }
+  .login-btn-container .login-btn {
+    background-color: #101e47 !important;
+    height: 8vh !important;
+    width: 100%;
+    border-radius: 30px !important; }
+
+@media screen and (max-width: 1600px) {
+  .paper-container {
+    margin-top: 10vh; }
+  .logoLogin {
+    margin-top: 26vh;
+    margin-left: -20vw; } }
+
+@-webkit-keyframes loginLogo {
+  from {
+    margin-left: -5vw; }
+  to {
+    margin-left: -20vw; } }
+
+@keyframes loginLogo {
+  from {
+    margin-left: -5vw; }
+  to {
+    margin-left: -20vw; } }
+
+.navbar {
+  background-color: #141F46;
+  position: fixed;
+  width: 100vw; }
+
+.logo {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 1vw;
+  width: 2vw; }
+
+.user span {
+  background: #141F46;
+  padding: 8px;
+  color: #141F46;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  -webkit-clip-path: inset(0 0 0 100%);
+  clip-path: inset(0 0 0 100%);
+  -webkit-transition: background .5s, color .5s, -webkit-clip-path .5s;
+  transition: background .5s, color .5s, -webkit-clip-path .5s;
+  -o-transition: background .5s, color .5s, clip-path .5s;
+  transition: background .5s, color .5s, clip-path .5s;
+  transition: background .5s, color .5s, clip-path .5s, -webkit-clip-path .5s;
+  -webkit-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out; }
+
+.user a {
+  color: #fff;
+  margin-right: 1vw !important;
+  text-decoration: none !important; }
+  .user a:hover span {
+    background: #fff;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0); }
+
+.ButtonFilter {
+  position: fixed;
+  right: 0;
+  top: 30vh; }
+  .ButtonFilter button {
+    width: 3vw;
+    margin-top: 1vh;
+    border-radius: 0px; }
+
+.horizontalLine {
+  margin-top: -5vh; }
+
+.filterLogo {
+  width: 1vw; }
+
+.printReports {
+  margin-top: 1vh; }
+
+.table-data {
+  margin-top: 2vh; }
+  .table-data .table th {
+    padding-left: 5vw !important;
+    font-size: 12px !important; }
+
+.notFoundPage {
+  text-align: center;
+  color: #607D8B; }
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden; }
+
+.loading h5 {
+  margin-top: 30vh;
+  text-align: center; }
+
+.logoOnNotFound {
+  margin-top: 12vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }

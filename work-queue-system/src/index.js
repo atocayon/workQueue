@@ -9,11 +9,26 @@ import {store} from "./redux/configureStore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {SnackbarProvider} from "notistack";
 
+const styles = {
+  success: { backgroundColor: 'purple' },
+  error: { backgroundColor: 'blue' },
+  warning: { backgroundColor: 'green' },
+  info: { backgroundColor: 'yellow' },
+};
+
+
 ReactDOM.render(
+
   <React.StrictMode>
       <ReduxProvider store={store}>
           <Router>
-              <SnackbarProvider maxSnack={2}>
+              <SnackbarProvider maxSnack={3} dense  iconVariant={{
+                success: '✅ ',
+                error: '✖️',
+                warning: '⚠️',
+                default: 'ℹ️ ',
+              }}
+              >
                   <Route component={App} />
               </SnackbarProvider>
           </Router>
