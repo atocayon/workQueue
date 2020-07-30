@@ -31,26 +31,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/work-queue-system/prepros-6.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/common/textField/InputField.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/clientHomePage.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/login.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/sass.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/css/sass.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/img/Untitled-1.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/img/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/img/user.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/client/common/NavigationBar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/common/NavigationBar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/css/login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/css/sass.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +90,16 @@
       <recent name="C:\Users\aljon\Documents\Projects\workQueue" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/work-queue-system/src/index.js" working-dir="$PROJECT_DIR$/work-queue-system/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.index.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -134,7 +127,7 @@
       <workItem from="1596070814804" duration="165000" />
       <workItem from="1596072154123" duration="3030000" />
       <workItem from="1596076775201" duration="3136000" />
-      <workItem from="1596085997707" duration="8851000" />
+      <workItem from="1596085997707" duration="10586000" />
     </task>
     <servers />
   </component>
@@ -183,6 +176,22 @@
     <state x="739" y="265" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594277270814" />
     <state x="2339" y="273" width="424" height="484" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089606648" />
     <state x="4136" y="228" width="379" height="404" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@3520.0.1600.900" timestamp="1595385523825" />
+    <state width="1807" height="269" key="GridCell.Tab.0.bottom" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.bottom/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state width="1807" height="269" key="GridCell.Tab.0.center" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.center/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state width="1807" height="269" key="GridCell.Tab.0.left" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.left/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state width="1807" height="269" key="GridCell.Tab.0.right" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.right/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
     <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1596089669870">
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>

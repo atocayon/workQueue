@@ -10,7 +10,7 @@
   margin-top: 32vh;
   margin-left: -20vw;
   animation: loginLogo;
-  animation-duration: 4s;
+  animation-duration: 2s;
 }
 
 .login-header{
@@ -21,8 +21,11 @@
 
 
 .paper-container{
+  //opacity: 0;
   margin-top: 15vh;
   margin-left: -15vw;
+  animation: paperContainer;
+  animation-duration: 2s;
 }
 
 .userAvatar{
@@ -58,5 +61,11 @@
 @keyframes loginLogo {
   from {margin-left: -5vw}
   to {margin-left: -20vw}
+}
+
+@keyframes paperContainer {
+  from{ opacity: 0}
+  to{ opacity: 1}
+
 }
 
