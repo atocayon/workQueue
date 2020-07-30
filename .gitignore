@@ -24,3 +24,5 @@
 
 /work-queue-system/yarn.lock
 .idea
+.idea/workQueue.iml
+.idea/workspace.xml

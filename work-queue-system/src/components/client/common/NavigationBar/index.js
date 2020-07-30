@@ -12,6 +12,12 @@ export default function NavigationBar(props) {
               <Link to={"/"} className="navbar-brand">
                 <img src={logo} className={"logo"} />
               </Link>
+              <div className={"systemNavTitle"}>
+                {/*<h5 >*/}
+                {/*  Work Queue Information System*/}
+                {/*</h5>*/}
+
+              </div>
 
               <Link to={"/profile"}>
                 <AccountCircleIcon className={"user"} />

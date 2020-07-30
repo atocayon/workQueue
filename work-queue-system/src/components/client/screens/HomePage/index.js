@@ -1,7 +1,7 @@
 import React from "react";
 import {withSnackbar} from "notistack";
 import NavigationBar from "../../common/NavigationBar";
-import ButtonFilter from "./ButtonFilter";
+import ButtonFilter from "./Buttons";
 import TableData from "./TableData";
 
 function HomePage(){
