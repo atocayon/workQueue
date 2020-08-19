@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+.navbar{
+  background-color: #141F46;
+  position: fixed;
+  width: 100vw;
+  //height: 8vh;
+}
+
+
+.logo{
+  //display: block;
+  //margin-right: auto;
+  //margin-left: auto;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 1vw;
+  width: 2vw;
+}
+
+.user{
+
+  span{
+    background: #141F46;
+    padding: 8px;
+    color: #141F46;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    clip-path: inset(0 0 0 100%);
+    transition: background .5s, color .5s, clip-path .5s;
+    transition-timing-function: ease-in-out;
+  }
+
+  a{
+    color: #fff;
+    margin-right: 1vw !important;
+    text-decoration: none !important;
+
+    &:hover{
+
+      span{
+        background: #fff;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+
+
+
+}
+
+.ButtonFilter{
+  position: fixed;
+  right: 0;
+  top: 30vh;
+
+  button{
+    width: 3vw;
+    margin-top: 1vh;
+    border-radius: 0px;
+  }
+}
+
+.horizontalLine{
+  margin-top: -5vh;
+}
+
+
+
+.filterLogo{
+  width: 1vw;
+}
+
+.printReports{
+  margin-top: 1vh;
+}
+
+
+
+.table-data{
+  margin-top: 2vh;
+
+  .table{
+    th{
+      padding-left: 5vw !important;
+      font-size: 12px !important;
+    }
+
+
+  }
+}
+
+.notFoundPage{
+  text-align: center;
+  color: #607D8B;
+
+}
+
+

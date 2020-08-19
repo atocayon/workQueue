@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/css/login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/work-queue-system/src/css/sass.css" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/css/sass.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="SCSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1eR5jw4tNu77hz83xyX05wdq0dA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/work-queue-system/src/img" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/work-queue-system/src/img" />
+      <recent name="$PROJECT_DIR$/work-queue-system/src/components/common" />
+      <recent name="$PROJECT_DIR$/work-queue-system" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/work-queue-system/src/components/common" />
+      <recent name="$PROJECT_DIR$/work-queue-system/src/components/client" />
+      <recent name="$PROJECT_DIR$/work-queue-system/src" />
+      <recent name="C:\Users\aljon\Documents\Projects\workQueue\work-queue-system\tools\server" />
+      <recent name="C:\Users\aljon\Documents\Projects\workQueue" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/work-queue-system/src/index.js" working-dir="$PROJECT_DIR$/work-queue-system/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.index.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="" />
+      <created>1594271704014</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594271704014</updated>
+      <workItem from="1594271706284" duration="4436000" />
+      <workItem from="1594276822234" duration="910000" />
+      <workItem from="1594779432012" duration="2141000" />
+      <workItem from="1594782893945" duration="1389000" />
+      <workItem from="1595385044418" duration="1158000" />
+      <workItem from="1595818620705" duration="607000" />
+      <workItem from="1595826992585" duration="1163000" />
+      <workItem from="1595828818381" duration="4715000" />
+      <workItem from="1595833602300" duration="3344000" />
+      <workItem from="1595900634311" duration="158000" />
+      <workItem from="1595990735929" duration="153000" />
+      <workItem from="1595990938801" duration="11000" />
+      <workItem from="1595991709815" duration="887000" />
+      <workItem from="1596068348767" duration="785000" />
+      <workItem from="1596070814804" duration="165000" />
+      <workItem from="1596072154123" duration="3030000" />
+      <workItem from="1596076775201" duration="3136000" />
+      <workItem from="1596085997707" duration="10586000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2460" y="391" width="256" height="323" key="#Notifications" timestamp="1594783015631">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2460" y="391" width="256" height="323" key="#Notifications/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1594783015631" />
+    <state x="2232" y="435" width="713" height="235" key="#Prettier" timestamp="1596090890773">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2232" y="435" width="713" height="235" key="#Prettier/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596090890773" />
+    <state x="2371" y="261" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1596086265375">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2371" y="261" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596086265375" />
+    <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594274108142">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594274108142" />
+    <state x="2227" y="326" width="722" height="703" key="EditFileWatcherDialog" timestamp="1596086282623">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2227" y="326" width="722" height="703" key="EditFileWatcherDialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596086282623" />
+    <state x="2339" y="273" width="379" height="404" key="FileChooserDialogImpl" timestamp="1596089606648">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="739" y="265" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594277270814" />
+    <state x="2339" y="273" width="424" height="484" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089606648" />
+    <state x="4136" y="228" width="379" height="404" key="FileChooserDialogImpl/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@3520.0.1600.900" timestamp="1595385523825" />
+    <state width="1807" height="269" key="GridCell.Tab.0.bottom" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.bottom/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state width="1807" height="269" key="GridCell.Tab.0.center" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.center/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state width="1807" height="269" key="GridCell.Tab.0.left" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.left/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state width="1807" height="269" key="GridCell.Tab.0.right" timestamp="1596095537719">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1807" height="269" key="GridCell.Tab.0.right/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596095537719" />
+    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog" timestamp="1596089669870">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089669870" />
+    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor" timestamp="1596089607820">
+      <screen x="1600" y="0" width="1920" height="1080" />
+    </state>
+    <state x="461" y="155" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594276805508" />
+    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089607820" />
+  </component>
+</project>

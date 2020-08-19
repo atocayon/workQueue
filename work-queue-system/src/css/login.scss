@@ -1,0 +1,71 @@
+
+.copyrights{
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 2vw;
+}
+
+.logoLogin{
+  margin-top: 32vh;
+  margin-left: -20vw;
+  animation: loginLogo;
+  animation-duration: 2s;
+}
+
+.login-header{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2vw;
+}
+
+
+.paper-container{
+  //opacity: 0;
+  margin-top: 15vh;
+  margin-left: -15vw;
+  animation: paperContainer;
+  animation-duration: 2s;
+}
+
+.userAvatar{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10vw;
+}
+
+.login-btn-container{
+  text-align: center;
+  margin-top: 2vh;
+
+  .login-btn{
+    background-color: #101e47 !important;
+    height: 8vh !important;
+    width: 100%;
+    border-radius: 30px !important;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .paper-container{
+    margin-top: 10vh;
+  }
+
+  .logoLogin{
+    margin-top: 26vh;
+    margin-left: -20vw;
+  }
+}
+
+@keyframes loginLogo {
+  from {margin-left: -5vw}
+  to {margin-left: -20vw}
+}
+
+@keyframes paperContainer {
+  from{ opacity: 0}
+  to{ opacity: 1}
+
+}
+
