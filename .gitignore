@@ -23,5 +23,7 @@ work-queue-system/yarn-debug.log*
 work-queue-system/yarn-error.log*
 
 work-queue-system/yarn.lock
-.idea/
-
+.idea/workspace.xml
+.idea/workQueue.iml
+.idea/prettier.xml
+.idea/*

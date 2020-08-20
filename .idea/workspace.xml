@@ -31,11 +31,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/local_storage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/Form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/callbacks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/redux/actions/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/redux/actions/login_logout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/work-queue-system/src/server_endpoint.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work-queue-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/client/screens/HomePage/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +144,8 @@
       <workItem from="1596085997707" duration="10586000" />
       <workItem from="1597796860488" duration="8359000" />
       <workItem from="1597814570212" duration="8177000" />
-      <workItem from="1597882695978" duration="3306000" />
+      <workItem from="1597882695978" duration="5414000" />
+      <workItem from="1597888711157" duration="5261000" />
     </task>
     <servers />
   </component>
@@ -168,9 +172,10 @@
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="2460" y="391" width="256" height="323" key="#Notifications/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1594783015631" />
-    <state x="2232" y="435" width="713" height="235" key="#Prettier" timestamp="1596090890773">
-      <screen x="1600" y="0" width="1920" height="1080" />
+    <state x="-1073" y="408" width="713" height="235" key="#Prettier" timestamp="1597888842980">
+      <screen x="-1600" y="62" width="1600" height="860" />
     </state>
+    <state x="-1073" y="408" key="#Prettier/0.0.1536.824/-1600.62.1600.860@-1600.62.1600.860" timestamp="1597888842980" />
     <state x="2232" y="435" width="713" height="235" key="#Prettier/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596090890773" />
     <state x="2371" y="261" width="424" height="584" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1596086265375">
       <screen x="1600" y="0" width="1920" height="1080" />
@@ -214,9 +219,10 @@
       <screen x="1600" y="0" width="1920" height="1080" />
     </state>
     <state x="2176" y="289" width="824" height="526" key="IDE.errors.dialog/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089669870" />
-    <state x="1960" y="107" width="1299" height="730" key="SettingsEditor" timestamp="1596089607820">
-      <screen x="1600" y="0" width="1920" height="1080" />
+    <state x="-1300" y="147" width="1083" height="708" key="SettingsEditor" timestamp="1597888754768">
+      <screen x="-1600" y="62" width="1600" height="860" />
     </state>
+    <state x="-1300" y="147" width="1083" height="708" key="SettingsEditor/0.0.1536.824/-1600.62.1600.860@-1600.62.1600.860" timestamp="1597888754768" />
     <state x="461" y="155" key="SettingsEditor/0.0.1920.1050/1920.0.1600.870/-1600.0.1600.870@0.0.1920.1050" timestamp="1594276805508" />
     <state x="1960" y="107" width="1299" height="730" key="SettingsEditor/1600.0.1920.1080/0.27.1600.873/3520.0.1600.900@1600.0.1920.1080" timestamp="1596089607820" />
   </component>

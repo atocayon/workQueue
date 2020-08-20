@@ -3,29 +3,44 @@ import { ReactSVG } from "react-svg";
 import sideImg from "../../img/Untitled-1.svg";
 import logo from "../../img/logo.svg";
 import userAvatar from "../../img/user.svg";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import InputField from "../common/textField/InputField";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {withSnackbar} from "notistack";
-
+import { validation } from "./callbacks";
+import { login } from "../../redux/actions/login_logout";
+import Form from "./Form";
 function Login(props){
   const [loading, setLoading] = useState(true);
   const [visiblePass, setVisiblePass] = useState(false);
-
+  const [loginCreds, setLoginCreds] = useState({
+    usernameOrEmail : "",
+    password: ""
+  });
+  const [error, setError] = useState({});
   useEffect(() => {
       setLoading(false);
     props.enqueueSnackbar("NMP| Work Queue Information System");
   }, []);
 
-  const onSubmit = () => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
 
-  const onChange = () => {};
+    if (!validation(setError,loginCreds)){
+      const variant = "error";
+      props.enqueueSnackbar("Username or Email and Password is required...", {
+        variant,
+      });
+      return;
+    }
+
+    const variant = "success";
+    props.enqueueSnackbar("Login Success", {
+      variant,
+    });
+  };
+
+  const onChange = ({target}) => {
+    setLoginCreds({...loginCreds, [target.name] : target.value});
+  };
 
   return(
     <>
@@ -74,76 +89,14 @@ function Login(props){
                     <div className={"col-md-2"}></div>
                     <div className={"col-md-8"}>
                       <hr className={"hr"} />
-
-                      <form onSubmit={onSubmit}>
-                        <h5 className={"login-header"}>WELCOME</h5>
-                        <br />
-                        <InputField
-                          id={"email"}
-                          label={"Username or Email"}
-                          name={"emailOrPassword"}
+                        <Form
+                          onSubmit={onSubmit}
                           onChange={onChange}
-                          // error={error.email}
-                          type={"text"}
+                          error={error}
+                          visiblePass={visiblePass}
+                          setVisiblePass={setVisiblePass}
                         />
-                        <br />
-                        <br />
-                        <FormControl fullWidth>
-                          <InputLabel
-                            // style={error.password && { color: "red" }}
-                          >
-                            Password
-                          </InputLabel>
-                          <Input
-                            className={"password-input"}
-                            id={"password"}
-                            name={"password"}
-                            onChange={onChange}
-                            type={visiblePass ? "text" : "password"}
-                            // style={
-                            //   error.password && {
-                            //     borderBottom: "1px solid red",
-                            //     color: "red",
-                            //   }
-                            // }
-                            endAdornment={
-                              <InputAdornment position="end">
-                                <IconButton
-                                  title={"clear"}
-                                  aria-label="toggle password visibility"
-                                  onClick={() => {
-                                    setVisiblePass(!visiblePass);
-                                  }}
-                                  onMouseDown={() => {
-                                    setVisiblePass(!visiblePass);
-                                  }}
-                                  edge="end"
-                                >
-                                  {visiblePass ? (
-                                    <VisibilityOffIcon />
-                                  ) : (
-                                    <VisibilityIcon />
-                                  )}
-                                </IconButton>
-                              </InputAdornment>
-                            }
-                          />
-                          {/*<small style={{ color: "red" }}>*/}
-                          {/*  {error.password}*/}
-                          {/*</small>*/}
-                        </FormControl>
 
-                        <br />
-                        <br />
-                        <div className={"login-btn-container"}>
-                          <button
-                            className={"btn btn-primary login-btn"}
-                            type={"submit"}
-                          >
-                            Login
-                          </button>
-                        </div>
-                      </form>
                     </div>
                     <div className={"col-md-2"}></div>
                   </div>
