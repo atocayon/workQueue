@@ -10,9 +10,9 @@ export default function App() {
     <>
       <div>
         <Switch>
-          <Route path={"/work-queue"} exact component={HomePage} />
+          <Route path={"/"} exact component={HomePage} />
           <Route path={"/admin"} component={AdminHomePage} />
-          <Route path={"/"} render={ () => {window.location = "http://localhost:3001/work-queue"}} />
+          <Route path={"/login"} exact component={Login} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

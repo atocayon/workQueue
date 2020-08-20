@@ -12,6 +12,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import InputField from "../common/textField/InputField";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import {withSnackbar} from "notistack";
 
 function Login(props){
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ function Login(props){
 
   useEffect(() => {
       setLoading(false);
+    props.enqueueSnackbar("NMP| Work Queue Information System");
   }, []);
 
   const onSubmit = () => {};
@@ -156,4 +158,4 @@ function Login(props){
 }
 
 
-export default Login;
+export default withSnackbar(Login);
