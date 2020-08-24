@@ -4,12 +4,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { getFromStorage } from "../local_storage";
 import { withSnackbar } from "notistack";
 
-const Redirection = (props) => {
+function Redirection(props) {
     const [endSession, setEndSession] = useState(false);
     const [loading, setLoading] = useState(true);
     const [userRedirection, setUserRedirection] = useState({});
 
     useEffect(() => {
+        setLoading(false);
         props.enqueueSnackbar("NMP| Work Queue Information System");
         const obj = getFromStorage("work-queue");
         if (obj && obj.token) {

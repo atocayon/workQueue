@@ -14,7 +14,7 @@ export default function App() {
           <Route path={"/"} exact component={Redirection} />
           <Route path={"/client"} component={HomePage} />
           <Route path={"/admin"} component={AdminHomePage} />
-          <Route path={"/login"} exact component={Login} />
+          <Route path={"/login"} component={Login} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
