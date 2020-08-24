@@ -1,7 +1,7 @@
 export function validation(setError,loginCreds){
-  const {emailOrUsername, password} = loginCreds;
+  const {usernameOrEmail, password} = loginCreds;
   const error = {};
-  if (!emailOrUsername) error.emailOrUsername = "Email or Username is required";
+  if (!usernameOrEmail) error.usernameOrEmail = "Username or Email is required";
   if (!password) error.password = "Password is required";
 
   setError(error);

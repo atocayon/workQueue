@@ -19,7 +19,7 @@ export default function Form({ onSubmit, onChange, error, visiblePass, setVisibl
         label={"Username or Email"}
         name={"usernameOrEmail"}
         onChange={onChange}
-        error={error.emailOrUsername}
+        error={error.usernameOrEmail}
         type={"text"}
       />
       <br />

@@ -3,28 +3,52 @@ import { ReactSVG } from "react-svg";
 import sideImg from "../../img/Untitled-1.svg";
 import logo from "../../img/logo.svg";
 import userAvatar from "../../img/user.svg";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import {withSnackbar} from "notistack";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { withSnackbar } from "notistack";
+import { connect } from "react-redux";
 import { validation } from "./callbacks";
 import { login } from "../../redux/actions/login_logout";
+import { logout } from "../../redux/actions/login_logout";
 import Form from "./Form";
-function Login(props){
+import Reactotron from "reactotron-react-js";
+function Login(props) {
   const [loading, setLoading] = useState(true);
   const [visiblePass, setVisiblePass] = useState(false);
   const [loginCreds, setLoginCreds] = useState({
-    usernameOrEmail : "",
-    password: ""
+    usernameOrEmail: "",
+    password: "",
   });
   const [error, setError] = useState({});
   useEffect(() => {
-      setLoading(false);
-    props.enqueueSnackbar("NMP| Work Queue Information System");
-  }, []);
+    setLoading(false);
+
+    if (Object.keys(props._login).length > 0) {
+      if (props._login.message === "unrecognized") {
+        const variant = "error";
+        props.enqueueSnackbar("Unrecognize username or email...", {
+          variant,
+        });
+
+        setError({
+          ...error,
+          usernameOrEmail: "Unrecognize username or email",
+        });
+      }
+
+      if (props._login.message === "incorrect") {
+        const variant = "error";
+        props.enqueueSnackbar("Incorrect Password...", {
+          variant,
+        });
+        setError({ ...error, password: "Incorrect Password" });
+      }
+    }
+  }, [props._login]);
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    if (!validation(setError,loginCreds)){
+    Reactotron.log("submit");
+    if (!validation(setError, loginCreds)) {
       const variant = "error";
       props.enqueueSnackbar("Username or Email and Password is required...", {
         variant,
@@ -32,24 +56,25 @@ function Login(props){
       return;
     }
 
-    const variant = "success";
-    props.enqueueSnackbar("Login Success", {
-      variant,
-    });
+    props.login(loginCreds);
+
+    // const variant = "success";
+    // props.enqueueSnackbar("Login Success", {
+    //   variant,
+    // });
   };
 
-  const onChange = ({target}) => {
-    setLoginCreds({...loginCreds, [target.name] : target.value});
+  const onChange = ({ target }) => {
+    setLoginCreds({ ...loginCreds, [target.name]: target.value });
   };
 
-  return(
+  return (
     <>
       {loading ? (
         <div className={"loading"}>
-
           <h5>
             <CircularProgress />
-            <br/>
+            <br />
             Please wait...
           </h5>
         </div>
@@ -71,7 +96,6 @@ function Login(props){
           </div>
           <div className={"col-md-4"}>
             <ReactSVG src={logo} alt={"nmp_logo"} className={"logoLogin"} />
-
           </div>
           <div className={"col-md-4"}>
             <div className={"row"}>
@@ -89,14 +113,13 @@ function Login(props){
                     <div className={"col-md-2"}></div>
                     <div className={"col-md-8"}>
                       <hr className={"hr"} />
-                        <Form
-                          onSubmit={onSubmit}
-                          onChange={onChange}
-                          error={error}
-                          visiblePass={visiblePass}
-                          setVisiblePass={setVisiblePass}
-                        />
-
+                      <Form
+                        onSubmit={onSubmit}
+                        onChange={onChange}
+                        error={error}
+                        visiblePass={visiblePass}
+                        setVisiblePass={setVisiblePass}
+                      />
                     </div>
                     <div className={"col-md-2"}></div>
                   </div>
@@ -110,5 +133,19 @@ function Login(props){
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    _login: state.login,
+    _logout: state.logout,
+  };
+};
 
-export default withSnackbar(Login);
+const mapDispatchToProps = {
+  login,
+  logout,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withSnackbar(Login));

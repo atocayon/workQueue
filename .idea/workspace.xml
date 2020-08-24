@@ -31,15 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="220272bb-285e-482a-8022-da734d79db42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/Form.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/callbacks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/redux/actions/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/redux/actions/login_logout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/work-queue-system/src/server_endpoint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/work-queue-system/src/components/login/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +137,7 @@
       <workItem from="1597796860488" duration="8359000" />
       <workItem from="1597814570212" duration="8177000" />
       <workItem from="1597882695978" duration="5414000" />
-      <workItem from="1597888711157" duration="5261000" />
+      <workItem from="1597888711157" duration="6031000" />
     </task>
     <servers />
   </component>
