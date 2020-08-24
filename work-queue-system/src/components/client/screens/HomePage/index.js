@@ -10,17 +10,15 @@ import Reactotron from "reactotron-react-js";
 function HomePage(props) {
   const [endSession, setEndSession] = useState(false);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     setLoading(false);
-    props.enqueueSnackbar("NMP| Work Queue Information System");
     const obj = getFromStorage("work-queue");
     setEndSession(!(obj && obj.token));
   }, []);
 
   return (
     <>
-    {endSession && <Redirect to={"/login"} />}
+      {endSession && <Redirect to={"/login"} />}
       {loading ? (
         <div className={"loading"}>
           <h5>
@@ -31,7 +29,6 @@ function HomePage(props) {
         </div>
       ) : (
         <>
-          
           {/*navigation bar*/}
           <NavigationBar />
 

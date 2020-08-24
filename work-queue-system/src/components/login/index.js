@@ -10,6 +10,8 @@ import { validation } from "./callbacks";
 import { login } from "../../redux/actions/login_logout";
 import { logout } from "../../redux/actions/login_logout";
 import Form from "./Form";
+import { Redirect } from "react-router";
+import { getFromStorage } from "../../local_storage";
 import Reactotron from "reactotron-react-js";
 function Login(props) {
   const [loading, setLoading] = useState(true);
@@ -18,9 +20,14 @@ function Login(props) {
     usernameOrEmail: "",
     password: "",
   });
+  const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState({});
   useEffect(() => {
     setLoading(false);
+    const obj = getFromStorage("work-queue");
+    if (obj && obj.token) {
+      setRedirect(true);
+    }
 
     if (Object.keys(props._login).length > 0) {
       if (props._login.message === "unrecognized") {
@@ -41,6 +48,14 @@ function Login(props) {
           variant,
         });
         setError({ ...error, password: "Incorrect Password" });
+      }
+
+      if (props._login.message === "success") {
+        const variant = "info";
+        props.enqueueSnackbar("Hi! " + props._login.name, {
+          variant,
+        });
+        setRedirect(true);
       }
     }
   }, [props._login]);
@@ -70,6 +85,7 @@ function Login(props) {
 
   return (
     <>
+      {redirect && <Redirect to={"/"} />}
       {loading ? (
         <div className={"loading"}>
           <h5>

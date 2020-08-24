@@ -14,7 +14,7 @@ export function login(data) {
       })
       .then(async (res) => {
         await dispatch({ type: actionTypes.USER_LOGIN, data: res.data });
-        setInStorage("work-queue", { token: res.data.id });
+        setInStorage("work-queue", { token: res.data.id, role: res.data.role.work_queue });
       })
       .catch((err) => {
         throw err;

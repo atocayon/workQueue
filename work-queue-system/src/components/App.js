@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HomePage from "./client/screens/HomePage";
 import "../css/sass.css";
 import Login from "./login";
+import Redirection from "./Redirection";
+import HomePage from "./client/screens/HomePage";
 import AdminHomePage from "./admin/screens/HomePage";
 import NotFoundPage from "./404";
 export default function App() {
@@ -10,7 +11,8 @@ export default function App() {
     <>
       <div>
         <Switch>
-          <Route path={"/"} exact component={HomePage} />
+          <Route path={"/"} exact component={Redirection} />
+          <Route path={"/client"} component={HomePage} />
           <Route path={"/admin"} component={AdminHomePage} />
           <Route path={"/login"} exact component={Login} />
           <Route component={NotFoundPage} />
