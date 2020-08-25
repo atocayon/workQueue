@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 .navbar{
-  background-color: #141F46;
-  position: fixed;
-  width: 100vw;
+  // background-color: #141F46;
+  position: fixed !important;
+  width: 100vw !important;
   //height: 8vh;
 }
 
@@ -90,10 +90,6 @@
   }
 }
 
-.notFoundPage{
-  text-align: center;
-  color: #607D8B;
 
-}
 
 

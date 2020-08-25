@@ -1,5 +1,6 @@
 @import "login";
 @import "clientHomePage";
+@import "adminHomePage";
 body{
   padding: 0;
   margin: 0;
@@ -18,4 +19,10 @@ body{
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.notFoundPage{
+  text-align: center;
+  color: #607D8B;
+
 }

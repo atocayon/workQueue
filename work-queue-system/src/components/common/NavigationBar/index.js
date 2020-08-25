@@ -7,7 +7,7 @@ export default function NavigationBar(props) {
   return (
       <>
 
-            <div className="navbar">
+            <div className="navbar" style={{background: props.background}}>
               <div>
                   <img alt={"NMP Logo"} src={logo} className={"logo"} />
               </div>

@@ -30,7 +30,7 @@ function HomePage(props) {
       ) : (
         <>
           {/*navigation bar*/}
-          <NavigationBar />
+          <NavigationBar background={"#001858"} />
 
           {/*Button control*/}
           <ButtonFilter />
