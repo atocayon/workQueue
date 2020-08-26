@@ -43,6 +43,127 @@ function AdminHomePage(props) {
           
           <ReactSVG src={horizontalLine} className={"adminHorizontalLine"} />
           
+          <div className={"row"}>
+            <div className={"col-md-4"}>
+              <div className={"container"}>
+                <div className={"row"}>
+                  <div className={"col-md-12"}>
+                    <div>
+                    <h5>Type of Work: </h5>
+                    <ul>
+                      <li>All</li>
+                      <li>Check - up</li>
+                      <li>Repair</li>
+                      <li>Installation</li>
+                      <li>Information System</li>
+                      <li>Other(s)</li>
+                    </ul>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <div className={"col-md-8"}>
+              <table className={"table table-borderless"}>
+                <tbody>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      sample ticket name
+                    </td>
+                    <td>
+                      <button>sample type of work</button>
+                    </td>
+                    <td>sample current status</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </>
       )}
     </>
