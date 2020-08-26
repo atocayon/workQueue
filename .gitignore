@@ -1,28 +1,28 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-work-queue-system/node_modules
-work-queue-system/.pnp
-work-queue-system/.pnp.js
+/work-queue-system/node_modules
+/work-queue-system/.pnp
+/work-queue-system/.pnp.js
 
 # testing
-work-queue-system/coverage
+/work-queue-system/coverage
 
 # production
 /work-queue-system/build
 
 # misc
-work-queue-system/.DS_Store
-work-queue-system/.env.local
-work-queue-system/.env.development.local
-work-queue-system/.env.test.local
-work-queue-system/.env.production.local
+/work-queue-system/.DS_Store
+/work-queue-system/.env.local
+/work-queue-system/.env.development.local
+/work-queue-system/.env.test.local
+/work-queue-system/.env.production.local
 
-work-queue-system/npm-debug.log*
-work-queue-system/yarn-debug.log*
-work-queue-system/yarn-error.log*
+/work-queue-system/npm-debug.log*
+/work-queue-system/yarn-debug.log*
+/work-queue-system/yarn-error.log*
 
-work-queue-system/yarn.lock
+/work-queue-system/yarn.lock
 .idea/workspace.xml
 .idea/workQueue.iml
 .idea/prettier.xml
