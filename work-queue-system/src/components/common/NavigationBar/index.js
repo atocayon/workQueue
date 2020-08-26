@@ -12,10 +12,15 @@ export default function NavigationBar(props) {
 
         <div className={"user"}>
           <ul className="horizontal-list">
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            {props.navbarContent &&
+              props.navbarContent.map((content) => (
+                <li>
+                  <Link to={"/" + content} className={"navbarContent"}>
+                    {" "}
+                    &nbsp;&nbsp; {content}
+                  </Link>
+                </li>
+              ))}
             <li>
               <Link to={"/profile"}>
                 <span className={"username"}>Current Username</span>&nbsp;

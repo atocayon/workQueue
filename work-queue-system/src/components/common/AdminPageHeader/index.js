@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 export default function index(props) {
   return (
     <div className={"adminPageHeader"}>
@@ -11,7 +11,9 @@ export default function index(props) {
             <small>Task Type</small>
           </div>
           <div className={"col-md-6 btn-header-show-more"}>
-            <button className={"btn"}>Show more</button>
+            <button className={"btn btn-lg btn-expand-more"} title={"Expand more"}>
+                <ExpandMoreIcon />
+            </button>
           </div>
         </div>
       </div>

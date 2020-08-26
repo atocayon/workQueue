@@ -16,6 +16,14 @@
     button {
       float: right;
       color: #fff;
+      transition: color 0.5s, background-color 0.5s, border-radius 0.5s;
+      transition-timing-function: ease-in-out;
+      &:hover {
+        color: #141f46 !important;
+        background-color: #fff !important;
+        border-radius: 70px;
+ 
+      }
     }
   }
 }
@@ -23,5 +31,3 @@
 .adminHorizontalLine {
   margin-top: -5vh;
 }
-
-

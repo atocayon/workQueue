@@ -6,6 +6,14 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { Redirect } from "react-router-dom";
 import horizontalLine from "../../../../img/horizontal.svg";
 import { ReactSVG } from "react-svg";
+import HomeIcon from '@material-ui/icons/Home';
+const navbarContent = [
+  "Home",
+  "Job Request",
+  "Reports",
+  "Settings"
+];
+
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -28,7 +36,7 @@ function AdminHomePage(props) {
         </div>
       ) : (
         <>
-          <Navbar />
+          <Navbar navbarContent={navbarContent} />
 
           <AdminPageHeader />
 
