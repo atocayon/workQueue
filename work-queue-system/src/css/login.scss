@@ -9,8 +9,8 @@
 .logoLogin{
   margin-top: 32vh;
   margin-left: -20vw;
-  animation: loginLogo;
-  animation-duration: 2s;
+  animation: fadeIn;
+  animation-duration: 1s;
 }
 
 .login-header{
@@ -24,7 +24,7 @@
   //opacity: 0;
   margin-top: 15vh;
   margin-left: -15vw;
-  animation: paperContainer;
+  animation: fadeIn;
   animation-duration: 2s;
 }
 
@@ -63,9 +63,5 @@
   to {margin-left: -20vw}
 }
 
-@keyframes paperContainer {
-  from{ opacity: 0}
-  to{ opacity: 1}
 
-}
 

@@ -1,13 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-.navbar{
-  // background-color: #141F46;
+.navbar {
+  background-color: #141F46 !important;
   position: fixed !important;
   width: 100vw !important;
   //height: 8vh;
 }
 
+.horizontal-list {
+  list-style: none;
+  color: #fff;
+  padding: 0;
+  
+  li {
 
-.logo{
+    margin-left: 2vw !important;
+    display: inline;
+  }
+}
+
+.logo {
   //display: block;
   //margin-right: auto;
   //margin-left: auto;
@@ -17,79 +27,63 @@
   width: 2vw;
 }
 
-.user{
-
-  span{
-    background: #141F46;
+.user {
+  span {
+    background: #141f46;
     padding: 8px;
-    color: #141F46;
+    color: #141f46;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     clip-path: inset(0 0 0 100%);
-    transition: background .5s, color .5s, clip-path .5s;
+    transition: background 0.5s, color 0.5s, clip-path 0.5s;
     transition-timing-function: ease-in-out;
   }
 
-  a{
+  a {
     color: #fff;
     margin-right: 1vw !important;
     text-decoration: none !important;
 
-    &:hover{
-
-      span{
+    &:hover {
+      span {
         background: #fff;
         clip-path: inset(0 0 0 0);
       }
     }
   }
-
-
-
-
 }
 
-.ButtonFilter{
+.ButtonFilter {
   position: fixed;
   right: 0;
   top: 30vh;
 
-  button{
+  button {
     width: 3vw;
     margin-top: 1vh;
     border-radius: 0px;
   }
 }
 
-.horizontalLine{
+.horizontalLine {
   margin-top: -5vh;
 }
 
-
-
-.filterLogo{
+.filterLogo {
   width: 1vw;
 }
 
-.printReports{
+.printReports {
   margin-top: 1vh;
 }
 
-
-
-.table-data{
+.table-data {
   margin-top: 2vh;
 
-  .table{
-    th{
+  .table {
+    th {
       padding-left: 5vw !important;
       font-size: 12px !important;
     }
-
-
   }
 }
-
-
-
-

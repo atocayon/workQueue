@@ -1,28 +1,32 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
 @import "login";
 @import "clientHomePage";
 @import "adminHomePage";
-body{
+body {
   padding: 0;
   margin: 0;
   overflow: hidden;
 }
 
-.loading{
-  h5{
+.loading {
+  h5 {
     margin-top: 30vh;
     text-align: center;
   }
 }
 
-.logoOnNotFound{
+.logoOnNotFound {
   margin-top: 12vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-.notFoundPage{
+.notFoundPage {
   text-align: center;
-  color: #607D8B;
-
+  color: #607d8b;
 }
+
+
