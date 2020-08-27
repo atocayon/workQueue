@@ -1,9 +1,11 @@
-.adminNav {
-  background-color: #212121;
-}
-
 .adminPageHeader {
   color: #fff;
+
+  h1{
+    animation: bounce;
+    animation-duration: 1s;
+ 
+  }
 
   .adminHeaderContainer {
     padding-top: 8vh;
@@ -22,7 +24,6 @@
         color: #141f46 !important;
         background-color: #fff !important;
         border-radius: 70px;
- 
       }
     }
   }
@@ -30,4 +31,53 @@
 
 .adminHorizontalLine {
   margin-top: -5vh;
+}
+
+.typeOfWork-text-container {
+  margin-top: 7vh;
+  margin-left: 1vw;
+
+  h5 {
+    background-color: aliceblue;
+    padding: 1vw;
+    border-top-right-radius: 10px;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    padding: 0.5vw;
+    transition: color 0.3s, font-weight 0.3s, list-style 0.3s;
+    &:hover {
+      color: #141f46;
+      font-weight: bold;
+      list-style: square;
+    }
+  }
+}
+
+.typeOfWork-table {
+  height: 100vh !important;
+  overflow: auto;
+  margin-top: 7vh;
+  margin-left: -1vw;
+  padding-bottom: 40vh;
+
+  button {
+    border: 1px solid #2196f3;
+    background-color: #2196f3;
+    color: #fff;
+  }
+
+  tr {
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+      background-color: aliceblue;
+      
+    }
+  }
 }

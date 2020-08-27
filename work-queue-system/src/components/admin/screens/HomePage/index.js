@@ -37,7 +37,7 @@ function AdminHomePage(props) {
         </div>
       ) : (
         <>
-          <Navbar navbarContent={navbarContent} />
+          <Navbar navbarContent={navbarContent} activeLink={props.match.params.route} />
 
           <AdminPageHeader />
 

@@ -21,11 +21,11 @@ export default function HomePageContent(props) {
         </div>
       ) : (
         <div className={"row"}>
-          <div className={"col-md-4"}>
+          <div className={"col-md-3"}>
             <div className={"container"}>
               <div className={"row"}>
                 <div className={"col-md-12"}>
-                  <div>
+                  <div className={"typeOfWork-text-container"}>
                     <h5>Type of Work: </h5>
                     <ul>
                       <li>All</li>
@@ -41,7 +41,7 @@ export default function HomePageContent(props) {
             </div>
           </div>
 
-          <div className={"col-md-8"}>
+          <div className={"col-md-8 typeOfWork-table"}>
             <table className={"table table-borderless"}>
               <tbody>
                 <tr>
@@ -118,6 +118,8 @@ export default function HomePageContent(props) {
               </tbody>
             </table>
           </div>
+
+          <div className={"col-md-1"}></div>
         </div>
       )}
     </>

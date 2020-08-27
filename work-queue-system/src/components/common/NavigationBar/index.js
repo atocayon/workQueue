@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../img/logo.png";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 export default function NavigationBar(props) {
@@ -18,7 +18,24 @@ export default function NavigationBar(props) {
                 const rmv_whiteSpace = lowerString.replace(/\s/g, "");
                 return (
                   <li key={content}>
-                    <Link
+                    <NavLink
+                      style={
+                        !props.activeLink && rmv_whiteSpace === "home"
+                          ? {
+                              fontWeight: "bold",
+                              background: "#fff",
+                              color: "#141F46",
+                              padding: "0.5vw",
+                            }
+                          : props.activeLink === rmv_whiteSpace
+                          ? {
+                              fontWeight: "bold",
+                              background: "#fff",
+                              color: "#141F46",
+                              padding: "0.5vw",
+                            }
+                          : null
+                      }
                       to={
                         rmv_whiteSpace === "home"
                           ? "/admin"
@@ -28,7 +45,7 @@ export default function NavigationBar(props) {
                     >
                       {" "}
                       &nbsp;&nbsp; {content}
-                    </Link>
+                    </NavLink>
                   </li>
                 );
               })}

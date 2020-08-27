@@ -4,6 +4,7 @@
 @import "login";
 @import "clientHomePage";
 @import "adminHomePage";
+@import "adminJobRequest";
 body {
   padding: 0;
   margin: 0;
@@ -96,3 +97,4 @@ body {
     font-weight: bold;
   }
 }
+
