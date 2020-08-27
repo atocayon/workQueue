@@ -13,7 +13,9 @@ export default function App() {
         <Switch>
           <Route path={"/"} exact component={Redirection} />
           <Route path={"/client"} component={HomePage} />
+          <Route path={"/admin/:route"} component={AdminHomePage} />
           <Route path={"/admin"} component={AdminHomePage} />
+          
           <Route path={"/login"} component={Login} />
           <Route component={NotFoundPage} />
         </Switch>
