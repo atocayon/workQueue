@@ -19,7 +19,7 @@ function AdminHomePage(props) {
   const [endSession, setEndSession] = useState(false);
   useEffect(() => {
     const obj = getFromStorage("work-queue");
-    Reactotron.log(props);
+    
     setLoading(false);
     setEndSession(!(obj && obj.token));
   }, [props]);
