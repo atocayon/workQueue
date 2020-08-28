@@ -284,11 +284,15 @@ body {
   color: #fff;
   margin-right: 1vw !important;
   text-decoration: none !important;
+  padding-bottom: 1vh !important;
 }
 .user a:hover span {
   background: #fff;
   -webkit-clip-path: inset(0 0 0 0);
           clip-path: inset(0 0 0 0);
+}
+.user button {
+  color: red;
 }
 
 .navbarContent {

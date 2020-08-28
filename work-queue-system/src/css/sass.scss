@@ -76,13 +76,17 @@ body {
     color: #fff;
     margin-right: 1vw !important;
     text-decoration: none !important;
-
+    padding-bottom: 1vh !important;
     &:hover {
       span {
         background: #fff;
         clip-path: inset(0 0 0 0);
       }
     }
+  }
+
+  button{
+    color: red;
   }
 }
 

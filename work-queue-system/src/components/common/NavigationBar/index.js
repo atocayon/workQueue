@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../img/logo.png";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 export default function NavigationBar(props) {
   return (
     <>
@@ -51,7 +52,13 @@ export default function NavigationBar(props) {
               })}
             <li>
               <Link to={"/profile"}>
-                <span className={"username"}>Current Username</span>&nbsp;
+                <span className={"username"}>
+                  <button title={"Logout"} className={"btn btn-sm"}>
+                    <PowerSettingsNewIcon />
+                  </button>
+                  Current Username
+                </span>
+                &nbsp;
                 <AccountCircleIcon />
               </Link>
             </li>
