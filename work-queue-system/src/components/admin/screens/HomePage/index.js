@@ -19,7 +19,7 @@ function AdminHomePage(props) {
   const [endSession, setEndSession] = useState(false);
   useEffect(() => {
     const obj = getFromStorage("work-queue");
-    
+
     setLoading(false);
     setEndSession(!(obj && obj.token));
   }, [props]);
@@ -37,17 +37,41 @@ function AdminHomePage(props) {
         </div>
       ) : (
         <>
-          <Navbar navbarContent={navbarContent} activeLink={props.match.params.route} />
+          <Navbar
+            navbarContent={navbarContent}
+            activeLink={props.match.params.route}
+          />
 
-          <AdminPageHeader />
-
-          <ReactSVG src={horizontalLine} className={"adminHorizontalLine"} />
-          
           {/* Route */}
-          {!props.match.params.route && <HomePageContent />}
-          {props.match.params.route === "jobrequest" && <JobRequest />}
-          {props.match.params.route === "reports" && <Reports />}
-          {props.match.params.route === "settings" && <Settings />}
+          {!props.match.params.route && (
+            <>
+              <AdminPageHeader />
+
+              <ReactSVG
+                src={horizontalLine}
+                className={"adminHorizontalLine"}
+              />
+              <HomePageContent />
+            </>
+          )}
+          {props.match.params.route === "jobrequest" && (
+            <>
+              <div style={{ height: "15vh" }}></div>
+              <JobRequest />
+            </>
+          )}
+          {props.match.params.route === "reports" && (
+            <>
+              <div style={{ height: "15vh" }}></div>
+              <Reports />
+            </>
+          )}
+          {props.match.params.route === "settings" && (
+            <>
+              <div style={{ height: "15vh" }}></div>
+              <Settings />
+            </>
+          )}
         </>
       )}
     </>

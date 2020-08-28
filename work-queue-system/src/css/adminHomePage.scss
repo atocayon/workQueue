@@ -1,10 +1,9 @@
 .adminPageHeader {
   color: #fff;
 
-  h1{
+  h1 {
     animation: bounce;
     animation-duration: 1s;
- 
   }
 
   .adminHeaderContainer {
@@ -72,12 +71,20 @@
   }
 
   tr {
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, border-radius 0.5s;
     transition-timing-function: ease-in-out;
+
+    button{
+      transition: border-radius 0.5s;
+      transition-timing-function: ease-in-out;
+    }
 
     &:hover {
       background-color: aliceblue;
-      
+
+      button {
+        border-radius: 30px;
+      }
     }
   }
 }

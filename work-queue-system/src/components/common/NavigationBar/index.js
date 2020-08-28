@@ -18,7 +18,7 @@ export default function NavigationBar(props) {
                 const rmv_whiteSpace = lowerString.replace(/\s/g, "");
                 return (
                   <li key={content}>
-                    <NavLink
+                    <Link
                       style={
                         !props.activeLink && rmv_whiteSpace === "home"
                           ? {
@@ -45,7 +45,7 @@ export default function NavigationBar(props) {
                     >
                       {" "}
                       &nbsp;&nbsp; {content}
-                    </NavLink>
+                    </Link>
                   </li>
                 );
               })}

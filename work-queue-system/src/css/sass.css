@@ -158,16 +158,22 @@
   color: #fff;
 }
 .typeOfWork-table tr {
-  transition: background-color 0.5s;
+  transition: background-color 0.5s, border-radius 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.typeOfWork-table tr button {
+  transition: border-radius 0.5s;
   transition-timing-function: ease-in-out;
 }
 .typeOfWork-table tr:hover {
   background-color: aliceblue;
 }
+.typeOfWork-table tr:hover button {
+  border-radius: 30px;
+}
 
 .job-request-container {
   overflow: auto;
-  margin-top: 7vh;
   padding-bottom: 30vh;
 }
 .job-request-container thead tr {
@@ -200,6 +206,19 @@
 }
 .text-report-presentation thead th {
   color: #141F46;
+}
+
+.admin-settings-container .jumbotron {
+  background-color: aliceblue !important;
+}
+.admin-settings-container img {
+  display: block;
+  margin: auto;
+  width: 10vw;
+  margin-top: -15vh;
+}
+.admin-settings-container h5 {
+  text-align: center;
 }
 
 body {
@@ -237,7 +256,7 @@ body {
   padding: 0;
 }
 .horizontal-list li {
-  margin-left: 1vw !important;
+  padding-left: 2vw !important;
   display: inline;
 }
 
@@ -273,14 +292,13 @@ body {
 }
 
 .navbarContent {
-  transition: color 0.5s, background-color 0.5s, padding 0.5s, border-radius 0.5s, margin-top 0.5s, font-size 0.5s, font-weight 0.5s;
+  transition: color 0.5s, background-color 0.5s, padding 0.5s, border-radius 0.5s, margin-top 0.5s, font-weight 0.5s;
   transition-timing-function: ease-in-out;
 }
 .navbarContent:hover {
   color: #141f46;
   background-color: #fff;
   padding: 0.5vw;
-  border-radius: 5px;
-  font-size: 1.5rem;
+  border-radius: 10px;
   font-weight: bold;
 }

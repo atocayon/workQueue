@@ -6,6 +6,7 @@
 @import "adminHomePage";
 @import "adminJobRequest";
 @import "adminReports";
+@import "adminSettings";
 body {
   padding: 0;
   margin: 0;
@@ -44,7 +45,7 @@ body {
   padding: 0;
 
   li {
-    margin-left: 1vw !important;
+    padding-left: 2vw !important;
     display: inline;
   }
 }
@@ -87,14 +88,13 @@ body {
 
 .navbarContent {
   transition: color 0.5s, background-color 0.5s, padding 0.5s,
-    border-radius 0.5s, margin-top 0.5s, font-size 0.5s, font-weight 0.5s;
+    border-radius 0.5s, margin-top 0.5s, font-weight 0.5s;
   transition-timing-function: ease-in-out;
   &:hover {
     color: #141f46;
     background-color: #fff;
     padding: 0.5vw;
-    border-radius: 5px;
-    font-size: 1.5rem;
+    border-radius: 10px;
     font-weight: bold;
   }
 }

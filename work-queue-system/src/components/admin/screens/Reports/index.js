@@ -122,7 +122,7 @@ export default function Reports(props) {
                     color={reportPresentation === "text" ? 'secondary' : 'default'}
                     onClick={handleReportPresentation.bind(null, "text")}
                   >
-                    Text Presentation
+                    Table Presentation
                   </Button>
                   <Button
                     color={reportPresentation === "graph" ? 'secondary' : 'default'}
