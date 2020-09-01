@@ -27,7 +27,8 @@ export function logout(user_id) {
     return axios
       .post("http://" + server_endpoint.IP + "/work-queue/logout", { user_id })
       .then(async (res) => {
-        await dispatch({ type: actionTypes.USER_LOGOUT, data: res.data });
+        await dispatch({ type: actionTypes.USER_LOGOUT, data: "success" });
+        localStorage.clear();
       })
       .catch((err) => {
         throw err;

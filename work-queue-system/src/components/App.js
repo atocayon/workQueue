@@ -14,6 +14,7 @@ export default function App() {
           <Route path={"/"} exact component={Redirection} />
           <Route path={"/client"} component={HomePage} />
           <Route path={"/admin/:route"} component={AdminHomePage} />
+          <Route path={"admin/:user_id"} component={AdminHomePage} />
           <Route path={"/admin"} component={AdminHomePage} />
           
           <Route path={"/login"} component={Login} />

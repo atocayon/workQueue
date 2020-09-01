@@ -10,7 +10,8 @@
 body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .loading {
@@ -36,6 +37,8 @@ body {
   background-color: #141f46 !important;
   position: fixed !important;
   width: 100vw !important;
+  top: 0px !important;
+  z-index: 10000 !important;
   //height: 8vh;
 }
 
@@ -72,7 +75,7 @@ body {
     transition-timing-function: ease-in-out;
   }
 
-  a {
+  .username {
     color: #fff;
     margin-right: 1vw !important;
     text-decoration: none !important;
@@ -102,4 +105,6 @@ body {
     font-weight: bold;
   }
 }
+
+
 

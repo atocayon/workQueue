@@ -51,12 +51,20 @@ export default function NavigationBar(props) {
                 );
               })}
             <li>
-              <Link to={"/profile"}>
-                <span className={"username"}>
-                  <button title={"Logout"} className={"btn btn-sm"}>
+              <Link className={"username"}>
+                <span>
+                  <button
+                    title={"Logout"}
+                    className={"btn btn-sm"}
+                    onClick={() => {
+                      props.logout(props.user.user_id);
+                    }}
+                  >
                     <PowerSettingsNewIcon />
                   </button>
-                  Current Username
+                  <Link to={"/admin/" + props.user.user_id}>
+                    {props.user && props.user.username}
+                  </Link>
                 </span>
                 &nbsp;
                 <AccountCircleIcon />
