@@ -46,6 +46,7 @@ function AdminHomePage(props) {
         <>
           <Navbar
             user={props.current_user}
+            route={"/admin"}
             logout={props.logout}
             navbarContent={navbarContent}
             activeLink={props.match.params.route}
