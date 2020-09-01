@@ -87,11 +87,14 @@
 }
 
 .table-data {
-  margin-top: 2vh;
+  margin-top: 7vh;
 }
 .table-data .table th {
   padding-left: 5vw !important;
   font-size: 12px !important;
+}
+.table-data .table thead tr {
+  background-color: aliceblue;
 }
 
 .adminPageHeader {
@@ -220,11 +223,48 @@
   text-align: center;
 }
 
+.client-job-request-form {
+  padding: 8px;
+  border: 1px solid aliceblue;
+  box-shadow: 2px 2px 5px aliceblue;
+  margin-bottom: 7vh;
+}
+.client-job-request-form h3 {
+  color: #141F46;
+  text-align: center;
+}
+.client-job-request-form .scope-of-work-input {
+  width: 50vw;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+}
+.client-job-request-form .btn-job-request {
+  text-align: right;
+  margin-top: 2vh;
+}
+.client-job-request-form .btn-job-request button {
+  font-weight: bold;
+  color: #141F46;
+  transition: font-size 0.2s;
+  transition-timing-function: ease-in-out;
+}
+.client-job-request-form .btn-job-request button:hover {
+  font-size: large;
+}
+
 body {
   padding: 0;
   margin: 0;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px !important;
+  /* Remove scrollbar space */
+  background: transparent !important;
+  /* Optional: just make scrollbar invisible */
 }
 
 .loading h5 {

@@ -25,12 +25,18 @@
 }
 
 .table-data {
-  margin-top: 2vh;
+  margin-top: 7vh;
 
   .table {
     th {
       padding-left: 5vw !important;
       font-size: 12px !important;
+    }
+
+    thead{
+      tr{
+        background-color: aliceblue;
+      }
     }
   }
 }

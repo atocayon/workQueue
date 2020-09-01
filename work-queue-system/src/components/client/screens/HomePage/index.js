@@ -10,7 +10,8 @@ import { Redirect } from "react-router";
 import horizontalLine from "../../../../img/horizontal.svg";
 import { ReactSVG } from "react-svg";
 import { fetch_current_user_info } from "../../../../redux/actions/fetch_current_user_info";
-import {logout} from "../../../../redux/actions/login_logout";
+import { logout } from "../../../../redux/actions/login_logout";
+import JobRequestForm from "../JobRequest";
 import Reactotron from "reactotron-react-js";
 function HomePage(props) {
   const [endSession, setEndSession] = useState(false);
@@ -22,7 +23,7 @@ function HomePage(props) {
       props.fetch_current_user_info(obj.token);
     }
     setEndSession(!(obj && obj.token));
-  }, [props._logout]);
+  }, [props._logout, props.match.params.office]);
 
   return (
     <>
@@ -49,8 +50,25 @@ function HomePage(props) {
           {/*Button control*/}
           <ButtonFilter />
 
-          {/* Table*/}
-          <TableData />
+          <div className={"row"}>
+            <div className={"col-md-1"}></div>
+            <div className={"col-md-10"}>
+              {!props.match.params.office && (
+                <>
+                  {/* Table*/}
+                  <TableData />
+                </>
+              )}
+
+              {props.match.params.office && (
+                <>
+                  <div style={{ height: "7vh" }}></div>
+                  <JobRequestForm office={props.match.params.office} />
+                </>
+              )}
+            </div>
+            <div className={"col-md-1"}></div>
+          </div>
         </>
       )}
     </>
@@ -60,13 +78,13 @@ function HomePage(props) {
 const mapStateToProps = (state) => {
   return {
     current_user: state.current_system_user,
-    _logout: state.logout
+    _logout: state.logout,
   };
 };
 
 const mapDispatchToProps = {
   fetch_current_user_info,
-  logout
+  logout,
 };
 
 export default connect(

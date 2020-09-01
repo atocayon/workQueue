@@ -8,7 +8,9 @@ export default function NavigationBar(props) {
     <>
       <div className="navbar">
         <div>
-          <img alt={"NMP Logo"} src={logo} className={"logo"} />
+          <Link to={"/"}>
+            <img alt={"NMP Logo"} src={logo} className={"logo"} />
+          </Link>
         </div>
 
         <div className={"user"}>
@@ -62,7 +64,13 @@ export default function NavigationBar(props) {
                   >
                     <PowerSettingsNewIcon />
                   </button>
-                  <Link to={props.route && props.route+"/"+ props.user && props.user.user_id}>
+                  <Link
+                    to={
+                      props.route &&
+                      props.route + "/" + props.user &&
+                      props.user.user_id
+                    }
+                  >
                     {props.user && props.user.username}
                   </Link>
                 </span>

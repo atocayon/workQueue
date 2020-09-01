@@ -1,0 +1,32 @@
+.client-job-request-form{
+    padding: 8px;
+    border: 1px solid aliceblue;
+    box-shadow: 2px 2px 5px aliceblue;
+    margin-bottom: 7vh;
+    h3{
+        color: #141F46;
+        text-align: center;
+    }
+
+    .scope-of-work-input{
+        width: 50vw;
+        border-top: 1px solid #fff;
+        border-right: 1px solid #fff;
+        border-left: 1px solid #fff;
+    }
+
+    .btn-job-request{
+        text-align: right;
+        margin-top: 2vh;
+        
+        button{
+            font-weight: bold;
+            color: #141F46;
+            transition: font-size 0.2s;
+            transition-timing-function: ease-in-out;
+            &:hover{
+                font-size: large;
+            }
+        }
+    }
+}
