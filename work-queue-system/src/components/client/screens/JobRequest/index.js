@@ -5,8 +5,7 @@ import CheckBox from "../../../common/CheckBox";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Reactotron from "reactotron-react-js";
 const checkBox = [
-  "Check-up",
-  "Repair",
+  "Check-up/Repair",
   "Installation",
   "Information System",
   "Fabrication",
