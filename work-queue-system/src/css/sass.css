@@ -75,7 +75,7 @@
 }
 
 .horizontalLine {
-  margin-top: -5vh;
+  margin-top: 5vh;
 }
 
 .filterLogo {
@@ -227,7 +227,7 @@
   padding: 8px;
   border: 1px solid aliceblue;
   box-shadow: 2px 2px 5px aliceblue;
-  margin-bottom: 7vh;
+  margin-bottom: 10vh;
 }
 .client-job-request-form h3 {
   color: #141F46;

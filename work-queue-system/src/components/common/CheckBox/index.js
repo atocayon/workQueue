@@ -19,22 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CheckBox(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
-  });
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
-
-  const { gilad, jason, antoine } = state;
 
   return (
     <FormControl
       required
-      error={false}
+      error={props.error ? true: false}
       component="fieldset"
       className={classes.formControl}
     >
@@ -45,8 +34,8 @@ export default function CheckBox(props) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={false}
-                  onChange={handleChange}
+                  checked={props.check[checkBox]}
+                  onChange={props.handleChange}
                   name={checkBox}
                 />
               }
@@ -54,7 +43,7 @@ export default function CheckBox(props) {
             />
           ))}
       </FormGroup>
-      <FormHelperText>You can display an error</FormHelperText>
+      <FormHelperText>{props.error}</FormHelperText>
     </FormControl>
   );
 }

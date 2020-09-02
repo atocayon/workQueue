@@ -46,7 +46,7 @@ function Buttons(props) {
   function handleListKeyDown(event) {
     if (event.key === "Tab") {
       event.preventDefault();
-      setOpen(false);
+      setOpen(!open);
     }
   }
 
@@ -59,6 +59,13 @@ function Buttons(props) {
 
     prevOpen.current = open;
   }, [open]);
+
+  const assigned_sections = props.sections.filter(
+    (data) =>
+      data.secshort === "GSAS" ||
+      data.secshort === "MTAD" ||
+      data.secshort === "IMS"
+  );
 
   return (
     <>
@@ -96,15 +103,13 @@ function Buttons(props) {
                       id="menu-list-grow"
                       onKeyDown={handleListKeyDown}
                     >
-                      <MenuItem>
-                        <Link to={"/client/ims"}>IMS</Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link to={"/client/smtados"}>SMTADOS</Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link to={"/client/gsas"}>GSAS</Link>
-                      </MenuItem>
+                      {assigned_sections.map((list) => (
+                        <MenuItem>
+                          <Link to={"/client/" + list.secid}>
+                            {list.secshort}
+                          </Link>
+                        </MenuItem>
+                      ))}
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -129,10 +134,6 @@ function Buttons(props) {
             <PrintIcon />
           </button>
         </div>
-      </div>
-
-      <div className={" horizontalLine"}>
-        <ReactSVG src={horizontalLine} />
       </div>
     </>
   );

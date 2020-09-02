@@ -8,7 +8,7 @@ export default function NavigationBar(props) {
     <>
       <div className="navbar">
         <div>
-          <Link to={"/"}>
+          <Link to={"/"} title={"Home"}>
             <img alt={"NMP Logo"} src={logo} className={"logo"} />
           </Link>
         </div>
