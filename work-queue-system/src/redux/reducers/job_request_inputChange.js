@@ -10,7 +10,7 @@ const defaultState = {
   Installation: false,
   "Information System": false,
   Fabrication: false,
-  Others: false
+  Others: false,
 };
 
 const job_request_inputChange = (state = defaultState, action) => {
@@ -22,17 +22,16 @@ const job_request_inputChange = (state = defaultState, action) => {
         });
       } else {
         if (action.data.checked) {
-          if(action.data.name !== "Others"){
+          if (action.data.name !== "Others") {
             return Object.assign({}, state, {
               typeOfWork: [...state.typeOfWork, action.data.name],
               [action.data.name]: !state[action.data.name],
             });
-          }else{
+          } else {
             return Object.assign({}, state, {
               [action.data.name]: !state[action.data.name],
             });
           }
-         
         } else {
           let arr = [...state.typeOfWork];
           let remove = arr

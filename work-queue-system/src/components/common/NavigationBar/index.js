@@ -41,8 +41,8 @@ export default function NavigationBar(props) {
                       }
                       to={
                         rmv_whiteSpace === "home"
-                          ? "/admin"
-                          : "/admin/" + rmv_whiteSpace
+                          ? props.route
+                          : props.route+ props.addRoute + rmv_whiteSpace
                       }
                       className={"navbarContent"}
                     >
@@ -66,9 +66,7 @@ export default function NavigationBar(props) {
                   </button>
                   <Link
                     to={
-                      props.route &&
-                      props.route + "/" + props.user &&
-                      props.user.user_id
+                      props.route + "/user/profile/"+props.user.user_id
                     }
                   >
                     {props.user && props.user.username}

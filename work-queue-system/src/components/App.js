@@ -12,11 +12,12 @@ export default function App() {
       <div>
         <Switch>
           <Route path={"/"} exact component={Redirection} />
-          <Route path={"/client/:user/:user_id"} component={HomePage} />
+          <Route path={"/client/:user/:profile/:user_id"} component={HomePage} />
+          <Route path={"/client/:upload/:requestforupload"} component={HomePage} />
           <Route path={"/client/:office"} component={HomePage} />
           <Route path={"/client"} component={HomePage} />
           <Route path={"/admin/:route"} component={AdminHomePage} />
-          <Route path={"admin/:user/:user_id"} component={AdminHomePage} />
+          <Route path={"/admin/:user/:profile/:user_id"} component={AdminHomePage} />
           <Route path={"/admin"} component={AdminHomePage} />
           
           <Route path={"/login"} component={Login} />

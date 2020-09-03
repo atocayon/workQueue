@@ -301,6 +301,9 @@ body {
   padding-left: 2vw !important;
   display: inline;
 }
+.horizontal-list a {
+  color: #fff !important;
+}
 
 .logo {
   margin-top: 1vh;
@@ -323,7 +326,6 @@ body {
   transition-timing-function: ease-in-out;
 }
 .user .username {
-  color: #fff;
   margin-right: 1vw !important;
   text-decoration: none !important;
   padding-bottom: 1vh !important;
@@ -332,6 +334,9 @@ body {
   background: #fff;
   -webkit-clip-path: inset(0 0 0 0);
           clip-path: inset(0 0 0 0);
+}
+.user .username:hover a {
+  color: #141f46 !important;
 }
 .user button {
   color: red;
@@ -342,9 +347,10 @@ body {
   transition-timing-function: ease-in-out;
 }
 .navbarContent:hover {
-  color: #141f46;
+  color: #141f46 !important;
   background-color: #fff;
   padding: 0.5vw;
   border-radius: 10px;
   font-weight: bold;
+  text-decoration: none !important;
 }

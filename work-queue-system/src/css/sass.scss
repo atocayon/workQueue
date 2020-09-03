@@ -14,15 +14,12 @@ body {
   margin: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-
 }
 
 ::-webkit-scrollbar {
-  width: 0px !important;  /* Remove scrollbar space */
-  background: transparent !important;  /* Optional: just make scrollbar invisible */
+  width: 0px !important; /* Remove scrollbar space */
+  background: transparent !important; /* Optional: just make scrollbar invisible */
 }
-
-
 
 .loading {
   h5 {
@@ -61,6 +58,10 @@ body {
     padding-left: 2vw !important;
     display: inline;
   }
+
+  a {
+    color: #fff !important;
+  }
 }
 
 .logo {
@@ -86,7 +87,6 @@ body {
   }
 
   .username {
-    color: #fff;
     margin-right: 1vw !important;
     text-decoration: none !important;
     padding-bottom: 1vh !important;
@@ -95,10 +95,14 @@ body {
         background: #fff;
         clip-path: inset(0 0 0 0);
       }
+
+      a {
+        color: #141f46 !important;
+      }
     }
   }
 
-  button{
+  button {
     color: red;
   }
 }
@@ -108,13 +112,12 @@ body {
     border-radius 0.5s, margin-top 0.5s, font-weight 0.5s;
   transition-timing-function: ease-in-out;
   &:hover {
-    color: #141f46;
+    color: #141f46 !important;
     background-color: #fff;
     padding: 0.5vw;
     border-radius: 10px;
     font-weight: bold;
+
+    text-decoration: none !important;
   }
 }
-
-
-

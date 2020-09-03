@@ -20,7 +20,7 @@ ReactDOM.render(
   <ReduxProvider store={store}>
     <Router>
       <SnackbarProvider
-        maxSnack={3}
+        maxSnack={1}
         dense
         iconVariant={{
           success: "✅ ",

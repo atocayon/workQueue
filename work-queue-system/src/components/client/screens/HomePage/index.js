@@ -17,6 +17,7 @@ import { add_new_job_request } from "../../../../redux/actions/add_new_job_reque
 import {remove_add_job_request_messege} from "../../../../redux/actions/add_new_job_request";
 import JobRequestForm from "../JobRequest";
 import Reactotron from "reactotron-react-js";
+const navbarContent = ["Request for upload"];
 function HomePage(props) {
   const [endSession, setEndSession] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -76,7 +77,9 @@ function HomePage(props) {
               <NavigationBar
                 user={props.current_user}
                 route={"/client"}
+                addRoute={"/upload/"}
                 logout={props.logout}
+                navbarContent={props.match.params.office === "1" && navbarContent}
               />
 
               <div className={"horizontalLine"}>
@@ -88,7 +91,7 @@ function HomePage(props) {
           <div className={"row"}>
             <div className={"col-md-1"}></div>
             <div className={"col-md-10"}>
-              {!props.match.params.office && (
+              {!props.match.params.office && !props.match.params.upload ? (
                 <>
                   {/* Table*/}
                   <TableData />
@@ -96,7 +99,7 @@ function HomePage(props) {
                   {/*Button control*/}
                   <ButtonFilter sections={props.section_list} />
                 </>
-              )}
+              ) : ""}
 
               {/* Job Request Form */}
               {props.match.params.office && (
@@ -110,6 +113,13 @@ function HomePage(props) {
                     form_data={props._job_request_form_action_onChange}
                     onSubmitJobRequest={onSubmitJobRequest}
                   />
+                </>
+              )}
+
+              {props.match.params.upload && (
+                <>
+                  <div style={{ height: "7vh" }}></div>
+                  <h1>Request for upload</h1>
                 </>
               )}
             </div>
