@@ -9,9 +9,10 @@ const checkBox = [
   "Installation",
   "Information System",
   "Fabrication",
+  "Others"
 ];
 export default function JobRequest(props) {
-  const date = new Date();
+  
   const section = props.sections.filter(
     (item) => item.secid === parseInt(props.office)
   );
@@ -50,6 +51,7 @@ export default function JobRequest(props) {
                     handleChange={props.handleChange}
                   />
                   <br />
+                  
 
                   <TextareaAutosize
                     aria-label="Scope-of-work"

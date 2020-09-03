@@ -7,7 +7,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import InputField from "../textField/InputField";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -23,7 +23,7 @@ export default function CheckBox(props) {
   return (
     <FormControl
       required
-      error={props.error ? true: false}
+      error={props.error ? true : false}
       component="fieldset"
       className={classes.formControl}
     >
@@ -32,7 +32,7 @@ export default function CheckBox(props) {
         {props.checkBox &&
           props.checkBox.map((checkBox) => (
             <FormControlLabel
-            key={checkBox}
+              key={checkBox}
               control={
                 <Checkbox
                   checked={props.check[checkBox]}
@@ -44,6 +44,21 @@ export default function CheckBox(props) {
             />
           ))}
       </FormGroup>
+      {props.checkBox &&
+        props.checkBox.map((item) => (
+          <>
+            {item === "Others" && props.check[item] ? (
+              <InputField
+                label={"Pls. specify"}
+                name={"otherTypeOfWork"}
+                onChange={props.handleChange}
+                type={"text"}
+                // value={props.form_data.dateNeeded}
+              />
+            ) : ""}
+          </>
+        ))}
+
       <FormHelperText>{props.error}</FormHelperText>
     </FormControl>
   );
