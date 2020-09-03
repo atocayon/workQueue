@@ -1,11 +1,17 @@
 import actionTypes from "./actionTypes";
 import axios from "axios";
 import server_endpoint from "../../server_endpoint";
-const add_new_job_request = (data) => {
-  const { dateNeeded, typeOfWork, scopeOfWork } = data;
+const add_new_job_request = (
+  requisitioner_id,
+  task_secid,
+  form_data
+) => {
+  const { dateNeeded, typeOfWork, scopeOfWork } = form_data;
   return (dispatch) => {
     return axios
       .post("http://" + server_endpoint.IP + "/work-queue/job-request", {
+        requisitioner_id,
+        task_secid,
         dateNeeded,
         typeOfWork,
         scopeOfWork,

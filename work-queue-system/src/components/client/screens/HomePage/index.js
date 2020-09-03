@@ -13,6 +13,7 @@ import { fetch_current_user_info } from "../../../../redux/actions/fetch_current
 import { logout } from "../../../../redux/actions/login_logout";
 import { job_request_inputChange } from "../../../../redux/actions/job_request_inputChange";
 import { fetch_section_list } from "../../../../redux/actions/fetch_section_list";
+import { add_new_job_request } from "../../../../redux/actions/add_new_job_request";
 import JobRequestForm from "../JobRequest";
 import Reactotron from "reactotron-react-js";
 function HomePage(props) {
@@ -29,7 +30,7 @@ function HomePage(props) {
     setEndSession(!(obj && obj.token));
   }, [props._logout, props.match.params.office]);
 
-  const onSubmitJobRequest = (e) => {
+  const onSubmitJobRequest = async (e) => {
     e.preventDefault();
     if (props._job_request_form_action_onChange.typeOfWork.length === 0) {
       return setError({
@@ -37,6 +38,12 @@ function HomePage(props) {
         typeOfWork: "Please indicate the type work needed for your job request",
       });
     }
+
+    await props.add_new_job_request(
+      props.current_user.user_id,
+      props.match.params.office,
+      props._job_request_form_action_onChange
+    );
   };
 
   return (
@@ -117,6 +124,7 @@ const mapDispatchToProps = {
   logout,
   job_request_inputChange,
   fetch_section_list,
+  add_new_job_request,
 };
 
 export default connect(
