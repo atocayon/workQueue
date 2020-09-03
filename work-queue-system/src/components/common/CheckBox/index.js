@@ -32,6 +32,7 @@ export default function CheckBox(props) {
         {props.checkBox &&
           props.checkBox.map((checkBox) => (
             <FormControlLabel
+            key={checkBox}
               control={
                 <Checkbox
                   checked={props.check[checkBox]}

@@ -25,7 +25,7 @@ export default function JobRequest(props) {
             <h3>
               Job Request Form <br />{" "}
               {section.map((sec) => (
-                <small>{sec.secshort}</small>
+                <small key={sec}>{sec.secshort}</small>
               ))}
             </h3>
 

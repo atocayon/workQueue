@@ -14,6 +14,7 @@ import { logout } from "../../../../redux/actions/login_logout";
 import { job_request_inputChange } from "../../../../redux/actions/job_request_inputChange";
 import { fetch_section_list } from "../../../../redux/actions/fetch_section_list";
 import { add_new_job_request } from "../../../../redux/actions/add_new_job_request";
+import {remove_add_job_request_messege} from "../../../../redux/actions/add_new_job_request";
 import JobRequestForm from "../JobRequest";
 import Reactotron from "reactotron-react-js";
 function HomePage(props) {
@@ -26,9 +27,19 @@ function HomePage(props) {
     if (obj && obj.token) {
       props.fetch_current_user_info(obj.token);
       props.fetch_section_list();
+
+      if(props.onSubmitJobRequest !== ""){
+        if(props.onSubmitJobRequest === "success"){
+          const variant = "info";
+          props.enqueueSnackbar("Job request successful...", {
+            variant,
+          });
+          props.remove_add_job_request_messege();
+        }
+      }
     }
     setEndSession(!(obj && obj.token));
-  }, [props._logout, props.match.params.office]);
+  }, [props._logout, props.match.params.office, props.onSubmitJobRequest]);
 
   const onSubmitJobRequest = async (e) => {
     e.preventDefault();
@@ -116,6 +127,7 @@ const mapStateToProps = (state) => {
     _logout: state.logout,
     _job_request_form_action_onChange: state.job_request_inputChange,
     section_list: state.section_list,
+    onSubmitJobRequest: state.add_new_job_request
   };
 };
 
@@ -125,6 +137,7 @@ const mapDispatchToProps = {
   job_request_inputChange,
   fetch_section_list,
   add_new_job_request,
+  remove_add_job_request_messege
 };
 
 export default connect(
