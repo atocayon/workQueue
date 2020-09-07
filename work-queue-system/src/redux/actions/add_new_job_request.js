@@ -6,7 +6,7 @@ const add_new_job_request = (requisitioner_id, task_secid, form_data) => {
   const { dateNeeded, typeOfWork, otherTypeOfWork, scopeOfWork } = form_data;
   return (dispatch) => {
     return axios
-      .post("http://" + server_endpoint.IP + "/work-queue/job-request", {
+      .post("http://" + server_endpoint.IP + "/work-queue/new/job-request", {
         requisitioner_id,
         task_secid,
         dateNeeded,

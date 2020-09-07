@@ -14,11 +14,13 @@ import { logout } from "../../../../redux/actions/login_logout";
 import { job_request_inputChange } from "../../../../redux/actions/job_request_inputChange";
 import { fetch_section_list } from "../../../../redux/actions/fetch_section_list";
 import { add_new_job_request } from "../../../../redux/actions/add_new_job_request";
-import {remove_add_job_request_messege} from "../../../../redux/actions/add_new_job_request";
+import { remove_add_job_request_messege } from "../../../../redux/actions/add_new_job_request";
+import { fetch_user_job_request } from "../../../../redux/actions/fetch_user_job_requests";
 import JobRequestForm from "../JobRequest";
 import Reactotron from "reactotron-react-js";
 const navbarContent = ["Request for upload"];
 function HomePage(props) {
+  const [redirect, setRedirect] = useState(false);
   const [endSession, setEndSession] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState({});
@@ -28,13 +30,15 @@ function HomePage(props) {
     if (obj && obj.token) {
       props.fetch_current_user_info(obj.token);
       props.fetch_section_list();
+      props.fetch_user_job_request(obj.token);
 
-      if(props.onSubmitJobRequest !== ""){
-        if(props.onSubmitJobRequest === "success"){
+      if (props.onSubmitJobRequest !== "") {
+        if (props.onSubmitJobRequest === "success") {
           const variant = "info";
           props.enqueueSnackbar("Job request successful...", {
             variant,
           });
+          setRedirect(true);
           props.remove_add_job_request_messege();
         }
       }
@@ -60,6 +64,7 @@ function HomePage(props) {
 
   return (
     <>
+      {redirect && <Redirect to={"/client"} />}
       {endSession && <Redirect to={"/login"} />}
       {loading ? (
         <div className={"loading"}>
@@ -79,7 +84,9 @@ function HomePage(props) {
                 route={"/client"}
                 addRoute={"/upload/"}
                 logout={props.logout}
-                navbarContent={props.match.params.office === "1" && navbarContent}
+                navbarContent={
+                  props.match.params.office === "1" && navbarContent
+                }
               />
 
               <div className={"horizontalLine"}>
@@ -93,13 +100,14 @@ function HomePage(props) {
             <div className={"col-md-10"}>
               {!props.match.params.office && !props.match.params.upload ? (
                 <>
-                  {/* Table*/}
-                  <TableData />
-
-                  {/*Button control*/}
-                  <ButtonFilter sections={props.section_list} />
+                  <div>
+                    {/* Table*/}
+                    <TableData data={props.current_user_job_request_list} />
+                  </div>
                 </>
-              ) : ""}
+              ) : (
+                ""
+              )}
 
               {/* Job Request Form */}
               {props.match.params.office && (
@@ -123,7 +131,16 @@ function HomePage(props) {
                 </>
               )}
             </div>
-            <div className={"col-md-1"}></div>
+            <div className={"col-md-1"}>
+              <div>
+                {!props.match.params.office && !props.match.params.upload && (
+                  <>
+                    {/*Button control*/}
+                    <ButtonFilter sections={props.section_list} />
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </>
       )}
@@ -134,10 +151,11 @@ function HomePage(props) {
 const mapStateToProps = (state) => {
   return {
     current_user: state.current_system_user,
+    current_user_job_request_list: state.fetch_user_job_request,
     _logout: state.logout,
     _job_request_form_action_onChange: state.job_request_inputChange,
     section_list: state.section_list,
-    onSubmitJobRequest: state.add_new_job_request
+    onSubmitJobRequest: state.add_new_job_request,
   };
 };
 
@@ -147,7 +165,8 @@ const mapDispatchToProps = {
   job_request_inputChange,
   fetch_section_list,
   add_new_job_request,
-  remove_add_job_request_messege
+  remove_add_job_request_messege,
+  fetch_user_job_request,
 };
 
 export default connect(

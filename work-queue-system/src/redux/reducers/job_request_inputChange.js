@@ -22,16 +22,10 @@ const job_request_inputChange = (state = defaultState, action) => {
         });
       } else {
         if (action.data.checked) {
-          if (action.data.name !== "Others") {
-            return Object.assign({}, state, {
-              typeOfWork: [...state.typeOfWork, action.data.name],
-              [action.data.name]: !state[action.data.name],
-            });
-          } else {
-            return Object.assign({}, state, {
-              [action.data.name]: !state[action.data.name],
-            });
-          }
+          return Object.assign({}, state, {
+            typeOfWork: [...state.typeOfWork, action.data.name],
+            [action.data.name]: !state[action.data.name],
+          });
         } else {
           let arr = [...state.typeOfWork];
           let remove = arr
@@ -47,6 +41,18 @@ const job_request_inputChange = (state = defaultState, action) => {
         }
       }
 
+    case actionTypes.REMOVE_ADD_JOB_REQUEST_MESSAGE:
+      return Object.assign({}, state, {
+        dateNeeded: "",
+        typeOfWork: [],
+        otherTypeOfWork: "",
+        scopeOfWork: "",
+        "Check-up/Repair": false,
+        Installation: false,
+        "Information System": false,
+        Fabrication: false,
+        Others: false,
+      });
     default:
       return state;
   }
