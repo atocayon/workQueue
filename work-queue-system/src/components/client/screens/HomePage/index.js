@@ -123,7 +123,7 @@ function HomePage(props) {
                 {/* Request for upload */}
                 {props.match.params.upload && (
                   <>
-                    <div style={{ height: "7vh" }}></div>
+                    
                     <RequestForUpload />
                   </>
                 )}

@@ -65,6 +65,8 @@
 }
 .table-data {
   margin-top: 7vh;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 .table-data .table th {
   font-weight: bold;
@@ -200,6 +202,14 @@
   margin-top: -15vh;
 }
 .admin-settings-container h5 {
+  text-align: center;
+}
+
+.request-for-upload {
+  padding: 0;
+}
+.request-for-upload h3 {
+  color: #141F46;
   text-align: center;
 }
 

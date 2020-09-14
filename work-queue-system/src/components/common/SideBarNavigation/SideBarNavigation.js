@@ -17,7 +17,9 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import Badge from "@material-ui/core/Badge";
-
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import PrintIcon from "@material-ui/icons/Print";
+import InfoIcon from "@material-ui/icons/Info";
 import Reactotron from "reactotron-react-js";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -168,14 +170,30 @@ export default function SideBarNavigation(props) {
         </List>
         <Divider />
         <List>
-        <ListItem>
-            <ListItemText primary={"Web upload requests"} />
-          </ListItem>
+          <NavLink
+            activeStyle={activeStyle}
+            to={"/client/upload/requestforupload"}
+            exact
+            style={{ textDecoration: "none", color: "#000" }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <CloudUploadIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Web upload"} />
+            </ListItem>
+          </NavLink>
           <ListItem>
+            <ListItemIcon>
+              <PrintIcon />
+            </ListItemIcon>
             <ListItemText primary={"Generate reports"} />
           </ListItem>
 
           <ListItem>
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
             <ListItemText primary={"About"} />
           </ListItem>
         </List>
