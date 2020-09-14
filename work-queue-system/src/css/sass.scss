@@ -7,13 +7,12 @@
 @import "adminJobRequest";
 @import "adminReports";
 @import "adminSettings";
-
+@import "requestForUpload";
 @import "clientJobRequest";
 body {
   padding: 0;
   margin: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -40,84 +39,15 @@ body {
   color: #607d8b;
 }
 
-.navbar {
-  background-color: #141f46 !important;
-  position: fixed !important;
-  width: 100vw !important;
-  top: 0px !important;
-  z-index: 10000 !important;
-  //height: 8vh;
+
+.content-container{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  margin-top: 5vh;
+
 }
 
-.horizontal-list {
-  list-style: none;
-  color: #fff;
-  padding: 0;
-
-  li {
-    padding-left: 2vw !important;
-    display: inline;
-  }
-
-  a {
-    color: #fff !important;
-  }
-}
-
-.logo {
-  //display: block;
-  //margin-right: auto;
-  //margin-left: auto;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  margin-left: 1vw;
-  width: 2vw;
-}
-
-.user {
-  span {
-    background: #141f46;
-    padding: 8px;
-    color: #141f46;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    clip-path: inset(0 0 0 100%);
-    transition: background 0.5s, color 0.5s, clip-path 0.5s;
-    transition-timing-function: ease-in-out;
-  }
-
-  .username {
-    margin-right: 1vw !important;
-    text-decoration: none !important;
-    padding-bottom: 1vh !important;
-    &:hover {
-      span {
-        background: #fff;
-        clip-path: inset(0 0 0 0);
-      }
-
-      a {
-        color: #141f46 !important;
-      }
-    }
-  }
-
-  button {
-    color: red;
-  }
-}
-
-.navbarContent {
-  transition: color 0.5s, background-color 0.5s, padding 0.5s,
-    border-radius 0.5s, margin-top 0.5s, font-weight 0.5s;
-  transition-timing-function: ease-in-out;
-  &:hover {
-    color: #141f46 !important;
-    background-color: #fff;
-    padding: 0.5vw;
-    border-radius: 10px;
-    font-weight: bold;
-
-    text-decoration: none !important;
-  }
+.jumbotron-container{
+  height: 1vh !important;
 }

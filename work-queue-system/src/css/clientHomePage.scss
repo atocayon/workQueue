@@ -29,8 +29,14 @@
 
   .table {
     th {
-      
-      font-size: 12px !important;
+      font-weight: bold;
+      font-size: 14px !important;
+    }
+
+    td{
+      // font-weight: bold;
+      font-size: 14px !important;
+
     }
 
     thead{

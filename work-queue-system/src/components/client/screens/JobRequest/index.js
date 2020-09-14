@@ -1,82 +1,94 @@
 // @flow
-import React from "react";
+import React, { useEffect, useState } from "react";
+import * as Scroll from 'react-scroll';
 import InputField from "../../../common/textField/InputField";
 import CheckBox from "../../../common/CheckBox";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import CircularProgress from "../../../common/CircularProgress";
 import Reactotron from "reactotron-react-js";
 const checkBox = [
   "Check-up/Repair",
   "Installation",
   "Information System",
   "Fabrication",
-  "Others"
+  "Others",
 ];
 export default function JobRequest(props) {
-  
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+    Scroll.animateScroll.scrollToBottom();
+  }, []);
+
   const section = props.sections.filter(
     (item) => item.secid === parseInt(props.office)
   );
 
   return (
     <div>
-      <div className={"row"}>
-        <div className={"col-md-2"}></div>
-        <div className={"col-md-8"}>
-          <div className={"client-job-request-form"}>
-            <h3>
-              Job Request Form <br />{" "}
-              {section.map((sec) => (
-                <small key={sec}>{sec.secshort}</small>
-              ))}
-            </h3>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <>
+          <div className={"row"}>
+            <div className={"col-md-2"}></div>
+            <div className={"col-md-8"}>
+              <div className={"client-job-request-form"}>
+                <h3>
+                  Job Request Form <br />{" "}
+                  {section.map((sec) => (
+                    <small key={sec}>{sec.secshort}</small>
+                  ))}
+                </h3>
 
-            <form onSubmit={props.onSubmitJobRequest}>
-              <div className={"container"}>
-                <div className={"col-md-12"}>
-                  <span>
-                    <small>Date Needed: (Optional)</small>
-                  </span>
-                  <InputField
-                    name={"dateNeeded"}
-                    onChange={props.handleChange}
-                    type={"date"}
-                    value={props.form_data.dateNeeded}
-                  />
-                  <br />
+                <form onSubmit={props.onSubmitJobRequest}>
+                  <div className={"container"}>
+                    <div className={"col-md-12"}>
+                      <span>
+                        <small>Date Needed: (Optional)</small>
+                      </span>
+                      <InputField
+                        name={"dateNeeded"}
+                        onChange={props.handleChange}
+                        type={"date"}
+                        value={props.form_data.dateNeeded}
+                      />
+                      <br />
 
-                  <CheckBox
-                    error={props.error.typeOfWork}
-                    check={props.form_data}
-                    checkBox={checkBox}
-                    handleChange={props.handleChange}
-                  />
-                  <br />
-                  
+                      <CheckBox
+                        error={props.error.typeOfWork}
+                        check={props.form_data}
+                        checkBox={checkBox}
+                        handleChange={props.handleChange}
+                      />
+                      <br />
 
-                  <TextareaAutosize
-                    aria-label="Scope-of-work"
-                    placeholder="Scope of Work (Optional)"
-                    className={"scope-of-work-input"}
-                    name={"scopeOfWork"}
-                    onChange={props.handleChange}
-                  />
+                      <TextareaAutosize
+                        aria-label="Scope-of-work"
+                        placeholder="Scope of Work (Optional)"
+                        className={"scope-of-work-input"}
+                        name={"scopeOfWork"}
+                        onChange={props.handleChange}
+                      />
 
-                  <div className={"btn-job-request"}>
-                    <button
-                      title={"Submit Job Request"}
-                      type={"submit"}
-                      className={"btn"}
-                    >
-                      Submit
-                    </button>
+                      <div className={"btn-job-request"}>
+                        <button
+                          title={"Submit Job Request"}
+                          type={"submit"}
+                          className={"btn"}
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
-            </form>
+            </div>
+            <div className={"col-md-2"}></div>
           </div>
-        </div>
-        <div className={"col-md-2"}></div>
-      </div>
+        </>
+      )}
     </div>
   );
 }

@@ -90,7 +90,11 @@
   margin-top: 7vh;
 }
 .table-data .table th {
-  font-size: 12px !important;
+  font-weight: bold;
+  font-size: 14px !important;
+}
+.table-data .table td {
+  font-size: 14px !important;
 }
 .table-data .table thead tr {
   background-color: aliceblue;
@@ -255,8 +259,7 @@
 body {
   padding: 0;
   margin: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -283,73 +286,13 @@ body {
   color: #607d8b;
 }
 
-.navbar {
-  background-color: #141f46 !important;
-  position: fixed !important;
-  width: 100vw !important;
-  top: 0px !important;
-  z-index: 10000 !important;
+.content-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+  margin-top: 5vh;
 }
 
-.horizontal-list {
-  list-style: none;
-  color: #fff;
-  padding: 0;
-}
-.horizontal-list li {
-  padding-left: 2vw !important;
-  display: inline;
-}
-.horizontal-list a {
-  color: #fff !important;
-}
-
-.logo {
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  margin-left: 1vw;
-  width: 2vw;
-}
-
-.user span {
-  background: #141f46;
-  padding: 8px;
-  color: #141f46;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  -webkit-clip-path: inset(0 0 0 100%);
-          clip-path: inset(0 0 0 100%);
-  transition: background 0.5s, color 0.5s, -webkit-clip-path 0.5s;
-  transition: background 0.5s, color 0.5s, clip-path 0.5s;
-  transition: background 0.5s, color 0.5s, clip-path 0.5s, -webkit-clip-path 0.5s;
-  transition-timing-function: ease-in-out;
-}
-.user .username {
-  margin-right: 1vw !important;
-  text-decoration: none !important;
-  padding-bottom: 1vh !important;
-}
-.user .username:hover span {
-  background: #fff;
-  -webkit-clip-path: inset(0 0 0 0);
-          clip-path: inset(0 0 0 0);
-}
-.user .username:hover a {
-  color: #141f46 !important;
-}
-.user button {
-  color: red;
-}
-
-.navbarContent {
-  transition: color 0.5s, background-color 0.5s, padding 0.5s, border-radius 0.5s, margin-top 0.5s, font-weight 0.5s;
-  transition-timing-function: ease-in-out;
-}
-.navbarContent:hover {
-  color: #141f46 !important;
-  background-color: #fff;
-  padding: 0.5vw;
-  border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none !important;
+.jumbotron-container {
+  height: 1vh !important;
 }
