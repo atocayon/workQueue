@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { withSnackbar } from "notistack";
 import NavigationBar from "../../../common/NavigationBar";
-import ButtonFilter from "./Buttons";
+import SideBarNavigation from "../../../common/SideBarNavigation";
 import TableData from "./TableData";
 import Paper from "@material-ui/core/Paper";
 import { getFromStorage } from "../../../../local_storage";
@@ -72,7 +72,6 @@ function HomePage(props) {
         <>
           <div className={"row"}>
             <div className={"col-md-12"}>
-              {/*navigation bar*/}
               <NavigationBar
                 user={props.current_user}
                 route={"/client"}
@@ -82,20 +81,21 @@ function HomePage(props) {
                   props.match.params.office === "1" && navbarContent
                 }
               />
-
-              {/* <div className={"horizontalLine"}>
-                <ReactSVG src={horizontalLine} />
-              </div> */}
             </div>
           </div>
 
           <div className={"row"}>
-            <div className={"col-md-2"}></div>
+            <div className={"col-md-2"}>
+              <SideBarNavigation
+                sections={props.section_list}
+                user={props.current_user}
+              />
+            </div>
             <div className={"col-md-8"}>
               <Paper elevation={3} className={"paper content-container"}>
-                <div className={"jumbotron jumbotron-container"}></div>
                 {!props.match.params.office && !props.match.params.upload ? (
                   <>
+                    <div className={"jumbotron jumbotron-container"}></div>
                     <div>
                       {/* Table*/}
                       <TableData data={props.current_user_job_request_list} />
@@ -108,8 +108,8 @@ function HomePage(props) {
                 {/* Job Request Form */}
                 {props.match.params.office && (
                   <>
-                    <div style={{ height: "7vh" }}></div>
                     <JobRequestForm
+                      params={props.match.params.office}
                       error={error}
                       sections={props.section_list}
                       office={props.match.params.office}
@@ -129,16 +129,7 @@ function HomePage(props) {
                 )}
               </Paper>
             </div>
-            <div className={"col-md-2"}>
-              <div>
-                {!props.match.params.office && !props.match.params.upload && (
-                  <>
-                    {/*Button control*/}
-                    <ButtonFilter sections={props.section_list} />
-                  </>
-                )}
-              </div>
-            </div>
+            <div className={"col-md-2"}></div>
           </div>
         </>
       )}

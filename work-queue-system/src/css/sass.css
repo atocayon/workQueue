@@ -63,29 +63,6 @@
     margin-left: -20vw;
   }
 }
-.ButtonFilter {
-  position: fixed;
-  right: 0;
-  top: 30vh;
-}
-.ButtonFilter button {
-  width: 3vw;
-  margin-top: 1vh;
-  border-radius: 0px;
-}
-
-.horizontalLine {
-  margin-top: 5vh;
-}
-
-.filterLogo {
-  width: 1vw;
-}
-
-.printReports {
-  margin-top: 1vh;
-}
-
 .table-data {
   margin-top: 7vh;
 }
@@ -227,9 +204,6 @@
 }
 
 .client-job-request-form {
-  padding: 8px;
-  border: 1px solid aliceblue;
-  box-shadow: 2px 2px 5px aliceblue;
   margin-bottom: 10vh;
 }
 .client-job-request-form h3 {
@@ -244,11 +218,9 @@
 }
 .client-job-request-form .btn-job-request {
   text-align: right;
-  margin-top: 2vh;
+  margin-top: 10vh;
 }
 .client-job-request-form .btn-job-request button {
-  font-weight: bold;
-  color: #141F46;
   transition: font-size 0.2s;
   transition-timing-function: ease-in-out;
 }

@@ -1,7 +1,5 @@
 .client-job-request-form{
-    padding: 8px;
-    border: 1px solid aliceblue;
-    box-shadow: 2px 2px 5px aliceblue;
+   
     margin-bottom: 10vh;
     h3{
         color: #141F46;
@@ -17,11 +15,11 @@
 
     .btn-job-request{
         text-align: right;
-        margin-top: 2vh;
+        margin-top: 10vh;
         
         button{
-            font-weight: bold;
-            color: #141F46;
+            
+            
             transition: font-size 0.2s;
             transition-timing-function: ease-in-out;
             &:hover{

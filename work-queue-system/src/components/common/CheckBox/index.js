@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
 export default function CheckBox(props) {
   const classes = useStyles();
 
+  const checkBox = props.checkBox.filter(item => {
+    if(props.params !== "1"){
+      return item !== "Information System";
+    }else{
+      return item;
+    }});
   return (
     <FormControl
       required
@@ -30,7 +36,7 @@ export default function CheckBox(props) {
       <FormLabel component="legend">Type of Work Requested</FormLabel>
       <FormGroup>
         {props.checkBox &&
-          props.checkBox.map((checkBox) => (
+          checkBox.map((checkBox) => (
             <FormControlLabel
               key={checkBox}
               control={
