@@ -1,17 +1,18 @@
 import actionTypes from "./actionTypes";
 import axios from "axios";
 import Reactotron from "reactotron-react-js";
-const web_upload_request = (file, destination, file_name) => {
-  console.log(file);
-
+const web_upload_request = (data) => {
   return (dispatch) => {
-    return axios
-      .post(
-        "http://" + process.env.REACT_APP_SERVER + "/work-queue/web_upload",
-        file, { }
-      )
+    return axios({
+      method: "post",
+      url: "http://" + process.env.REACT_APP_SERVER + "/work-queue/web_upload",
+      data: data,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
       .then((res) => {
-        Reactotron.log(res.data);
+        dispatch({ type: actionTypes.WEB_UPLOAD_REQUEST, data: res.data });
       })
       .catch((err) => {
         throw err;

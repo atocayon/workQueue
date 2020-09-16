@@ -3,8 +3,6 @@ import CircularProgress from "../../../common/CircularProgress";
 import InputField from "../../../common/textField/InputField";
 import CheckBox from "../../../common/CheckBox";
 import Reactotron from "reactotron-react-js";
-import axios from "axios";
-import qs from "qs";   
 
 const checkBox = ["NMP Website", "Facebook"];
 export default function RequestForUpload(props) {
@@ -23,7 +21,6 @@ export default function RequestForUpload(props) {
 
   const onChangeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.type);
 
     if (e.target.type === "checkbox") {
       if (e.target.checked) {
@@ -83,25 +80,9 @@ export default function RequestForUpload(props) {
 
     _form.append("destination", destination);
     _form.append("file_name", file_name);
-    for (let [key, value] of _form.entries()) {
-      console.log(key, value);
-    }
+    _form.append("requisitioner", props.user.user_id);
 
-    axios({
-      method: "post",
-      url: "http://" + process.env.REACT_APP_SERVER + "/work-queue/web_upload",
-      data:_form,
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-      .then((res) => {
-        Reactotron.log(res);
-      })
-      .catch((err) => {
-        throw err;
-      });
-    // props.onSubmit(file, destination, file_name);
+    props.onSubmit(_form);
   };
 
   return (
@@ -120,7 +101,7 @@ export default function RequestForUpload(props) {
             <div className={"row"}>
               <div className={"col-md-1"}></div>
               <div className={"col-md-10"}>
-                <form onSubmit={onSubmitForm}  enctType="multipart/form-data">
+                <form onSubmit={onSubmitForm} encType="multipart/form-data">
                   <div className="form-group files">
                     <label style={err.file && { color: "red" }}>
                       Upload Your File{" "}

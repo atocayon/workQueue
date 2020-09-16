@@ -124,7 +124,7 @@ function HomePage(props) {
                 {/* Request for upload */}
                 {props.match.params.upload && (
                   <>
-                    <RequestForUpload onSubmit={props.web_upload_request} />
+                    <RequestForUpload user={props.current_user} onSubmit={props.web_upload_request} />
                   </>
                 )}
               </Paper>
