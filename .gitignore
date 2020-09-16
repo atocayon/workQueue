@@ -2,28 +2,29 @@
 
 node_modules/
 # dependencies
-/work-queue-system/node_modules
-/work-queue-system/.pnp
-/work-queue-system/.pnp.js
+
+.pnp
+.pnp.js
 
 # testing
-/work-queue-system/coverage
+coverage
 
 # production
-/work-queue-system/build
+build
 
 # misc
-/work-queue-system/.DS_Store
-/work-queue-system/.env.local
-/work-queue-system/.env.development.local
-/work-queue-system/.env.test.local
-/work-queue-system/.env.production.local
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-/work-queue-system/npm-debug.log*
-/work-queue-system/yarn-debug.log*
-/work-queue-system/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-/work-queue-system/yarn.lock
+yarn.lock
 .idea/workspace.xml
 .idea/workQueue.iml
 .idea/prettier.xml

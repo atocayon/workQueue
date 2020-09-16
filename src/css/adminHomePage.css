@@ -1,0 +1,76 @@
+.adminPageHeader {
+  color: #fff;
+}
+.adminPageHeader h1 {
+  animation: bounce;
+  animation-duration: 1s;
+}
+.adminPageHeader .adminHeaderContainer {
+  padding-top: 8vh;
+  padding-bottom: 2vh;
+  padding-left: 2vw;
+  background-color: #141f46;
+}
+.adminPageHeader .btn-header-show-more button {
+  float: right;
+  color: #fff;
+  transition: color 0.5s, background-color 0.5s, border-radius 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.adminPageHeader .btn-header-show-more button:hover {
+  color: #141f46 !important;
+  background-color: #fff !important;
+  border-radius: 70px;
+}
+
+.adminHorizontalLine {
+  margin-top: -5vh;
+}
+
+.typeOfWork-text-container {
+  margin-top: 7vh;
+  margin-left: 1vw;
+}
+.typeOfWork-text-container h5 {
+  background-color: aliceblue;
+  padding: 1vw;
+  border-top-right-radius: 10px;
+}
+.typeOfWork-text-container ul {
+  list-style: none;
+}
+.typeOfWork-text-container li {
+  padding: 0.5vw;
+  transition: color 0.3s, font-weight 0.3s, list-style 0.3s;
+}
+.typeOfWork-text-container li:hover {
+  color: #141f46;
+  font-weight: bold;
+  list-style: square;
+}
+
+.typeOfWork-table {
+  height: 100vh !important;
+  margin-top: 7vh;
+  margin-left: -1vw;
+  padding-bottom: 40vh;
+}
+.typeOfWork-table button {
+  border: 1px solid #2196f3;
+  background-color: #2196f3;
+  color: #fff;
+}
+.typeOfWork-table tr {
+  transition: background-color 0.5s, border-radius 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.typeOfWork-table tr button {
+  transition: border-radius 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.typeOfWork-table tr:hover {
+  background-color: aliceblue;
+}
+.typeOfWork-table tr:hover button {
+  border-radius: 30px;
+}
