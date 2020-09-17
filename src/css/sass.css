@@ -205,6 +205,31 @@
   text-align: center;
 }
 
+.client-job-request-form {
+  margin-bottom: 10vh;
+}
+.client-job-request-form h3 {
+  color: #141F46;
+  text-align: center;
+}
+.client-job-request-form .scope-of-work-input {
+  width: 50vw;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+}
+.client-job-request-form .btn-job-request {
+  text-align: right;
+  margin-top: 10vh;
+}
+.client-job-request-form .btn-job-request button {
+  transition: font-size 0.2s;
+  transition-timing-function: ease-in-out;
+}
+.client-job-request-form .btn-job-request button:hover {
+  font-size: large;
+}
+
 .request-for-upload {
   padding: 0;
   margin-bottom: 20vh;
@@ -269,30 +294,8 @@
   text-transform: capitalize;
   text-align: center;
 }
-
-.client-job-request-form {
-  margin-bottom: 10vh;
-}
-.client-job-request-form h3 {
-  color: #141F46;
-  text-align: center;
-}
-.client-job-request-form .scope-of-work-input {
-  width: 50vw;
-  border-top: 1px solid #fff;
-  border-right: 1px solid #fff;
-  border-left: 1px solid #fff;
-}
-.client-job-request-form .btn-job-request {
-  text-align: right;
-  margin-top: 10vh;
-}
-.client-job-request-form .btn-job-request button {
-  transition: font-size 0.2s;
-  transition-timing-function: ease-in-out;
-}
-.client-job-request-form .btn-job-request button:hover {
-  font-size: large;
+.request-for-upload .btn-web-upload-view {
+  margin-bottom: 5vh;
 }
 
 body {

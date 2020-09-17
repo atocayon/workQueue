@@ -15,6 +15,7 @@ import { add_new_job_request } from "../../../../redux/actions/add_new_job_reque
 import { remove_add_job_request_messege } from "../../../../redux/actions/add_new_job_request";
 import { fetch_user_job_request } from "../../../../redux/actions/fetch_user_job_requests";
 import { web_upload_request } from "../../../../redux/actions/web_upload_request";
+import {fetch_web_upload_requests} from "../../../../redux/actions/fetch_web_upload_requests";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import CircularProgress from "../../../common/CircularProgress";
@@ -32,6 +33,7 @@ function HomePage(props) {
       props.fetch_current_user_info(obj.token);
       props.fetch_section_list();
       props.fetch_user_job_request(obj.token);
+      props.fetch_web_upload_requests(obj.token);
 
       if (props.onSubmitJobRequest !== "") {
         if (props.onSubmitJobRequest === "success") {
@@ -124,7 +126,7 @@ function HomePage(props) {
                 {/* Request for upload */}
                 {props.match.params.upload && (
                   <>
-                    <RequestForUpload user={props.current_user} onSubmit={props.web_upload_request} />
+                    <RequestForUpload user={props.current_user} onSubmit={props.web_upload_request} web_upload_list={props.list_web_upload_requests} />
                   </>
                 )}
               </Paper>
@@ -146,6 +148,7 @@ const mapStateToProps = (state) => {
     section_list: state.section_list,
     onSubmitJobRequest: state.add_new_job_request,
     web_upload_request: state.web_upload_request,
+    list_web_upload_requests: state.fetch_web_upload_requests
   };
 };
 
@@ -158,6 +161,7 @@ const mapDispatchToProps = {
   remove_add_job_request_messege,
   fetch_user_job_request,
   web_upload_request,
+  fetch_web_upload_requests
 };
 
 export default connect(

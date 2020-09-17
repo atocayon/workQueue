@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "../../../common/CircularProgress";
-import InputField from "../../../common/textField/InputField";
-import CheckBox from "../../../common/CheckBox";
+
+import ListIcon from "@material-ui/icons/List";
+import AddIcon from "@material-ui/icons/Add";
+import Form from "./Form";
+import Table from "./Table";
 import Reactotron from "reactotron-react-js";
 
 const checkBox = ["NMP Website", "Facebook"];
 export default function RequestForUpload(props) {
+  const [webUploadView, setWebUploadView] = useState(false);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState({});
   const [form, setForm] = useState({
@@ -101,47 +105,31 @@ export default function RequestForUpload(props) {
             <div className={"row"}>
               <div className={"col-md-1"}></div>
               <div className={"col-md-10"}>
-                <form onSubmit={onSubmitForm} encType="multipart/form-data">
-                  <div className="form-group files">
-                    <label style={err.file && { color: "red" }}>
-                      Upload Your File{" "}
-                    </label>
-                    <input
-                      type="file"
-                      className="form-control"
-                      name={"file"}
-                      multiple
-                      onChange={onChangeHandler}
-                    />
-                  </div>
-
-                  <div>
-                    <InputField
-                      name={"file_name"}
-                      error={err.file_name}
-                      variant={"outlined"}
-                      onChange={onChangeHandler}
-                      label={"File name of document(s) to be uploaded"}
-                    />
-                  </div>
-
-                  <div>
-                    <CheckBox
-                      label={"Destination of upload:"}
-                      checkBox={checkBox}
-                      check={form}
-                      handleChange={onChangeHandler}
-                      error={err.checkbox}
-                    />
-                  </div>
+                <div className={"btn-web-upload-view"}>
                   <button
-                    type={"submit"}
-                    className={"btn btn-info"}
-                    id={"submit_web_upload"}
+                    type={"button"}
+                    className={"btn btn-sm btn-info"}
+                    onClick={() => {
+                      setWebUploadView(!webUploadView);
+                    }}
                   >
-                    Submit
+                    {webUploadView ? <AddIcon /> : <ListIcon />}
                   </button>
-                </form>
+                </div>
+
+                {!webUploadView && (
+                  <Form
+                    onSubmitForm={onSubmitForm}
+                    err={err}
+                    onChangeHandler={onChangeHandler}
+                    checkBox={checkBox}
+                    form={form}
+                  />
+                )}
+
+                {webUploadView && (
+                    <Table />
+                )}
 
                 <div className={"col-md-1"}></div>
               </div>
