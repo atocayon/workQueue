@@ -128,7 +128,7 @@ export default function RequestForUpload(props) {
                 )}
 
                 {webUploadView && (
-                    <Table />
+                    <Table data={props.web_upload_list} />
                 )}
 
                 <div className={"col-md-1"}></div>
