@@ -3,6 +3,7 @@ import CircularProgress from "../../../common/CircularProgress";
 import userAvatar from "../../../../img/user.png";
 import EditIcon from "@material-ui/icons/Edit";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import Form from "./Form";
 export default function UserProfile(props) {
   const [loading, setLoading] = useState(true);
 
@@ -38,17 +39,49 @@ export default function UserProfile(props) {
               </div>
 
               <br />
-              <h4>
-                {props.user.secshort} - {props.user.name}
-                <br />
-                <small> ({props.user.position})</small>
-              </h4>
+              {props.profileView && (
+                <>
+                  <h4>
+                    {props.user.secshort} - {props.user.name}
+                    <br />
+                    <small> ({props.user.position})</small>
+                  </h4>
+                </>
+              )}
+
               <h6 className={"user-info"}>
-                <small>@{props.user.username}</small>
+                {props.profileView && (
+                  <>
+                    <small>@{props.user.username}</small>
+                    <br />
+                    <small>{props.user.email}</small>
+                    <br />
+                    <small>{props.user.contact}</small>
+                  </>
+                )}
+
+                {!props.profileView && (
+                    <Form user={props.user}/>
+                )}
+
                 <br />
-                <small>{props.user.email}</small>
                 <br />
-                <small>{props.user.contact}</small>
+
+                <button
+                  className={"btn btn-info btn-sm"}
+                  onClick={() => {
+                    props.setProfileView(!props.profileView);
+                  }}
+                >
+                  {props.profileView ? "Update Information" : "Save Changes"}
+                </button>
+                <br />
+                <br />
+                {props.profileView && (
+                  <button className={"btn btn-outline-info btn-sm"}>
+                    Change Password
+                  </button>
+                )}
               </h6>
             </div>
           </div>

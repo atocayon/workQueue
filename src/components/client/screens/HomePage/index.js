@@ -28,6 +28,7 @@ function HomePage(props) {
   const [endSession, setEndSession] = useState(false);
   const [loading, setLoading] = useState(true);
   const [webUploadView, setWebUploadView] = useState(false);
+  const [profileView, setProfileView] = useState(true);
   const [form, setForm] = useState({
     selectedFile: [],
     destination: [],
@@ -247,7 +248,11 @@ function HomePage(props) {
 
                 {props.match.params.user && (
                   <>
-                    <UserProfile user={props.current_user} />
+                    <UserProfile
+                      user={props.current_user}
+                      setProfileView={setProfileView}
+                      profileView={profileView}
+                    />
                   </>
                 )}
               </Paper>
