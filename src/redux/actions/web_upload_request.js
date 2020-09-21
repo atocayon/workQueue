@@ -12,7 +12,7 @@ const web_upload_request = (data) => {
       },
     })
       .then((res) => {
-        dispatch({ type: actionTypes.WEB_UPLOAD_REQUEST, data: res.data });
+        dispatch({ type: actionTypes.WEB_UPLOAD_REQUEST, data: "success" });
       })
       .catch((err) => {
         throw err;
@@ -20,4 +20,11 @@ const web_upload_request = (data) => {
   };
 };
 
+const clear_web_upload_message = () => {
+  return (dispatch) => {
+    return dispatch({ type: actionTypes.CLEAR_WEB_UPLOAD_REQUEST });
+  };
+};
+
 export { web_upload_request };
+export { clear_web_upload_message };

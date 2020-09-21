@@ -9,85 +9,15 @@ import Reactotron from "reactotron-react-js";
 
 const checkBox = ["NMP Website", "Facebook"];
 export default function RequestForUpload(props) {
-  const [webUploadView, setWebUploadView] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState({});
-  const [form, setForm] = useState({
-    selectedFile: null,
-    destination: [],
-    file_name: "",
-    "NMP Website": false,
-    Facebook: false,
-  });
+  
+  
   useEffect(() => {
     setLoading(false);
+
   }, []);
 
-  const onChangeHandler = (e) => {
-    e.preventDefault();
-
-    if (e.target.type === "checkbox") {
-      if (e.target.checked) {
-        setForm({
-          ...form,
-          destination: [...form.destination, e.target.name],
-          [e.target.name]: !form[e.target.name],
-        });
-      } else {
-        let arr = [...form.destination];
-        let remove = form.destination
-          .map((item) => {
-            return item.value;
-          })
-          .indexOf(e.target.name);
-        arr.splice(remove, 1);
-
-        setForm({
-          ...form,
-          destination: [...arr],
-          [e.target.name]: !form[e.target.name],
-        });
-      }
-    }
-    if (e.target.type === "text") {
-      setForm({ ...form, [e.target.name]: e.target.value });
-    }
-
-    if (e.target.type === "file") {
-      setForm({ ...form, selectedFile: e.target.files });
-    }
-  };
-
-  const formValidation = () => {
-    let error = {};
-    if (form.selectedFile.length < 1) error.file = "Please select a file";
-    if (!form.file_name) error.file_name = "File name is required";
-    if (form.destination.length < 1)
-      error.checkbox = "Please select the upload destination";
-
-    setErr(error);
-    return Object.keys(error).length === 0;
-  };
-
-  const onSubmitForm = (e) => {
-    e.preventDefault();
-    if (!formValidation()) {
-      return;
-    }
-
-    const { selectedFile, destination, file_name } = form;
-    const _form = new FormData();
-
-    for (let i = 0; i < selectedFile.length; i++) {
-      _form.append("file", selectedFile[i]);
-    }
-
-    _form.append("destination", destination);
-    _form.append("file_name", file_name);
-    _form.append("requisitioner", props.user.user_id);
-
-    props.onSubmit(_form);
-  };
+ 
 
   return (
     <>
@@ -110,26 +40,24 @@ export default function RequestForUpload(props) {
                     type={"button"}
                     className={"btn btn-sm btn-info"}
                     onClick={() => {
-                      setWebUploadView(!webUploadView);
+                      props.setWebUploadView(!props.webUploadView);
                     }}
                   >
-                    {webUploadView ? <AddIcon /> : <ListIcon />}
+                    {props.webUploadView ? <AddIcon /> : <ListIcon />}
                   </button>
                 </div>
 
-                {!webUploadView && (
+                {!props.webUploadView && (
                   <Form
-                    onSubmitForm={onSubmitForm}
-                    err={err}
-                    onChangeHandler={onChangeHandler}
+                    onSubmitForm={props.onSubmitForm}
+                    err={props.error}
+                    onChangeHandler={props.onChangeHandler}
                     checkBox={checkBox}
-                    form={form}
+                    form={props.form}
                   />
                 )}
 
-                {webUploadView && (
-                    <Table data={props.web_upload_list} />
-                )}
+                {props.webUploadView && <Table data={props.web_upload_list} />}
 
                 <div className={"col-md-1"}></div>
               </div>

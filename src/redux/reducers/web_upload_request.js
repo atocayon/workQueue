@@ -1,10 +1,11 @@
 import actionTypes from "../actions/actionTypes";
 
-
-const web_upload_request = (state = {}, action) => {
+const web_upload_request = (state = "", action) => {
   switch (action.type) {
-    case actionTypes.WEB_UPLOAD_REQEUST:
-        return {...state, ...action.data};
+    case actionTypes.WEB_UPLOAD_REQUEST:
+      return (state = "success");
+    case actionTypes.CLEAR_WEB_UPLOAD_REQUEST:
+      return (state = "");
     default:
       return state;
   }
