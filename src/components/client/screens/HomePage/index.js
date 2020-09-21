@@ -19,6 +19,7 @@ import { fetch_web_upload_requests } from "../../../../redux/actions/fetch_web_u
 import { clear_web_upload_message } from "../../../../redux/actions/web_upload_request";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
+import UserProfile from "../UserProfile";
 import CircularProgress from "../../../common/CircularProgress";
 import Reactotron from "reactotron-react-js";
 const navbarContent = ["Request for upload"];
@@ -55,8 +56,7 @@ function HomePage(props) {
         }
       }
 
-      Reactotron.log("Checking");
-      Reactotron.log(props._web_upload_request);
+      Reactotron.log(props.match.params);
       if (props._web_upload_request !== "") {
         if (props._web_upload_request === "success") {
           const variant = "info";
@@ -82,7 +82,7 @@ function HomePage(props) {
     setEndSession(!(obj && obj.token));
   }, [
     props._logout,
-    props.match.params.office,
+    props.match.params,
     props.onSubmitJobRequest,
     props._web_upload_request,
   ]);
@@ -182,7 +182,6 @@ function HomePage(props) {
               <NavigationBar
                 user={props.current_user}
                 route={"/client"}
-                addRoute={"/upload/"}
                 logout={props.logout}
                 navbarContent={
                   props.match.params.office === "1" && navbarContent
@@ -200,7 +199,9 @@ function HomePage(props) {
             </div>
             <div className={"col-md-8"}>
               <Paper elevation={3} className={"paper content-container"}>
-                {!props.match.params.office && !props.match.params.upload ? (
+                {!props.match.params.office &&
+                !props.match.params.upload &&
+                !props.match.params.user ? (
                   <>
                     <div className={"jumbotron jumbotron-container"}></div>
                     <div>
@@ -240,8 +241,13 @@ function HomePage(props) {
                       webUploadView={webUploadView}
                       setWebUploadView={setWebUploadView}
                       web_upload_list={props.list_web_upload_requests}
-                    
                     />
+                  </>
+                )}
+
+                {props.match.params.user && (
+                  <>
+                    <UserProfile user={props.current_user} />
                   </>
                 )}
               </Paper>

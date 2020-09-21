@@ -37,7 +37,7 @@ export default function Table(props) {
                           }
                           download={file.file_name}
                         >
-                          {file.file_name} <GetAppIcon />{" "}
+                          {file.file_name}
                         </a>
                       </li>
                     ))}
