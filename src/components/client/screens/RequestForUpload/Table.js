@@ -1,5 +1,5 @@
 import React from "react";
-
+import GetAppIcon from "@material-ui/icons/GetApp";
 export default function Table(props) {
   return (
     <div>
@@ -15,24 +15,35 @@ export default function Table(props) {
         </thead>
         <tbody>
           {props.data &&
-            props.data.map((item) => (
-              <tr>
+            props.data.map((item, index) => (
+              <tr key={item.web_upload_list.id}>
                 <td>{item.web_upload_list.upload_title}</td>
                 <td>
                   <ul>
                     {item.web_upload_destination.map((des) => (
-                      <li>{des.destination}</li>
+                      <li key={des.destination}>{des.destination}</li>
                     ))}
                   </ul>
                 </td>
                 <td>
                   <ul>
-                    {item.web_upload_file.map((file) => (
-                      <li>{file.file_name}</li>
+                    {item.web_upload_file.map((file, index) => (
+                      <li key={index}>
+                        <a
+                          href={
+                            process.env.REACT_APP_UPLOAD_FOLDER +
+                            "/" +
+                            file.file_name
+                          }
+                          download={file.file_name}
+                        >
+                          {file.file_name} <GetAppIcon />{" "}
+                        </a>
+                      </li>
                     ))}
                   </ul>
                 </td>
-               
+
                 <td>
                   {!item.web_upload_list.validator
                     ? "N/A"

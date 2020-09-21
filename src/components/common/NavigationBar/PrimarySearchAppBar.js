@@ -72,7 +72,7 @@ function PrimarySearchAppBar(props) {
   const profileMenu = (
     <ProfileMenu
       handleStartGuide={props.handleStartGuide}
-      id={props.id}
+      user_id={props.user.user_id}
       anchorElProfileMenu={anchorEl}
       anchorOriginProfileMenu={{ vertical: "top", horizontal: "right" }}
       idProfileMenu={menuId}
