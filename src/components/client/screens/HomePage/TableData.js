@@ -11,6 +11,7 @@ export default function TableData(props) {
             <th>Status</th>
             <th>Start Date/Time</th>
             <th>End Date/Time</th>
+            <th>Date Requested</th>
           </tr>
         </thead>
         <tbody>
@@ -22,12 +23,13 @@ export default function TableData(props) {
                 <td>{item.status === null ? "N/A" : item.status}</td>
                 <td>{item.task_start === null ? "N/A" : item.task_start}</td>
                 <td>{item.task_end === null ? "N/A" : item.task_end}</td>
+                <td>{item.date_requested}</td>
               </tr>
             ))}
 
           {props.data.length < 1 && (
             <tr>
-              <td colSpan={5} style={{ textAlign: "center" }}>
+              <td colSpan={6} style={{ textAlign: "center" }}>
                 No data found
               </td>
             </tr>

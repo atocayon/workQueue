@@ -155,7 +155,7 @@ export default function SideBarNavigation(props) {
               {assigned_sections &&
                 assigned_sections.map((list) => (
                   <NavLink
-                  key={list.secid}
+                    key={list.secid}
                     activeStyle={activeStyle}
                     to={"/client/" + list.secid}
                     exact
@@ -184,12 +184,19 @@ export default function SideBarNavigation(props) {
               <ListItemText primary={"Web upload"} />
             </ListItem>
           </NavLink>
-          <ListItem>
-            <ListItemIcon>
-              <PrintIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Generate reports"} />
-          </ListItem>
+          <NavLink
+            activeStyle={activeStyle}
+            to={"/client/job/request/reports/generator"}
+            exact
+            style={{ textDecoration: "none", color: "#000" }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <PrintIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Generate reports"} />
+            </ListItem>
+          </NavLink>
 
           <ListItem>
             <ListItemIcon>

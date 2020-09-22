@@ -22,6 +22,7 @@ import {clear_update_message} from "../../../../redux/actions/update_user_info";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../UserProfile";
+import JobReports from "../JobReports";
 import CircularProgress from "../../../common/CircularProgress";
 import Reactotron from "reactotron-react-js";
 const navbarContent = ["Request for upload"];
@@ -221,7 +222,7 @@ function HomePage(props) {
               <Paper elevation={3} className={"paper content-container"}>
                 {!props.match.params.office &&
                 !props.match.params.upload &&
-                !props.match.params.user ? (
+                !props.match.params.user && !props.match.params.job ? (
                   <>
                     <div className={"jumbotron jumbotron-container"}></div>
                     <div>
@@ -241,7 +242,7 @@ function HomePage(props) {
                       error={error}
                       sections={props.section_list}
                       office={props.match.params.office}
-                      handleChange={props.job_request_inputChange}
+                      handleChange={props.inputChange}
                       form_data={props._job_request_form_action_onChange}
                       onSubmitJobRequest={onSubmitJobRequest}
                     />
@@ -276,6 +277,12 @@ function HomePage(props) {
                     />
                   </>
                 )}
+
+                {props.match.params.job && (
+                  <>
+                    <JobReports data={props.current_user_job_request_list} />
+                  </>
+                )}
               </Paper>
             </div>
             <div className={"col-md-2"}></div>
@@ -291,7 +298,7 @@ const mapStateToProps = (state) => {
     current_user: state.current_system_user,
     current_user_job_request_list: state.fetch_user_job_request,
     _logout: state.logout,
-    _job_request_form_action_onChange: state.inputChange,
+    _job_request_form_action_onChange: state.job_request_inputChange,
     section_list: state.section_list,
     onSubmitJobRequest: state.add_new_job_request,
     _web_upload_request: state.web_upload_request,

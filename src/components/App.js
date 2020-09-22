@@ -12,6 +12,7 @@ export default function App() {
       <div>
         <Switch>
           <Route path={"/"} exact component={Redirection} />
+          <Route path={"/client/:job/:request/:reports/:generator"} component={HomePage} />
           <Route path={"/client/:user/:profile/:user_id"} component={HomePage} />
           <Route path={"/client/:upload/:requestforupload"} component={HomePage} />
           <Route path={"/client/:office"} component={HomePage} />
