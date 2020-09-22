@@ -9,7 +9,7 @@ import { getFromStorage } from "../../../../local_storage";
 import { Redirect } from "react-router";
 import { fetch_current_user_info } from "../../../../redux/actions/fetch_current_user_info";
 import { logout } from "../../../../redux/actions/login_logout";
-import { job_request_inputChange } from "../../../../redux/actions/job_request_inputChange";
+import { inputChange } from "../../../../redux/actions/inputChange";
 import { fetch_section_list } from "../../../../redux/actions/fetch_section_list";
 import { add_new_job_request } from "../../../../redux/actions/add_new_job_request";
 import { remove_add_job_request_messege } from "../../../../redux/actions/add_new_job_request";
@@ -17,6 +17,8 @@ import { fetch_user_job_request } from "../../../../redux/actions/fetch_user_job
 import { web_upload_request } from "../../../../redux/actions/web_upload_request";
 import { fetch_web_upload_requests } from "../../../../redux/actions/fetch_web_upload_requests";
 import { clear_web_upload_message } from "../../../../redux/actions/web_upload_request";
+import {update_user_info} from "../../../../redux/actions/update_user_info";
+import {clear_update_message} from "../../../../redux/actions/update_user_info";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../UserProfile";
@@ -79,6 +81,17 @@ function HomePage(props) {
           props.clear_web_upload_message();
         }
       }
+
+      if(props._update_user_info !== ""){
+        if(props._update_user_info === "success"){
+          const variant = "info";
+          props.enqueueSnackbar("User info updated...", {
+            variant,
+          });
+          setProfileView(true);
+          props.clear_update_message();
+        }
+      }
     }
     setEndSession(!(obj && obj.token));
   }, [
@@ -86,6 +99,7 @@ function HomePage(props) {
     props.match.params,
     props.onSubmitJobRequest,
     props._web_upload_request,
+    props._update_user_info
   ]);
 
   const onSubmitJobRequest = async (e) => {
@@ -170,6 +184,11 @@ function HomePage(props) {
     props.web_upload_request(_form);
   };
 
+  const onSubmitUpdateProfile = () => {
+  
+    props.update_user_info(props.current_user);
+  }
+
   return (
     <>
       {redirect && <Redirect to={"/client"} />}
@@ -252,6 +271,8 @@ function HomePage(props) {
                       user={props.current_user}
                       setProfileView={setProfileView}
                       profileView={profileView}
+                      inputChange={props.inputChange}
+                      onSubmitUpdateProfile={onSubmitUpdateProfile}
                     />
                   </>
                 )}
@@ -270,18 +291,19 @@ const mapStateToProps = (state) => {
     current_user: state.current_system_user,
     current_user_job_request_list: state.fetch_user_job_request,
     _logout: state.logout,
-    _job_request_form_action_onChange: state.job_request_inputChange,
+    _job_request_form_action_onChange: state.inputChange,
     section_list: state.section_list,
     onSubmitJobRequest: state.add_new_job_request,
     _web_upload_request: state.web_upload_request,
     list_web_upload_requests: state.fetch_web_upload_requests,
+    _update_user_info: state.update_user_info
   };
 };
 
 const mapDispatchToProps = {
   fetch_current_user_info,
   logout,
-  job_request_inputChange,
+  inputChange,
   fetch_section_list,
   add_new_job_request,
   remove_add_job_request_messege,
@@ -289,6 +311,8 @@ const mapDispatchToProps = {
   web_upload_request,
   fetch_web_upload_requests,
   clear_web_upload_message,
+  update_user_info,
+  clear_update_message
 };
 
 export default connect(

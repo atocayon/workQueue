@@ -15,7 +15,7 @@ const defaultState = {
 
 const job_request_inputChange = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.JOB_REQUEST_INPUT_CHANGE:
+    case actionTypes.INPUT_CHANGE:
       if (action.data.type !== "checkbox") {
         return Object.assign({}, state, {
           [action.data.name]: action.data.value,

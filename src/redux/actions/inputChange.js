@@ -1,10 +1,10 @@
 import actionTypes from "./actionTypes";
 import Reactotron from "reactotron-react-js";
 
-const job_request_inputChange = ({ target }) => {
+const inputChange = ({ target }) => {
   return (dispatch) => {
     return dispatch({
-      type: actionTypes.JOB_REQUEST_INPUT_CHANGE,
+      type: actionTypes.INPUT_CHANGE,
       data: {
         name: target.name,
         type: target.type,
@@ -15,4 +15,4 @@ const job_request_inputChange = ({ target }) => {
   };
 };
 
-export { job_request_inputChange };
+export { inputChange };

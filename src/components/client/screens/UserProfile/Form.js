@@ -12,6 +12,7 @@ export default function Form(props) {
           label={"Name"}
           variant={"outlined"}
           value={props.user.name}
+          onChange={props.inputChange}
         />
         <br />
         <br />
@@ -21,6 +22,7 @@ export default function Form(props) {
           label={"Job Title"}
           variant={"outlined"}
           value={props.user.position}
+          onChange={props.inputChange}
         />
 
         <br />
@@ -31,6 +33,7 @@ export default function Form(props) {
           label={"Username"}
           variant={"outlined"}
           value={props.user.username}
+          onChange={props.inputChange}
         />
 
         <br />
@@ -41,6 +44,7 @@ export default function Form(props) {
           label={"Email"}
           variant={"outlined"}
           value={props.user.email}
+          onChange={props.inputChange}
         />
 
         <br />
@@ -51,6 +55,7 @@ export default function Form(props) {
           label={"Contact number"}
           variant={"outlined"}
           value={props.user.contact}
+          onChange={props.inputChange}
         />
       </div>
       <div className={"col-md-4"}></div>

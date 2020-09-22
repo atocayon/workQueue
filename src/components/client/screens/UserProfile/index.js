@@ -10,6 +10,22 @@ export default function UserProfile(props) {
   useEffect(() => {
     setLoading(false);
   }, []);
+
+  const onChangeView = async () => {
+    
+    if(props.profileView){
+       await props.setProfileView(!props.profileView);
+       return;
+    }
+
+    if(!props.profileView){
+      await props.onSubmitUpdateProfile();
+      return;
+    }
+    
+
+
+  };
   return (
     <>
       {loading && <CircularProgress />}
@@ -61,7 +77,11 @@ export default function UserProfile(props) {
                 )}
 
                 {!props.profileView && (
-                    <Form user={props.user}/>
+                  <Form
+                    user={props.user}
+                    inputChange={props.inputChange}
+                    update_user_info={props.update_user_info}
+                  />
                 )}
 
                 <br />
@@ -69,9 +89,7 @@ export default function UserProfile(props) {
 
                 <button
                   className={"btn btn-info btn-sm"}
-                  onClick={() => {
-                    props.setProfileView(!props.profileView);
-                  }}
+                  onClick={onChangeView}
                 >
                   {props.profileView ? "Update Information" : "Save Changes"}
                 </button>
