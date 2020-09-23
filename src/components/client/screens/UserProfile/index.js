@@ -12,19 +12,15 @@ export default function UserProfile(props) {
   }, []);
 
   const onChangeView = async () => {
-    
-    if(props.profileView){
-       await props.setProfileView(!props.profileView);
-       return;
+    if (props.profileView) {
+      await props.setProfileView(!props.profileView);
+      return;
     }
 
-    if(!props.profileView){
+    if (!props.profileView) {
       await props.onSubmitUpdateProfile();
       return;
     }
-    
-
-
   };
   return (
     <>
@@ -39,15 +35,23 @@ export default function UserProfile(props) {
                 <div className={"col-md-4"}></div>
                 <div className={"col-md-4"}>
                   <div className={" avatar-container"}>
-                    <img src={userAvatar} alt={"avatar"} className={"image"} />
+                    <img
+                      src={
+                        props.uploadPic !== null ? props.uploadPic : userAvatar
+                      }
+                      alt={"avatar"}
+                      className={"image"}
+                    />
                     <div className={"btn-edit-avatar"}>
                       <div>
-                        <button className={"btn"}>
-                          <span>
-                            {" "}
-                            <CameraAltIcon /> Upload
-                          </span>
-                        </button>
+                        <span>
+                          <CameraAltIcon /> Upload
+                        </span>
+                        <input
+                          type={"file"}
+                          onChange={props.handleUploadPic}
+                          accept="image/x-png,image/gif,image/jpeg"
+                        />
                       </div>
                     </div>
                   </div>

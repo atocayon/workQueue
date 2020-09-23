@@ -17,8 +17,8 @@ import { fetch_user_job_request } from "../../../../redux/actions/fetch_user_job
 import { web_upload_request } from "../../../../redux/actions/web_upload_request";
 import { fetch_web_upload_requests } from "../../../../redux/actions/fetch_web_upload_requests";
 import { clear_web_upload_message } from "../../../../redux/actions/web_upload_request";
-import {update_user_info} from "../../../../redux/actions/update_user_info";
-import {clear_update_message} from "../../../../redux/actions/update_user_info";
+import { update_user_info } from "../../../../redux/actions/update_user_info";
+import { clear_update_message } from "../../../../redux/actions/update_user_info";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../UserProfile";
@@ -39,6 +39,7 @@ function HomePage(props) {
     "NMP Website": false,
     Facebook: false,
   });
+  const [uploadPic, setUploadPic] = useState(null);
   const [error, setError] = useState({});
   useEffect(() => {
     setLoading(false);
@@ -83,8 +84,8 @@ function HomePage(props) {
         }
       }
 
-      if(props._update_user_info !== ""){
-        if(props._update_user_info === "success"){
+      if (props._update_user_info !== "") {
+        if (props._update_user_info === "success") {
           const variant = "info";
           props.enqueueSnackbar("User info updated...", {
             variant,
@@ -100,7 +101,7 @@ function HomePage(props) {
     props.match.params,
     props.onSubmitJobRequest,
     props._web_upload_request,
-    props._update_user_info
+    props._update_user_info,
   ]);
 
   const onSubmitJobRequest = async (e) => {
@@ -186,9 +187,16 @@ function HomePage(props) {
   };
 
   const onSubmitUpdateProfile = () => {
-  
     props.update_user_info(props.current_user);
-  }
+  };
+
+  const handleUploadPic = (e) => {
+    e.preventDefault();
+    
+      setUploadPic(URL.createObjectURL(e.target.files[0]));
+      console.log(uploadPic);
+    
+  };
 
   return (
     <>
@@ -222,7 +230,8 @@ function HomePage(props) {
               <Paper elevation={3} className={"paper content-container"}>
                 {!props.match.params.office &&
                 !props.match.params.upload &&
-                !props.match.params.user && !props.match.params.job ? (
+                !props.match.params.user &&
+                !props.match.params.job ? (
                   <>
                     <div className={"jumbotron jumbotron-container"}></div>
                     <div>
@@ -274,6 +283,9 @@ function HomePage(props) {
                       profileView={profileView}
                       inputChange={props.inputChange}
                       onSubmitUpdateProfile={onSubmitUpdateProfile}
+                      handleUploadPic={handleUploadPic}
+                      uploadPic={uploadPic}
+                      setUploadPic={setUploadPic}
                     />
                   </>
                 )}
@@ -303,7 +315,7 @@ const mapStateToProps = (state) => {
     onSubmitJobRequest: state.add_new_job_request,
     _web_upload_request: state.web_upload_request,
     list_web_upload_requests: state.fetch_web_upload_requests,
-    _update_user_info: state.update_user_info
+    _update_user_info: state.update_user_info,
   };
 };
 
@@ -319,7 +331,7 @@ const mapDispatchToProps = {
   fetch_web_upload_requests,
   clear_web_upload_message,
   update_user_info,
-  clear_update_message
+  clear_update_message,
 };
 
 export default connect(
