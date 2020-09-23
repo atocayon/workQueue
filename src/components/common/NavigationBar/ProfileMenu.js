@@ -19,12 +19,7 @@ export default function ProfileMenu(props) {
           My Account
         </Link>
       </MenuItem>
-      {props.handleStartGuide && (
-          <MenuItem onClick={props.handleStartGuide}>
-            Show Guide
-          </MenuItem>
-      )}
-
+  
       <MenuItem onClick={props.handleLogOut}>Logout</MenuItem>
     </Menu>
   );
