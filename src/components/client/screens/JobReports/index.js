@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SortIcon from "@material-ui/icons/Sort";
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -8,8 +8,13 @@ export default function JobReports(props) {
   const [sortAsc, setSortAsc] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const data = props.data.filter((item) => item.inspector !== null);
+  const [data, setData] = useState([...props.data]);
+  const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    const _data = props.data.filter((item) => item.inspector !== null);
+    setData([..._data]);
+  }, []);
   const sort = (e) => {
     e.preventDefault();
 
@@ -34,6 +39,19 @@ export default function JobReports(props) {
     setPage(0);
   };
 
+  const searchHandler = (e) => {
+    e.preventDefault();
+    console.log(search);
+    if (search !== "") {
+      const _data = data.filter(
+        (item) => item.inspector === search || item.task_id === search
+      );
+      setData([..._data]);
+    } else {
+      setData([...data]);
+    }
+  };
+
   return (
     <div className={"job-request-container"}>
       <div className={"jumbotron"}>
@@ -49,14 +67,23 @@ export default function JobReports(props) {
           </button>
         </div>
         <div className={"col-md-6"}>
-          <div className={"input-group"}>
-            <div className={"input-group-prepend"}>
-              <button type={"submit"} className={"btn btn-outline-info"}>
-                <SearchIcon />
-              </button>
+          <form onSubmit={searchHandler}>
+            <div className={"input-group"}>
+              <div className={"input-group-prepend"}>
+                <button type={"submit"} className={"btn btn-outline-info"}>
+                  <SearchIcon />
+                </button>
+              </div>
+              <input
+                type={"text"}
+                className={"form-control"}
+                placeholder={"Search Task ID or Inspector"}
+                onChange={({ target }) => {
+                  setSearch(target.value);
+                }}
+              /> 
             </div>
-            <input type={"text"} className={"form-control"} />
-          </div>
+          </form>
         </div>
       </div>
 
