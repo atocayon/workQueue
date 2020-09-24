@@ -71,6 +71,7 @@ function PrimarySearchAppBar(props) {
 
   const profileMenu = (
     <ProfileMenu
+      logout={props.logout}
       route={props.route}
       handleStartGuide={props.handleStartGuide}
       user_id={props.user.user_id}

@@ -4,6 +4,8 @@ import userAvatar from "../../../../img/user.png";
 import EditIcon from "@material-ui/icons/Edit";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import Form from "./Form";
+import ChangePass from "./ChangePass";
+import Code from "./Code";
 export default function UserProfile(props) {
   const [loading, setLoading] = useState(true);
 
@@ -21,6 +23,11 @@ export default function UserProfile(props) {
       await props.onSubmitUpdateProfile();
       return;
     }
+  };
+
+  const onClickChangePassword = async () => {
+    props.setChangePassword(!props.changePassword);
+
   };
   return (
     <>
@@ -59,7 +66,7 @@ export default function UserProfile(props) {
               </div>
 
               <br />
-              {props.profileView && (
+              {props.profileView && !props.changePassword ? (
                 <>
                   <h4>
                     {props.user.secshort} - {props.user.name}
@@ -67,10 +74,12 @@ export default function UserProfile(props) {
                     <small> ({props.user.position})</small>
                   </h4>
                 </>
+              ) : (
+                ""
               )}
 
               <h6 className={"user-info"}>
-                {props.profileView && (
+                {props.profileView && !props.changePassword ? (
                   <>
                     <small>@{props.user.username}</small>
                     <br />
@@ -78,6 +87,8 @@ export default function UserProfile(props) {
                     <br />
                     <small>{props.user.contact}</small>
                   </>
+                ) : (
+                  ""
                 )}
 
                 {!props.profileView && (
@@ -88,21 +99,38 @@ export default function UserProfile(props) {
                   />
                 )}
 
+                {props.changePassword && (
+                  <>{!props.code ? <Code /> : <ChangePass />}</>
+                )}
+
                 <br />
                 <br />
 
-                <button
-                  className={"btn btn-info btn-sm"}
-                  onClick={onChangeView}
-                >
-                  {props.profileView ? "Update Information" : "Save Changes"}
-                </button>
-                <br />
-                <br />
-                {props.profileView && (
-                  <button className={"btn btn-outline-info btn-sm"}>
-                    Change Password
+                {!props.changePassword && (
+                  <button
+                    className={"btn btn-info btn-sm"}
+                    onClick={onChangeView}
+                  >
+                    {props.profileView ? "Update Information" : "Save Changes"}
                   </button>
+                )}
+
+                <br />
+                <br />
+
+                {props.profileView && (
+                  <>
+                    <button
+                      className={"btn btn-outline-info btn-sm"}
+                      onClick={onClickChangePassword}
+                    >
+                      {!props.changePassword
+                        ? "Change Password"
+                        : props.code
+                        ? "Change Password"
+                        : "Submit"}
+                    </button>
+                  </>
                 )}
               </h6>
             </div>

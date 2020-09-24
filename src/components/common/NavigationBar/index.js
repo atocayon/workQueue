@@ -7,7 +7,11 @@ import PrimarySearchAppBar from "./PrimarySearchAppBar";
 export default function NavigationBar(props) {
   return (
     <>
-      <PrimarySearchAppBar user={props.user} route={props.route} />
+      <PrimarySearchAppBar
+        user={props.user}
+        route={props.route}
+        logout={props.logout}
+      />
     </>
   );
 }

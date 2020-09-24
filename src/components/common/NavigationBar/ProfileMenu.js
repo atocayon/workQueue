@@ -20,7 +20,7 @@ export default function ProfileMenu(props) {
         </Link>
       </MenuItem>
   
-      <MenuItem onClick={props.handleLogOut}>Logout</MenuItem>
+      <MenuItem onClick={props.logout}>Logout</MenuItem>
     </Menu>
   );
 }

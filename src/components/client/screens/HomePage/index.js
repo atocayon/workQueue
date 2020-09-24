@@ -32,6 +32,8 @@ function HomePage(props) {
   const [loading, setLoading] = useState(true);
   const [webUploadView, setWebUploadView] = useState(false);
   const [profileView, setProfileView] = useState(true);
+  const [changePassword, setChangePassword] = useState(false);
+  const [code, setCode] = useState(false);
   const [form, setForm] = useState({
     selectedFile: [],
     destination: [],
@@ -103,6 +105,11 @@ function HomePage(props) {
     props._web_upload_request,
     props._update_user_info,
   ]);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    props.logout(props.current_user.user_id);
+  };
 
   const onSubmitJobRequest = async (e) => {
     e.preventDefault();
@@ -211,7 +218,7 @@ function HomePage(props) {
               <NavigationBar
                 user={props.current_user}
                 route={"/client"}
-                logout={props.logout}
+                logout={handleLogout}
                 navbarContent={
                   props.match.params.office === "1" && navbarContent
                 }
@@ -286,6 +293,10 @@ function HomePage(props) {
                       handleUploadPic={handleUploadPic}
                       uploadPic={uploadPic}
                       setUploadPic={setUploadPic}
+                      changePassword={changePassword}
+                      setChangePassword={setChangePassword}
+                      code={code}
+                      setCode={setCode}
                     />
                   </>
                 )}
