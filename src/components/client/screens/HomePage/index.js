@@ -12,13 +12,12 @@ import { logout } from "../../../../redux/actions/login_logout";
 import { inputChange } from "../../../../redux/actions/inputChange";
 import { fetch_section_list } from "../../../../redux/actions/fetch_section_list";
 import { add_new_job_request } from "../../../../redux/actions/add_new_job_request";
-import { remove_add_job_request_messege } from "../../../../redux/actions/add_new_job_request";
 import { fetch_user_job_request } from "../../../../redux/actions/fetch_user_job_requests";
 import { web_upload_request } from "../../../../redux/actions/web_upload_request";
 import { fetch_web_upload_requests } from "../../../../redux/actions/fetch_web_upload_requests";
-import { clear_web_upload_message } from "../../../../redux/actions/web_upload_request";
 import { update_user_info } from "../../../../redux/actions/update_user_info";
-import { clear_update_message } from "../../../../redux/actions/update_user_info";
+import { generate_code } from "../../../../redux/actions/changePassword";
+import {clear_message }from "../../../../redux/actions/clear_message";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../UserProfile";
@@ -34,6 +33,10 @@ function HomePage(props) {
   const [profileView, setProfileView] = useState(true);
   const [changePassword, setChangePassword] = useState(false);
   const [code, setCode] = useState(false);
+  const [changePassInputChange, setChangePassInputChange] = useState({
+    code: "",
+    newPassword: "",
+  });
   const [form, setForm] = useState({
     selectedFile: [],
     destination: [],
@@ -59,7 +62,7 @@ function HomePage(props) {
             variant,
           });
           setRedirect(true);
-          props.remove_add_job_request_messege();
+          props.clear_message();
         }
       }
 
@@ -82,7 +85,7 @@ function HomePage(props) {
 
           setWebUploadView(true);
 
-          props.clear_web_upload_message();
+          props.clear_message();
         }
       }
 
@@ -93,8 +96,18 @@ function HomePage(props) {
             variant,
           });
           setProfileView(true);
-          props.clear_update_message();
+          props.clear_message();
         }
+      }
+    }
+
+    if(props._generateCode !== ""){
+      if(props._generateCode === "success"){
+        const variant = "info";
+          props.enqueueSnackbar("The code was sent to your email...", {
+            variant,
+          });
+          props.clear_message();
       }
     }
     setEndSession(!(obj && obj.token));
@@ -104,6 +117,7 @@ function HomePage(props) {
     props.onSubmitJobRequest,
     props._web_upload_request,
     props._update_user_info,
+    props._generateCode
   ]);
 
   const handleLogout = (e) => {
@@ -199,10 +213,16 @@ function HomePage(props) {
 
   const handleUploadPic = (e) => {
     e.preventDefault();
-    
-      setUploadPic(URL.createObjectURL(e.target.files[0]));
-      console.log(uploadPic);
-    
+
+    setUploadPic(URL.createObjectURL(e.target.files[0]));
+    console.log(uploadPic);
+  };
+
+  const handleChangePassword = ({ target }) => {
+    setChangePassInputChange({
+      ...changePassInputChange,
+      [target.name]: target.value,
+    });
   };
 
   return (
@@ -297,6 +317,8 @@ function HomePage(props) {
                       setChangePassword={setChangePassword}
                       code={code}
                       setCode={setCode}
+                      handleChangePassword={handleChangePassword}
+                      generate_code={props.generate_code}
                     />
                   </>
                 )}
@@ -327,6 +349,7 @@ const mapStateToProps = (state) => {
     _web_upload_request: state.web_upload_request,
     list_web_upload_requests: state.fetch_web_upload_requests,
     _update_user_info: state.update_user_info,
+    _generateCode: state.generateCode
   };
 };
 
@@ -336,13 +359,12 @@ const mapDispatchToProps = {
   inputChange,
   fetch_section_list,
   add_new_job_request,
-  remove_add_job_request_messege,
   fetch_user_job_request,
   web_upload_request,
   fetch_web_upload_requests,
-  clear_web_upload_message,
   update_user_info,
-  clear_update_message,
+  generate_code,
+  clear_message
 };
 
 export default connect(

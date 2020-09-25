@@ -6,8 +6,8 @@ export default function Code(props) {
     <div className={"row"}>
       <div className={"col-md-4"}></div>
       <div className={"col-md-4"}>
-        <InputField name={"code"} label={"Code"} variant={"outlined"} />
-        <small>Kidly check your email for the code</small>
+        <InputField name={"code"} label={"Code"} variant={"outlined"} onChange={props.handleChangePassword} />
+        <span style={{color: "red"}}><small>Kidly check your email for the code</small></span>
       </div>
       <div className={"col-md-4"}></div>
     </div>

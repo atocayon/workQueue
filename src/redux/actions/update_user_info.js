@@ -17,11 +17,6 @@ const update_user_info = (data) => {
   };
 };
 
-const clear_update_message = () => {
-    return (dispatch) => {
-        return dispatch({type: actionTypes.CLEAR_UPDATE_USER_MESSAGE});
-    }
-}
+
 
 export { update_user_info };
-export {clear_update_message};

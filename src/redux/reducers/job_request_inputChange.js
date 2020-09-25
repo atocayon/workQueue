@@ -41,7 +41,7 @@ const job_request_inputChange = (state = defaultState, action) => {
         }
       }
 
-    case actionTypes.REMOVE_ADD_JOB_REQUEST_MESSAGE:
+    case actionTypes.CLEAR_MESSAGE:
       return Object.assign({}, state, {
         dateNeeded: "",
         typeOfWork: [],

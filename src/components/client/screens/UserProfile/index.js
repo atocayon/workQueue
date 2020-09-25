@@ -6,6 +6,7 @@ import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import Form from "./Form";
 import ChangePass from "./ChangePass";
 import Code from "./Code";
+import Reactotron from "reactotron-react-js";
 export default function UserProfile(props) {
   const [loading, setLoading] = useState(true);
 
@@ -26,8 +27,8 @@ export default function UserProfile(props) {
   };
 
   const onClickChangePassword = async () => {
-    props.setChangePassword(!props.changePassword);
-
+    await props.setChangePassword(!props.changePassword);
+    await props.generate_code(props.user.user_id, props.user.email);
   };
   return (
     <>
@@ -100,7 +101,15 @@ export default function UserProfile(props) {
                 )}
 
                 {props.changePassword && (
-                  <>{!props.code ? <Code /> : <ChangePass />}</>
+                  <>
+                    {!props.code ? (
+                      <Code handleChangePassword={props.handleChangePassword} />
+                    ) : (
+                      <ChangePass
+                        handleChangePassword={props.handleChangePassword}
+                      />
+                    )}
+                  </>
                 )}
 
                 <br />

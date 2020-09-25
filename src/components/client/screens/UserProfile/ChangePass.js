@@ -6,9 +6,10 @@ export default function ChangePass(props) {
       <div className={"col-md-4"}></div>
       <div className={"col-md-4"}>
         <InputField
-          name={"code"}
+          name={"newPassword"}
           label={"New Password"}
           variant={"outlined"}
+          onChange={props.handleChangePassword}
         />
       </div>
       <div className={"col-md-4"}></div>

@@ -4,7 +4,7 @@ const web_upload_request = (state = "", action) => {
   switch (action.type) {
     case actionTypes.WEB_UPLOAD_REQUEST:
       return (state = "success");
-    case actionTypes.CLEAR_WEB_UPLOAD_REQUEST:
+    case actionTypes.CLEAR_MESSAGE:
       return (state = "");
     default:
       return state;
