@@ -10,6 +10,8 @@ import web_upload_request from "./web_upload_request";
 import fetch_web_upload_requests from "./fetch_web_upload_requests";
 import update_user_info from "./update_user_info";
 import generateCode from "./generateCode";
+import changePassword from "./changePassword";
+import validateCode from "./validateCode";
 const rootReducer = combineReducers({
   current_system_user: current_system_user,
   login: login,
@@ -21,7 +23,9 @@ const rootReducer = combineReducers({
   web_upload_request: web_upload_request,
   fetch_web_upload_requests: fetch_web_upload_requests,
   update_user_info: update_user_info,
-  generateCode: generateCode
+  generateCode: generateCode,
+  changePassword: changePassword,
+  validateCode: validateCode
 });
 
 export default rootReducer;

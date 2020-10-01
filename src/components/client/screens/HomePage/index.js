@@ -17,7 +17,9 @@ import { web_upload_request } from "../../../../redux/actions/web_upload_request
 import { fetch_web_upload_requests } from "../../../../redux/actions/fetch_web_upload_requests";
 import { update_user_info } from "../../../../redux/actions/update_user_info";
 import { generate_code } from "../../../../redux/actions/changePassword";
-import {clear_message }from "../../../../redux/actions/clear_message";
+import { clear_message } from "../../../../redux/actions/clear_message";
+import { changePasswordFunction } from "../../../../redux/actions/changePassword";
+import { validateCode } from "../../../../redux/actions/changePassword";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../UserProfile";
@@ -66,7 +68,6 @@ function HomePage(props) {
         }
       }
 
-      Reactotron.log(props.match.params);
       if (props._web_upload_request !== "") {
         if (props._web_upload_request === "success") {
           const variant = "info";
@@ -101,15 +102,44 @@ function HomePage(props) {
       }
     }
 
-    if(props._generateCode !== ""){
-      if(props._generateCode === "success"){
+    if (props._generateCode !== "") {
+      if (props._generateCode === "success") {
         const variant = "info";
-          props.enqueueSnackbar("The code was sent to your email...", {
-            variant,
-          });
-          props.clear_message();
+        props.enqueueSnackbar("The code was sent to your email...", {
+          variant,
+        });
+        // setCode(true);
+        setLoading(false);
+        props.clear_message();
       }
     }
+
+    if (props._validateCode !== "") {
+      if (props._validateCode === "success") {
+        props.clear_message();
+        setCode(true);
+        setChangePassword(true);
+        setLoading(false);
+      } else {
+        const variant = "error";
+        props.enqueueSnackbar("Invalid code...", {
+          variant,
+        });
+        setError({ ...error, code: "Invalid code" });
+        setLoading(false);
+      }
+    }
+
+    if(props._changePasswordFunction !== ""){
+      if(props._changePasswordFunction === "success"){
+        const variant = "info";
+        props.enqueueSnackbar("Your password is now changed...", {
+          variant,
+        });
+        props.clear_message();
+      }
+    }
+   
     setEndSession(!(obj && obj.token));
   }, [
     props._logout,
@@ -117,7 +147,10 @@ function HomePage(props) {
     props.onSubmitJobRequest,
     props._web_upload_request,
     props._update_user_info,
-    props._generateCode
+    props._generateCode,
+    props._validateCode,
+    props._changePasswordFunction,
+    loading,
   ]);
 
   const handleLogout = (e) => {
@@ -225,6 +258,13 @@ function HomePage(props) {
     });
   };
 
+  const handleSubmitCode = () => {
+    setLoading(true);
+    // setChangePassword(true);
+    props.validateCode(props.current_user.user_id, changePassInputChange.code);
+    // setLoading(true);
+  };
+
   return (
     <>
       {redirect && <Redirect to={"/client"} />}
@@ -305,6 +345,7 @@ function HomePage(props) {
                 {props.match.params.user && (
                   <>
                     <UserProfile
+                      error={error}
                       user={props.current_user}
                       setProfileView={setProfileView}
                       profileView={profileView}
@@ -319,6 +360,10 @@ function HomePage(props) {
                       setCode={setCode}
                       handleChangePassword={handleChangePassword}
                       generate_code={props.generate_code}
+                      changePasswordFunction={props.changePasswordFunction}
+                      handleSubmitCode={handleSubmitCode}
+                      changePassInputChange={changePassInputChange}
+                      setLoading={setLoading}
                     />
                   </>
                 )}
@@ -349,7 +394,9 @@ const mapStateToProps = (state) => {
     _web_upload_request: state.web_upload_request,
     list_web_upload_requests: state.fetch_web_upload_requests,
     _update_user_info: state.update_user_info,
-    _generateCode: state.generateCode
+    _generateCode: state.generateCode,
+    _validateCode: state.validateCode,
+    _changePasswordFunction: state.changePasswordFunction
   };
 };
 
@@ -364,7 +411,9 @@ const mapDispatchToProps = {
   fetch_web_upload_requests,
   update_user_info,
   generate_code,
-  clear_message
+  clear_message,
+  changePasswordFunction,
+  validateCode,
 };
 
 export default connect(

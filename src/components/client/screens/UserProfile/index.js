@@ -12,6 +12,8 @@ export default function UserProfile(props) {
 
   useEffect(() => {
     setLoading(false);
+    Reactotron.log("======");
+    Reactotron.log(props.changePassword);
   }, []);
 
   const onChangeView = async () => {
@@ -26,9 +28,25 @@ export default function UserProfile(props) {
     }
   };
 
-  const onClickChangePassword = async () => {
-    await props.setChangePassword(!props.changePassword);
-    await props.generate_code(props.user.user_id, props.user.email);
+  const onClickChangePassword = async (e) => {
+    e.preventDefault();
+    if (!props.code) {
+      Reactotron.log("False it code");
+      await props.setChangePassword(!props.changePassword);
+      await props.setLoading(true);
+      await props.generate_code(props.user.user_id, props.user.email);
+
+      if (props.changePassInputChange.code !== "" && props.changePassInputChange.newPassword === "") {
+        await props.handleSubmitCode();
+      }
+    }
+
+    if (props.code) {
+      Reactotron.log("true it code");
+      if (props.changePassInputChange.code !== "" && props.changePassInputChange.newPassword !== "") {
+        props.changePasswordFunction(props.user.user_id, props.changePassInputChange.newPassword);
+      }
+    }
   };
   return (
     <>
@@ -103,10 +121,15 @@ export default function UserProfile(props) {
                 {props.changePassword && (
                   <>
                     {!props.code ? (
-                      <Code handleChangePassword={props.handleChangePassword} />
+                      <Code
+                        error={props.error}
+                        handleChangePassword={props.handleChangePassword}
+                        inputValue={props.changePassInputChange}
+                      />
                     ) : (
                       <ChangePass
                         handleChangePassword={props.handleChangePassword}
+                        inputValue={props.changePassInputChange}
                       />
                     )}
                   </>

@@ -2,9 +2,9 @@ import actionTypes from "../actions/actionTypes";
 
 const defaultState = "";
 
-const generateCode = (state = defaultState, action) => {
+const changePassword = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.GENERATE_CODE:
+    case actionTypes.USER_CHANGE_PASSWORD:
       return (state = action.data);
     case actionTypes.CLEAR_MESSAGE:
       return (state = "");
@@ -13,4 +13,4 @@ const generateCode = (state = defaultState, action) => {
   }
 };
 
-export default generateCode;
+export default changePassword;
