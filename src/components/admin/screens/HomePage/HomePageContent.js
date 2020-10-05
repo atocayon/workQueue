@@ -1,7 +1,7 @@
 // @flow
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 export default function HomePageContent(props) {
   const [loading, setLoading] = useState(true);
 
@@ -20,32 +20,24 @@ export default function HomePageContent(props) {
           </h5>
         </div>
       ) : (
-        <div className={"row"}>
-          <div className={"col-md-3"}>
-            <div className={"container"}>
-              <div className={"row"}>
-                <div className={"col-md-12"}>
-                  <div className={"typeOfWork-text-container"}>
-                    <h5>Type of Work: </h5>
-                    <ul>
-                      <li>All</li>
-                      <li>Check - up</li>
-                      <li>Repair</li>
-                      <li>Installation</li>
-                      <li>Information System</li>
-                      <li>Other(s)</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <>
+          <div className={"jumbotron jumbotron-container"}></div>
+          <div className={"row"}>
+          
+          <div className={"col-md-1"}></div>
 
-          <div className={"col-md-8 typeOfWork-table"}>
-            <table className={"table table-borderless"}>
+          <div className={"col-md-10 typeOfWork-table"}>
+            <table className={"table "}>
+              <thead>
+                <tr>
+                  <th>Ticket No.</th>
+                  <th>Type of Work</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
               <tbody>
                 <tr>
-                  <td>sample ticket name</td>
+                  <td> <button><ExpandMoreIcon/></button> sample ticket name</td>
                   <td>
                     <button>sample type of work</button>
                   </td>
@@ -121,6 +113,8 @@ export default function HomePageContent(props) {
 
           <div className={"col-md-1"}></div>
         </div>
+        </>
+       
       )}
     </>
   );

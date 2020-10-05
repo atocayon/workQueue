@@ -110,6 +110,8 @@ export default function Reports(props) {
         </div>
       ) : (
         <>
+          <div className={"jumbotron jumbotron-container"}></div>
+
           <div className={"row"}>
             <div className={"col-md-12"}>
               <div className={"btn-reports-choices-container"}>
@@ -119,13 +121,17 @@ export default function Reports(props) {
                   aria-label="text primary button group"
                 >
                   <Button
-                    color={reportPresentation === "text" ? 'secondary' : 'default'}
+                    color={
+                      reportPresentation === "text" ? "secondary" : "default"
+                    }
                     onClick={handleReportPresentation.bind(null, "text")}
                   >
                     Table Presentation
                   </Button>
                   <Button
-                    color={reportPresentation === "graph" ? 'secondary' : 'default'}
+                    color={
+                      reportPresentation === "graph" ? "secondary" : "default"
+                    }
                     onClick={handleReportPresentation.bind(null, "graph")}
                   >
                     Graph Presentation

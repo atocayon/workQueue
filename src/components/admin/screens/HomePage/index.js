@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getFromStorage } from "../../../../local_storage";
 import Navbar from "../../../common/NavigationBar";
-import AdminPageHeader from "../../../common/AdminPageHeader";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Redirect } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
+
 import horizontalLine from "../../../../img/horizontal.svg";
 import footer from "../../../../img/footer.svg";
 import { ReactSVG } from "react-svg";
@@ -12,13 +13,13 @@ import HomePageContent from "./HomePageContent";
 import JobRequest from "../JobRequest";
 import Reports from "../Reports";
 import Settings from "../Settings";
+import AdminSideBar from "../../../common/AdminSideBarNavigation";
 import Reactotron from "reactotron-react-js";
 import { connect } from "react-redux";
 import { withSnackbar } from "notistack";
 import { fetch_current_user_info } from "../../../../redux/actions/fetch_current_user_info";
 import { logout } from "../../../../redux/actions/login_logout";
-const navbarContent = ["Home", "Job Request", "Reports", "Settings"];
-
+import { fetch_job_requests } from "../../../../redux/actions/fetch_job_requests";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -26,6 +27,7 @@ function AdminHomePage(props) {
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
       props.fetch_current_user_info(obj.token);
+      props.fetch_job_requests(obj.token);
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
@@ -43,48 +45,50 @@ function AdminHomePage(props) {
           </h5>
         </div>
       ) : (
-        <>
-          <Navbar
-            user={props.current_user}
-            route={"/admin"}
-            logout={props.logout}
-            navbarContent={navbarContent}
-            activeLink={props.match.params.route}
-          />
-
-          {/* Route */}
-          {!props.match.params.route && (
-            <>
-              <AdminPageHeader />
-
-              <ReactSVG
-                src={horizontalLine}
-                className={"adminHorizontalLine"}
-              />
-              <HomePageContent />
-            </>
-          )}
-          <div style={{ overflow: "auto" }}>
-            {props.match.params.route === "jobrequest" && (
-              <>
-                <div style={{ height: "15vh" }}></div>
-                <JobRequest />
-              </>
-            )}
-            {props.match.params.route === "reports" && (
-              <>
-                <div style={{ height: "15vh" }}></div>
-                <Reports />
-              </>
-            )}
-            {props.match.params.route === "settings" && (
-              <>
-                <div style={{ height: "15vh" }}></div>
-                <Settings />
-              </>
-            )}
+        <div className={"row"}>
+          <div className={"col-md-12"}>
+            <Navbar
+              user={props.current_user}
+              route={"/admin"}
+              logout={props.logout}
+            />
           </div>
-        </>
+
+          <div className={"col-md-2"}>
+            <AdminSideBar user={props.current_user} />
+          </div>
+          <div className={"col-md-8"}>
+            <Paper
+              elevation={3}
+              className={"paper content-container"}
+              style={{ overflow: "auto" }}
+            >
+              {/* Route */}
+              {!props.match.params.route && (
+                <>
+                  <HomePageContent />
+                </>
+              )}
+
+              {props.match.params.route === "jobrequest" && (
+                <>
+                  <JobRequest job_requests={props._fetch_job_requests} />
+                </>
+              )}
+              {props.match.params.route === "reports" && (
+                <>
+                  <Reports />
+                </>
+              )}
+              {props.match.params.route === "user" && (
+                <>
+                  <Settings />
+                </>
+              )}
+            </Paper>
+          </div>
+          <div className={"col-md-2"}></div>
+        </div>
       )}
     </>
   );
@@ -93,13 +97,15 @@ function AdminHomePage(props) {
 const mapStateToProps = (state) => {
   return {
     current_user: state.current_system_user,
-    _logout: state.logout
+    _logout: state.logout,
+    _fetch_job_requests: state.fetch_job_requests
   };
 };
 
 const mapDispatchToProps = {
   fetch_current_user_info,
-  logout
+  logout,
+  fetch_job_requests,
 };
 
 export default connect(

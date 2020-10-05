@@ -16,7 +16,6 @@
 
 .login-header {
   text-align: center;
-  font-weight: bold;
   font-size: 2vw;
 }
 
@@ -132,8 +131,7 @@
 
 .typeOfWork-table {
   height: 100vh !important;
-  margin-top: 7vh;
-  margin-left: -1vw;
+  margin-top: 3vh;
   padding-bottom: 40vh;
 }
 .typeOfWork-table button {
@@ -159,6 +157,7 @@
 .job-request-container {
   overflow: auto;
   padding-bottom: 30vh;
+  margin-top: 3vh;
 }
 .job-request-container thead tr {
   background-color: aliceblue;
@@ -172,24 +171,22 @@
 }
 
 .reports-gui-container {
-  margin-top: 7vh;
-  margin-left: 2vw;
-  margin-right: 2vw;
+  margin-top: 3vh;
 }
 
 .btn-reports-choices-container {
   text-align: center;
-  margin-top: 2vh;
+  margin-top: 3vh;
 }
 
 .text-report-presentation {
-  margin-top: 5vh;
+  margin-top: 3vh;
 }
 .text-report-presentation thead tr {
   background-color: aliceblue;
 }
 .text-report-presentation thead th {
-  color: #141F46;
+  color: #141f46;
 }
 
 .admin-settings-container .jumbotron {

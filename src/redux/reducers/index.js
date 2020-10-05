@@ -12,6 +12,7 @@ import update_user_info from "./update_user_info";
 import generateCode from "./generateCode";
 import changePassword from "./changePassword";
 import validateCode from "./validateCode";
+import fetch_job_requests from "./fetch_job_requests";
 const rootReducer = combineReducers({
   current_system_user: current_system_user,
   login: login,
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   update_user_info: update_user_info,
   generateCode: generateCode,
   changePassword: changePassword,
-  validateCode: validateCode
+  validateCode: validateCode,
+  fetch_job_requests: fetch_job_requests,
 });
 
 export default rootReducer;

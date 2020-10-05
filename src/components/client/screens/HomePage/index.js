@@ -27,6 +27,7 @@ import JobReports from "../JobReports";
 import CircularProgress from "../../../common/CircularProgress";
 import Reactotron from "reactotron-react-js";
 const navbarContent = ["Request for upload"];
+
 function HomePage(props) {
   const [redirect, setRedirect] = useState(false);
   const [endSession, setEndSession] = useState(false);
