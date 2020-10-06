@@ -22,7 +22,7 @@ import { logout } from "../../../../redux/actions/login_logout";
 import { fetch_job_requests } from "../../../../redux/actions/fetch_job_requests";
 import { clear_message } from "../../../../redux/actions/clear_message";
 import { job_request_action } from "../../../../redux/actions/job_request_action";
-
+import { fetch_admin_job } from "../../../../redux/actions/fetch_admin_job";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -31,6 +31,7 @@ function AdminHomePage(props) {
     if (obj && obj.token) {
       props.fetch_current_user_info(obj.token);
       props.fetch_job_requests(obj.token);
+      props.fetch_admin_job(obj.token);
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
@@ -82,7 +83,7 @@ function AdminHomePage(props) {
               {/* Route */}
               {!props.match.params.route && (
                 <>
-                  <HomePageContent />
+                  <HomePageContent data={props._fetch_admin_job} />
                 </>
               )}
 
@@ -119,6 +120,7 @@ const mapStateToProps = (state) => {
     _logout: state.logout,
     _fetch_job_requests: state.fetch_job_requests,
     _job_request_action: state.job_request_action,
+    _fetch_admin_job: state.fetch_admin_job
   };
 };
 
@@ -128,6 +130,7 @@ const mapDispatchToProps = {
   fetch_job_requests,
   clear_message,
   job_request_action,
+  fetch_admin_job,
 };
 
 export default connect(

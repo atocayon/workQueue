@@ -63,17 +63,23 @@
   // margin-left: -1vw;
   padding-bottom: 40vh;
 
-  button {
-    border: 1px solid #2196f3;
-    background-color: #2196f3;
-    color: #fff;
+  // button {
+  //   border: 1px solid #2196f3;
+  //   background-color: #2196f3;
+  //   color: #fff;
+  // }
+ 
+  thead {
+    tr {
+      background-color: aliceblue;
+    }
   }
 
   tr {
     transition: background-color 0.5s, border-radius 0.5s;
     transition-timing-function: ease-in-out;
 
-    button{
+    .type_of_work{
       transition: border-radius 0.5s;
       transition-timing-function: ease-in-out;
     }
@@ -81,7 +87,7 @@
     &:hover {
       background-color: aliceblue;
 
-      button {
+      .type_of_work {
         border-radius: 30px;
       }
     }

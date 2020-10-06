@@ -134,23 +134,21 @@
   margin-top: 3vh;
   padding-bottom: 40vh;
 }
-.typeOfWork-table button {
-  border: 1px solid #2196f3;
-  background-color: #2196f3;
-  color: #fff;
+.typeOfWork-table thead tr {
+  background-color: aliceblue;
 }
 .typeOfWork-table tr {
   transition: background-color 0.5s, border-radius 0.5s;
   transition-timing-function: ease-in-out;
 }
-.typeOfWork-table tr button {
+.typeOfWork-table tr .type_of_work {
   transition: border-radius 0.5s;
   transition-timing-function: ease-in-out;
 }
 .typeOfWork-table tr:hover {
   background-color: aliceblue;
 }
-.typeOfWork-table tr:hover button {
+.typeOfWork-table tr:hover .type_of_work {
   border-radius: 30px;
 }
 

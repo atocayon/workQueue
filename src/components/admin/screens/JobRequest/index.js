@@ -94,7 +94,7 @@ export default function JobRequest(props) {
                 error={error}
               />
               <div className={"job-request-container"}>
-                <table className={"table"}>
+                <table className={"table table-borderless"}>
                   <thead>
                     <tr>
                       {tableHead.map((th) => (
