@@ -20,6 +20,9 @@ import { withSnackbar } from "notistack";
 import { fetch_current_user_info } from "../../../../redux/actions/fetch_current_user_info";
 import { logout } from "../../../../redux/actions/login_logout";
 import { fetch_job_requests } from "../../../../redux/actions/fetch_job_requests";
+import { clear_message } from "../../../../redux/actions/clear_message";
+import { job_request_action } from "../../../../redux/actions/job_request_action";
+
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -31,8 +34,21 @@ function AdminHomePage(props) {
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
-  }, [props._logout]);
+    if (props._job_request_action !== "") {
+      if (props._job_request_action === "success") {
+        props.clear_message();
+      }
+    }
+  }, [props._logout, props._job_request_action]);
 
+  const onSubmitJobRequestAction = (modal) => {
+    props.job_request_action(
+      props.current_user.user_id,
+      modal.task_id,
+      modal.title,
+      modal.remarks
+    );
+  };
   return (
     <>
       {endSession && <Redirect to={"/login"} />}
@@ -72,7 +88,10 @@ function AdminHomePage(props) {
 
               {props.match.params.route === "jobrequest" && (
                 <>
-                  <JobRequest job_requests={props._fetch_job_requests} />
+                  <JobRequest
+                    job_requests={props._fetch_job_requests}
+                    onSubmitJobRequestAction={onSubmitJobRequestAction}
+                  />
                 </>
               )}
               {props.match.params.route === "reports" && (
@@ -98,7 +117,8 @@ const mapStateToProps = (state) => {
   return {
     current_user: state.current_system_user,
     _logout: state.logout,
-    _fetch_job_requests: state.fetch_job_requests
+    _fetch_job_requests: state.fetch_job_requests,
+    _job_request_action: state.job_request_action,
   };
 };
 
@@ -106,6 +126,8 @@ const mapDispatchToProps = {
   fetch_current_user_info,
   logout,
   fetch_job_requests,
+  clear_message,
+  job_request_action,
 };
 
 export default connect(

@@ -9,6 +9,7 @@ export default function InputField(props) {
 
   return (
     <TextField
+      autoFocus={props.autoFocus}
       error={error}
       id={props.id}
       name={props.name}
@@ -20,9 +21,9 @@ export default function InputField(props) {
       disabled={props.disabled}
       onChange={props.onChange}
       type={props.type}
-      helperText={props.error ? props.error:""}
+      helperText={props.error ? props.error : ""}
       InputProps={{
-        className: "textInput"
+        className: "textInput",
       }}
     />
   );
