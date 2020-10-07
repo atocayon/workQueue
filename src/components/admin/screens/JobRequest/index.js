@@ -4,70 +4,17 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import TablePagination from "@material-ui/core/TablePagination";
-import RemarksModal from "./RemarksModal";
-const tableHead = ["Ticket Name", "Requisitioner", "Date Requested"];
+import RemarksModal from "../../../common/RemarksModal";
+const tableHead = ["Ticket No.", "Requisitioner", "Date Requested"];
 
 export default function JobRequest(props) {
   const [loading, setLoading] = useState(true);
-  const [expand, setExpand] = useState({});
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [remarksModal, setRemarksModal] = useState({
-    open: false,
-    title: "",
-    task_id: "",
-    remarks: "",
-  });
-  const [error, setError] = useState({});
+  
+
   useEffect(() => {
     setLoading(false);
   }, []);
 
-  const onClickExpand = (val) => {
-    // console.log(val);
-    if (expand[val]) {
-      setExpand({ ...expand, [val]: !val });
-    } else {
-      setExpand({ ...expand, [val]: true });
-    }
-  };
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
-  const handleClickOpenRemarksModal = (val) => {
-    setRemarksModal({
-      ...remarksModal,
-      task_id: val.id,
-      title: val.title,
-      open: !remarksModal.open,
-    });
-  };
-
-  const handleCloseRemarksModal = () => {
-    setRemarksModal({ ...remarksModal, open: !remarksModal.open });
-  };
-
-  const handleChangeRemarks = ({ target }) => {
-    setRemarksModal({ ...remarksModal, remarks: target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(remarksModal.remarks !== ""){
-      props.onSubmitJobRequestAction(remarksModal);
-      setRemarksModal({...remarksModal, open: false});
-      setError({});
-    }else{
-      setError({...error, remarks: "Remarks is required"});
-    }
-  };
 
   return (
     <>
@@ -87,11 +34,11 @@ export default function JobRequest(props) {
             <div className={"col-md-1"}></div>
             <div className={"col-md-10"}>
               <RemarksModal
-                handleClose={handleCloseRemarksModal}
-                modal={remarksModal}
-                onChange={handleChangeRemarks}
-                handleSubmit={handleSubmit}
-                error={error}
+                handleClose={props.handleCloseRemarksModal}
+                modal={props.remarksModal}
+                onChange={props.handleChangeRemarks}
+                handleSubmit={props.handleSubmit}
+                error={props.error}
               />
               <div className={"job-request-container"}>
                 <table className={"table table-borderless"}>
@@ -105,8 +52,8 @@ export default function JobRequest(props) {
                   <tbody>
                     {props.job_requests
                       .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
+                        props.page * props.rowsPerPage,
+                        props.page * props.rowsPerPage + props.rowsPerPage
                       )
                       .map((item) => (
                         <React.Fragment key={item.ticket}>
@@ -115,7 +62,7 @@ export default function JobRequest(props) {
                               <button
                                 className={"btn btn-sm"}
                                 title={"Expand"}
-                                onClick={onClickExpand.bind(null, item.ticket)}
+                                onClick={props.onClickExpand.bind(null, item.ticket)}
                               >
                                 <ExpandMoreIcon />{" "}
                               </button>
@@ -124,7 +71,7 @@ export default function JobRequest(props) {
                             <td>{item.requisitioner}</td>
                             <td>{item.date_requested}</td>
                           </tr>
-                          {expand[item.ticket] && (
+                          {props.expand[item.ticket] && (
                             <tr>
                               <td colSpan={3}>
                                 <b>
@@ -157,7 +104,7 @@ export default function JobRequest(props) {
                                 </ul>
                                 <button
                                   className={"btn btn-sm btn-info"}
-                                  onClick={handleClickOpenRemarksModal.bind(
+                                  onClick={props.handleClickOpenRemarksModal.bind(
                                     null,
                                     { id: item.ticket, title: "Accept" }
                                   )}
@@ -167,7 +114,7 @@ export default function JobRequest(props) {
                                 &nbsp;
                                 <button
                                   className={"btn btn-sm btn-outline-danger"}
-                                  onClick={handleClickOpenRemarksModal.bind(
+                                  onClick={props.handleClickOpenRemarksModal.bind(
                                     null,
                                     { id: item.ticket, title: "Reject" }
                                   )}
@@ -185,10 +132,10 @@ export default function JobRequest(props) {
                   rowsPerPageOptions={[10, 25, 100]}
                   component="div"
                   count={props.job_requests.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  onChangePage={handleChangePage}
-                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  rowsPerPage={props.rowsPerPage}
+                  page={props.page}
+                  onChangePage={props.handleChangePage}
+                  onChangeRowsPerPage={props.handleChangeRowsPerPage}
                 />
               </div>
             </div>

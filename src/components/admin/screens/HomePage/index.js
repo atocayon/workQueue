@@ -26,6 +26,17 @@ import { fetch_admin_job } from "../../../../redux/actions/fetch_admin_job";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [expand, setExpand] = useState({});
+  const [error, setError] = useState({});
+  const [remarksModal, setRemarksModal] = useState({
+    open: false,
+    title: "",
+    task_id: "",
+    remarks: "",
+    update: "",
+  });
   useEffect(() => {
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
@@ -37,19 +48,91 @@ function AdminHomePage(props) {
     setEndSession(!(obj && obj.token));
     if (props._job_request_action !== "") {
       if (props._job_request_action === "success") {
+        setRemarksModal({ ...remarksModal, open: false });
+        setError({});
         props.clear_message();
       }
     }
   }, [props._logout, props._job_request_action]);
 
-  const onSubmitJobRequestAction = (modal) => {
-    props.job_request_action(
-      props.current_user.user_id,
-      modal.task_id,
-      modal.title,
-      modal.remarks
-    );
+  const onClickExpand = (val) => {
+    // console.log(val);
+    if (expand[val]) {
+      setExpand({ ...expand, [val]: !val });
+    } else {
+      setExpand({ ...expand, [val]: true });
+    }
   };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  const handleClickOpenRemarksModal = (val) => {
+    setRemarksModal({
+      ...remarksModal,
+      task_id: val.id,
+      title: val.title,
+      open: !remarksModal.open,
+    });
+  };
+
+  const handleCloseRemarksModal = () => {
+    setRemarksModal({ ...remarksModal, open: !remarksModal.open });
+  };
+
+  const handleChangeRemarks = ({ target }) => {
+    setRemarksModal({ ...remarksModal, [target.name]: target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      remarksModal.title === "Update" &&
+      remarksModal.update !== "" &&
+      remarksModal.remarks !== ""
+    ) {
+      props.job_request_action(
+        props.current_user.user_id,
+        remarksModal.task_id,
+        remarksModal.update,
+        remarksModal.remarks
+      );
+      return;
+    }
+
+    if (
+      remarksModal.title === "Update" &&
+      remarksModal.update === "" &&
+      remarksModal.remarks === ""
+    ) {
+      return setError({
+        ...error,
+        update: "Update is required",
+        remarks: "Remarks is required",
+      });
+    }
+
+    if (remarksModal.title !== "Update" && remarksModal.remarks !== "") {
+      props.job_request_action(
+        props.current_user.user_id,
+        remarksModal.task_id,
+        remarksModal.title,
+        remarksModal.remarks
+      );
+      return;
+    }
+    if (remarksModal.title !== "Update" && remarksModal.remarks == "") {
+      return setError({ ...error, remarks: "Remarks is required" });
+    }
+  };
+
   return (
     <>
       {endSession && <Redirect to={"/login"} />}
@@ -83,15 +166,40 @@ function AdminHomePage(props) {
               {/* Route */}
               {!props.match.params.route && (
                 <>
-                  <HomePageContent data={props._fetch_admin_job} />
+                  <HomePageContent
+                    error={error}
+                    data={props._fetch_admin_job}
+                    remarksModal={remarksModal}
+                    expand={expand}
+                    page={page}
+                    rowsPerPage={rowsPerPage}
+                    onClickExpand={onClickExpand}
+                    handleChangePage={handleChangePage}
+                    handleChangeRowsPerPage={handleChangeRowsPerPage}
+                    handleClickOpenRemarksModal={handleClickOpenRemarksModal}
+                    handleCloseRemarksModal={handleCloseRemarksModal}
+                    handleChangeRemarks={handleChangeRemarks}
+                    handleSubmit={handleSubmit}
+                  />
                 </>
               )}
 
               {props.match.params.route === "jobrequest" && (
                 <>
                   <JobRequest
+                    error={error}
+                    remarksModal={remarksModal}
+                    expand={expand}
+                    page={page}
+                    rowsPerPage={rowsPerPage}
+                    onClickExpand={onClickExpand}
+                    handleChangePage={handleChangePage}
+                    handleChangeRowsPerPage={handleChangeRowsPerPage}
+                    handleClickOpenRemarksModal={handleClickOpenRemarksModal}
+                    handleCloseRemarksModal={handleCloseRemarksModal}
                     job_requests={props._fetch_job_requests}
-                    onSubmitJobRequestAction={onSubmitJobRequestAction}
+                    handleChangeRemarks={handleChangeRemarks}
+                    handleSubmit={handleSubmit}
                   />
                 </>
               )}
@@ -120,7 +228,7 @@ const mapStateToProps = (state) => {
     _logout: state.logout,
     _fetch_job_requests: state.fetch_job_requests,
     _job_request_action: state.job_request_action,
-    _fetch_admin_job: state.fetch_admin_job
+    _fetch_admin_job: state.fetch_admin_job,
   };
 };
 
