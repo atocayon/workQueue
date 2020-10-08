@@ -15,6 +15,7 @@ import validateCode from "./validateCode";
 import fetch_job_requests from "./fetch_job_requests";
 import job_request_action from "./job_request_action";
 import fetch_admin_job from "./fetch_admin_job";
+import fetch_admin_job_request_reports from "./fetch_admin_job_request_reports";
 const rootReducer = combineReducers({
   current_system_user: current_system_user,
   login: login,
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
   validateCode: validateCode,
   fetch_job_requests: fetch_job_requests,
   job_request_action: job_request_action,
-  fetch_admin_job: fetch_admin_job
+  fetch_admin_job: fetch_admin_job,
+  fetch_admin_job_request_reports: fetch_admin_job_request_reports
 });
 
 export default rootReducer;

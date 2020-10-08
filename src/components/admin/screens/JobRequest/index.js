@@ -50,6 +50,13 @@ export default function JobRequest(props) {
                     </tr>
                   </thead>
                   <tbody>
+                    {props.job_requests.length === 0 && (
+                      <tr>
+                        <td colSpan={3} style={{textAlign: "center"}}>
+                          No job request found
+                        </td>
+                      </tr>
+                    )}
                     {props.job_requests
                       .slice(
                         props.page * props.rowsPerPage,

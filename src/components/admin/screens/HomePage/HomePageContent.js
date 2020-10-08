@@ -45,6 +45,13 @@ export default function HomePageContent(props) {
                     <th>Status</th>
                   </tr>
                 </thead>
+                {props.data.length === 0 && (
+                  <tr>
+                    <td colSpan={3} style={{ textAlign: "center" }}>
+                      You don't have any job request yet
+                    </td>
+                  </tr>
+                )}
                 <tbody>
                   {props.data
                     .slice(
@@ -108,10 +115,10 @@ export default function HomePageContent(props) {
                                     >
                                       {date.toISOString() > dateNeeded &&
                                       item.job.status !== "Done"
-                                        ? "| " +
+                                        ? "| Deadline :" +
                                           item.job.deadline +
                                           " (OUT DATED)"
-                                        : "| " + item.job.deadline}
+                                        : null}
                                     </span>
                                   )}
                                 </h6>

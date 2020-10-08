@@ -23,6 +23,7 @@ import { fetch_job_requests } from "../../../../redux/actions/fetch_job_requests
 import { clear_message } from "../../../../redux/actions/clear_message";
 import { job_request_action } from "../../../../redux/actions/job_request_action";
 import { fetch_admin_job } from "../../../../redux/actions/fetch_admin_job";
+import { fetch_admin_job_request_reports } from "../../../../redux/actions/fetch_admin_job_request_reports";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -43,12 +44,20 @@ function AdminHomePage(props) {
       props.fetch_current_user_info(obj.token);
       props.fetch_job_requests(obj.token);
       props.fetch_admin_job(obj.token);
+      props.fetch_admin_job_request_reports(obj.token);
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
     if (props._job_request_action !== "") {
       if (props._job_request_action === "success") {
-        setRemarksModal({ ...remarksModal, open: false });
+        setRemarksModal({
+          ...remarksModal,
+          open: false,
+          title: "",
+          task_id: "",
+          remarks: "",
+          update: "",
+        });
         setError({});
         props.clear_message();
       }
@@ -205,7 +214,7 @@ function AdminHomePage(props) {
               )}
               {props.match.params.route === "reports" && (
                 <>
-                  <Reports />
+                  <Reports data={props._fetch_admin_job_request_reports} />
                 </>
               )}
               {props.match.params.route === "user" && (
@@ -229,6 +238,7 @@ const mapStateToProps = (state) => {
     _fetch_job_requests: state.fetch_job_requests,
     _job_request_action: state.job_request_action,
     _fetch_admin_job: state.fetch_admin_job,
+    _fetch_admin_job_request_reports: state.fetch_admin_job_request_reports,
   };
 };
 
@@ -239,6 +249,7 @@ const mapDispatchToProps = {
   clear_message,
   job_request_action,
   fetch_admin_job,
+  fetch_admin_job_request_reports,
 };
 
 export default connect(

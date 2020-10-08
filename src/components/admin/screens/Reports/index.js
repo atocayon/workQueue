@@ -171,16 +171,34 @@ export default function Reports(props) {
 
                   <div className={"col-md-10"}>
                     <div>
-                      <table className={"table table-borderless"}>
+                      <table className={"table table-borderless table-striped"}>
                         <thead>
                           <tr>
-                            <th>Task</th>
-                            <th>Inspector</th>
-                            <th>Status</th>
+                            <th>Task No.</th>
+                            <th>Requisitioner</th>
                             <th>Start Date/Time</th>
                             <th>End Date/Time</th>
+                            <th>Date Requested</th>
                           </tr>
                         </thead>
+                        <tbody>
+                          {props.data.length === 0 && (
+                            <tr>
+                              <td colSpan={3} style={{ textAlign: "center" }}>
+                                No job request reports found
+                              </td>
+                            </tr>
+                          )}
+                          {props.data.map((item) => (
+                            <tr>
+                              <td>{item.data.task_id}</td>
+                              <td>{item.data.requisitioner}</td>
+                              <td>{item.data.start}</td>
+                              <td>{item.data.end}</td>
+                              <td>{item.data.dateRequested}</td>
+                            </tr>
+                          ))}
+                        </tbody>
                       </table>
                     </div>
                   </div>
