@@ -1,7 +1,7 @@
 // @flow
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import userAvatar from "../../../../img/user.png";
+import UserProfile from "../../../common/UserProfile";
 export default function Settings(props) {
   const [loading, setLoading] = useState(true);
 
@@ -20,21 +20,27 @@ export default function Settings(props) {
         </div>
       ) : (
         <>
-          <div className={"container"}>
-            <div className={"row"}>
-              <div className={"col-md-12"}>
-                <div className={"admin-settings-container"}>
-                  <div className={"jumbotron"}></div>
-                  <div className={"userInfo"}>
-                    <img src={userAvatar} />
-
-                    <h5>Username</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className={"col-md-2"}></div>
-          </div>
+          <UserProfile
+            error={props.error}
+            user={props.user}
+            setProfileView={props.setProfileView}
+            profileView={props.profileView}
+            inputChange={props.inputChange}
+            onSubmitUpdateProfile={props.onSubmitUpdateProfile}
+            handleUploadPic={props.handleUploadPic}
+            uploadPic={props.uploadPic}
+            setUploadPic={props.setUploadPic}
+            changePassword={props.changePassword}
+            setChangePassword={props.setChangePassword}
+            code={props.code}
+            setCode={props.setCode}
+            handleChangePassword={props.handleChangePassword}
+            generate_code={props.generate_code}
+            changePasswordFunction={props.changePasswordFunction}
+            handleSubmitCode={props.handleSubmitCode}
+            changePassInputChange={props.changePassInputChange}
+            setLoading={props.setLoading}
+          />
         </>
       )}
     </>

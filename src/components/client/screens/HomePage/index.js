@@ -22,7 +22,7 @@ import { changePasswordFunction } from "../../../../redux/actions/changePassword
 import { validateCode } from "../../../../redux/actions/changePassword";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
-import UserProfile from "../UserProfile";
+import UserProfile from "../../../common/UserProfile";
 import JobReports from "../JobReports";
 import CircularProgress from "../../../common/CircularProgress";
 import Reactotron from "reactotron-react-js";

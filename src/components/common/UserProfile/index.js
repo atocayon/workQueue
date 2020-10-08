@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CircularProgress from "../../../common/CircularProgress";
-import userAvatar from "../../../../img/user.png";
+import CircularProgress from "../CircularProgress";
+import userAvatar from "../../../img/user.png";
 import EditIcon from "@material-ui/icons/Edit";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import Form from "./Form";

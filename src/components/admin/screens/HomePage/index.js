@@ -24,6 +24,10 @@ import { clear_message } from "../../../../redux/actions/clear_message";
 import { job_request_action } from "../../../../redux/actions/job_request_action";
 import { fetch_admin_job } from "../../../../redux/actions/fetch_admin_job";
 import { fetch_admin_job_request_reports } from "../../../../redux/actions/fetch_admin_job_request_reports";
+import { update_user_info } from "../../../../redux/actions/update_user_info";
+import { generate_code } from "../../../../redux/actions/changePassword";
+import { changePasswordFunction } from "../../../../redux/actions/changePassword";
+import { validateCode } from "../../../../redux/actions/changePassword";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -38,6 +42,14 @@ function AdminHomePage(props) {
     remarks: "",
     update: "",
   });
+  const [profileView, setProfileView] = useState(true);
+  const [changePassword, setChangePassword] = useState(false);
+  const [code, setCode] = useState(false);
+  const [changePassInputChange, setChangePassInputChange] = useState({
+    code: "",
+    newPassword: "",
+  });
+  const [uploadPic, setUploadPic] = useState(null);
   useEffect(() => {
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
@@ -62,7 +74,68 @@ function AdminHomePage(props) {
         props.clear_message();
       }
     }
-  }, [props._logout, props._job_request_action]);
+
+    if (props._update_user_info !== "") {
+      if (props._update_user_info === "success") {
+        const variant = "info";
+        props.enqueueSnackbar("User info updated...", {
+          variant,
+        });
+        setProfileView(true);
+        props.clear_message();
+      }
+    }
+
+    if (props._generateCode !== "") {
+      if (props._generateCode === "success") {
+        const variant = "info";
+        props.enqueueSnackbar("The code was sent to your email...", {
+          variant,
+        });
+        // setCode(true);
+        setLoading(false);
+        props.clear_message();
+      }
+    }
+
+    if (props._validateCode !== "") {
+      if (props._validateCode === "success") {
+        props.clear_message();
+        setCode(true);
+        setChangePassword(true);
+        setLoading(false);
+      } else {
+        const variant = "error";
+        props.enqueueSnackbar("Invalid code...", {
+          variant,
+        });
+        setError({ ...error, code: "Invalid code" });
+        setLoading(false);
+      }
+    }
+
+    if(props._changePasswordFunction !== ""){
+      if(props._changePasswordFunction === "success"){
+        const variant = "info";
+        props.enqueueSnackbar("Your password is now changed...", {
+          variant,
+        });
+        props.clear_message();
+      }
+    }
+
+    
+
+    
+  }, [
+    props._logout,
+    props._job_request_action,
+    props._update_user_info,
+    props._generateCode,
+    props._validateCode,
+    props._changePasswordFunction,
+    loading,
+  ]);
 
   const onClickExpand = (val) => {
     // console.log(val);
@@ -142,6 +215,36 @@ function AdminHomePage(props) {
     }
   };
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    props.logout(props.current_user.user_id);
+  };
+
+  const onSubmitUpdateProfile = () => {
+    props.update_user_info(props.current_user);
+  };
+
+  const handleUploadPic = (e) => {
+    e.preventDefault();
+
+    setUploadPic(URL.createObjectURL(e.target.files[0]));
+    console.log(uploadPic);
+  };
+
+  const handleChangePassword = ({ target }) => {
+    setChangePassInputChange({
+      ...changePassInputChange,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmitCode = () => {
+    setLoading(true);
+    // setChangePassword(true);
+    props.validateCode(props.current_user.user_id, changePassInputChange.code);
+    // setLoading(true);
+  };
+
   return (
     <>
       {endSession && <Redirect to={"/login"} />}
@@ -159,7 +262,7 @@ function AdminHomePage(props) {
             <Navbar
               user={props.current_user}
               route={"/admin"}
-              logout={props.logout}
+              logout={handleLogout}
             />
           </div>
 
@@ -219,7 +322,27 @@ function AdminHomePage(props) {
               )}
               {props.match.params.route === "user" && (
                 <>
-                  <Settings />
+                  <Settings
+                    error={error}
+                    user={props.current_user}
+                    setProfileView={setProfileView}
+                    profileView={profileView}
+                    inputChange={props.inputChange}
+                    onSubmitUpdateProfile={onSubmitUpdateProfile}
+                    handleUploadPic={handleUploadPic}
+                    uploadPic={uploadPic}
+                    setUploadPic={setUploadPic}
+                    changePassword={changePassword}
+                    setChangePassword={setChangePassword}
+                    code={code}
+                    setCode={setCode}
+                    handleChangePassword={handleChangePassword}
+                    generate_code={props.generate_code}
+                    changePasswordFunction={props.changePasswordFunction}
+                    handleSubmitCode={handleSubmitCode}
+                    changePassInputChange={changePassInputChange}
+                    setLoading={setLoading}
+                  />
                 </>
               )}
             </Paper>
@@ -239,6 +362,10 @@ const mapStateToProps = (state) => {
     _job_request_action: state.job_request_action,
     _fetch_admin_job: state.fetch_admin_job,
     _fetch_admin_job_request_reports: state.fetch_admin_job_request_reports,
+    _update_user_info: state.update_user_info,
+    _generateCode: state.generateCode,
+    _validateCode: state.validateCode,
+    _changePasswordFunction: state.changePasswordFunction,
   };
 };
 
@@ -250,6 +377,10 @@ const mapDispatchToProps = {
   job_request_action,
   fetch_admin_job,
   fetch_admin_job_request_reports,
+  update_user_info,
+  generate_code,
+  changePasswordFunction,
+  validateCode,
 };
 
 export default connect(

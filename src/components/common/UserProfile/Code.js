@@ -1,5 +1,5 @@
 import React from "react";
-import InputField from "../../../common/textField/InputField";
+import InputField from "../textField/InputField";
 
 export default function Code(props) {
   return (
