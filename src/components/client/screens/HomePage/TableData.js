@@ -11,7 +11,9 @@ export default function TableData(props) {
   const [data, setData] = useState([...props.data]);
 
   useEffect( () => {
-
+    if(data.length < 1){
+      setData([...props.data]);
+    }
   }, [data]);
   const sort = (e) => {
     e.preventDefault();

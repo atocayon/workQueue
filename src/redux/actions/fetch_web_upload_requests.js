@@ -1,5 +1,78 @@
 import actionTypes from "./actionTypes";
 import axios from "axios";
+
+const fetch_admin_web_upload_list = () => {
+  return (dispatch) => {
+    return axios
+      .get(
+        "http://" +
+          process.env.REACT_APP_SERVER +
+          "/work-queue/admin/web/uploads"
+      )
+      .then(async (res) => {
+        let arr = [];
+
+        for (let i = 0; i < res.data.length; i++) {
+          const _web_upload_destination = await web_upload_destination(
+            res.data[i].id
+          );
+
+          const _web_upload_file = await web_upload_file(res.data[i].id);
+
+          const _web_upload_logs = await web_upload_logs(res.data[i].id);
+
+          arr.push({
+            web_upload_list: res.data[i],
+            web_upload_destination: _web_upload_destination,
+            web_upload_file: _web_upload_file,
+            web_upload_logs: _web_upload_logs,
+          });
+        }
+
+        dispatch({ type: actionTypes.FETCH_ADMIN_WEB_UPLOAD_LIST, data: arr });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+};
+
+const fetch_admin_web_upload_request = () => {
+  return (dispatch) => {
+    return axios
+      .get(
+        "http://" +
+          process.env.REACT_APP_SERVER +
+          "/work-queue/admin/web/upload/requests"
+      )
+      .then(async (res) => {
+        let arr = [];
+
+        for (let i = 0; i < res.data.length; i++) {
+          const _web_upload_destination = await web_upload_destination(
+            res.data[i].id
+          );
+
+          const _web_upload_file = await web_upload_file(res.data[i].id);
+
+          arr.push({
+            web_upload_list: res.data[i],
+            web_upload_destination: _web_upload_destination,
+            web_upload_file: _web_upload_file,
+          });
+        }
+
+        dispatch({
+          type: actionTypes.FETCH_ADMIN_WEB_UPLOAD_REQUESTS,
+          data: arr,
+        });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+};
+
 const fetch_web_upload_requests = (user_id) => {
   return async (dispatch) => {
     let arr = [];
@@ -86,4 +159,7 @@ const web_upload_logs = async (id) => {
 
   return arr;
 };
+
 export { fetch_web_upload_requests };
+export { fetch_admin_web_upload_list };
+export { fetch_admin_web_upload_request };

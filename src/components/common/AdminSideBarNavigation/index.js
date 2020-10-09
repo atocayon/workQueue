@@ -21,9 +21,10 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import PrintIcon from "@material-ui/icons/Print";
 import InfoIcon from "@material-ui/icons/Info";
 import Reactotron from "reactotron-react-js";
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import TimelineIcon from '@material-ui/icons/Timeline';
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import TimelineIcon from "@material-ui/icons/Timeline";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "none",
@@ -82,7 +83,6 @@ export default function AdminSideBarNavigation(props) {
     setOpen(!open);
   };
 
-
   const activeStyle = {
     color: "#2196F3",
     fontWeight: "bold",
@@ -138,19 +138,18 @@ export default function AdminSideBarNavigation(props) {
           )}
           <Divider />
 
- <NavLink
+          <NavLink
             activeStyle={activeStyle}
             to={"/admin"}
             exact
             style={{ textDecoration: "none", color: "#000" }}
           >
-             <ListItem button onClick={handleClick}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Dashboard"} />
-      
-          </ListItem>
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Dashboard"} />
+            </ListItem>
           </NavLink>
 
           <NavLink
@@ -159,13 +158,12 @@ export default function AdminSideBarNavigation(props) {
             exact
             style={{ textDecoration: "none", color: "#000" }}
           >
-             <ListItem button onClick={handleClick}>
-            <ListItemIcon>
-              <FormatListBulletedIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Job Requests"} />
-      
-          </ListItem>
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <FormatListBulletedIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Job Requests"} />
+            </ListItem>
           </NavLink>
 
           <NavLink
@@ -174,45 +172,31 @@ export default function AdminSideBarNavigation(props) {
             exact
             style={{ textDecoration: "none", color: "#000" }}
           >
-             <ListItem button onClick={handleClick}>
-            <ListItemIcon>
-              <TimelineIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Reports"} />
-      
-          </ListItem>
+            <ListItem button onClick={handleClick}>
+              <ListItemIcon>
+                <TimelineIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Reports"} />
+            </ListItem>
           </NavLink>
-
-          
         </List>
         <Divider />
         <List>
-          {/* <NavLink
-            activeStyle={activeStyle}
-            to={"/client/upload/requestforupload"}
-            exact
-            style={{ textDecoration: "none", color: "#000" }}
-          >
-            <ListItem>
-              <ListItemIcon>
-                <CloudUploadIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Web upload"} />
-            </ListItem>
-          </NavLink>
-          <NavLink
-            activeStyle={activeStyle}
-            to={"/client/job/request/reports/generator"}
-            exact
-            style={{ textDecoration: "none", color: "#000" }}
-          >
-            <ListItem>
-              <ListItemIcon>
-                <PrintIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Generate reports"} />
-            </ListItem>
-          </NavLink> */}
+          {props.user.secid === "1" && (
+            <NavLink
+              activeStyle={activeStyle}
+              to={"/admin/webupload"}
+              exact
+              style={{ textDecoration: "none", color: "#000" }}
+            >
+              <ListItem button onClick={handleClick}>
+                <ListItemIcon>
+                  <CloudUploadIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Web Upload(s)"} />
+              </ListItem>
+            </NavLink>
+          )}
 
           <ListItem>
             <ListItemIcon>

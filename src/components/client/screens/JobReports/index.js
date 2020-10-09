@@ -12,9 +12,11 @@ export default function JobReports(props) {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const _data = props.data.filter((item) => item.inspector !== null);
+    const _data = props.data.filter(
+      (item) => item.inspector !== null && item.task_end !== null
+    );
     setData([..._data]);
-  }, []);
+  }, [props.data]);
   const sort = (e) => {
     e.preventDefault();
 
@@ -81,7 +83,7 @@ export default function JobReports(props) {
                 onChange={({ target }) => {
                   setSearch(target.value);
                 }}
-              /> 
+              />
             </div>
           </form>
         </div>

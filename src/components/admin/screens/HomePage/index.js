@@ -13,6 +13,7 @@ import HomePageContent from "./HomePageContent";
 import JobRequest from "../JobRequest";
 import Reports from "../Reports";
 import Settings from "../Settings";
+import WebUpload from "../WebUpload";
 import AdminSideBar from "../../../common/AdminSideBarNavigation";
 import Reactotron from "reactotron-react-js";
 import { connect } from "react-redux";
@@ -28,6 +29,8 @@ import { update_user_info } from "../../../../redux/actions/update_user_info";
 import { generate_code } from "../../../../redux/actions/changePassword";
 import { changePasswordFunction } from "../../../../redux/actions/changePassword";
 import { validateCode } from "../../../../redux/actions/changePassword";
+import { fetch_admin_web_upload_list } from "../../../../redux/actions/fetch_web_upload_requests";
+import { fetch_admin_web_upload_request } from "../../../../redux/actions/fetch_web_upload_requests";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -57,6 +60,8 @@ function AdminHomePage(props) {
       props.fetch_job_requests(obj.token);
       props.fetch_admin_job(obj.token);
       props.fetch_admin_job_request_reports(obj.token);
+      props.fetch_admin_web_upload_list();
+      props.fetch_admin_web_upload_request();
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
@@ -114,8 +119,8 @@ function AdminHomePage(props) {
       }
     }
 
-    if(props._changePasswordFunction !== ""){
-      if(props._changePasswordFunction === "success"){
+    if (props._changePasswordFunction !== "") {
+      if (props._changePasswordFunction === "success") {
         const variant = "info";
         props.enqueueSnackbar("Your password is now changed...", {
           variant,
@@ -123,10 +128,6 @@ function AdminHomePage(props) {
         props.clear_message();
       }
     }
-
-    
-
-    
   }, [
     props._logout,
     props._job_request_action,
@@ -273,7 +274,7 @@ function AdminHomePage(props) {
             <Paper
               elevation={3}
               className={"paper content-container"}
-              style={{ overflow: "auto" }}
+              style={{ overflow: "auto", paddingBottom: "30vh" }}
             >
               {/* Route */}
               {!props.match.params.route && (
@@ -345,6 +346,18 @@ function AdminHomePage(props) {
                   />
                 </>
               )}
+
+              {props.current_user.secid === "1" &&
+                props.match.params.route === "webupload" && (
+                  <>
+                    <WebUpload
+                      expand={expand}
+                      onClickExpand={onClickExpand}
+                      list={props._fetch_admin_web_upload_list}
+                      request={props._fetch_admin_web_upload_request}
+                    />
+                  </>
+                )}
             </Paper>
           </div>
           <div className={"col-md-2"}></div>
@@ -366,6 +379,8 @@ const mapStateToProps = (state) => {
     _generateCode: state.generateCode,
     _validateCode: state.validateCode,
     _changePasswordFunction: state.changePasswordFunction,
+    _fetch_admin_web_upload_list: state.fetch_admin_web_upload_list,
+    _fetch_admin_web_upload_request: state.fetch_admin_web_upload_request,
   };
 };
 
@@ -381,6 +396,8 @@ const mapDispatchToProps = {
   generate_code,
   changePasswordFunction,
   validateCode,
+  fetch_admin_web_upload_list,
+  fetch_admin_web_upload_request,
 };
 
 export default connect(

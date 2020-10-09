@@ -53,10 +53,16 @@ function HomePage(props) {
     setLoading(false);
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
-      props.fetch_current_user_info(obj.token);
-      props.fetch_section_list();
-      props.fetch_user_job_request(obj.token);
-      props.fetch_web_upload_requests(obj.token);
+
+      async function fetch(){
+        await props.fetch_current_user_info(obj.token);
+        await props.fetch_section_list();
+        await props.fetch_user_job_request(obj.token);
+        await props.fetch_web_upload_requests(obj.token);
+      }
+
+      fetch();
+      
 
       if (props.onSubmitJobRequest !== "") {
         if (props.onSubmitJobRequest === "success") {
@@ -140,6 +146,8 @@ function HomePage(props) {
         props.clear_message();
       }
     }
+
+    
    
     setEndSession(!(obj && obj.token));
   }, [
