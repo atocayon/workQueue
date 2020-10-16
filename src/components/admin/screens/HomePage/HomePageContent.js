@@ -5,8 +5,36 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import TablePagination from "@material-ui/core/TablePagination";
 import RemarksModal from "../../../common/RemarksModal";
+
+import { makeStyles } from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import StepContent from "@material-ui/core/StepContent";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+
 const date = new Date();
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+  },
+  button: {
+    marginTop: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  actionsContainer: {
+    marginBottom: theme.spacing(2),
+  },
+  resetContainer: {
+    padding: theme.spacing(3),
+  },
+}));
 export default function HomePageContent(props) {
+  const classes = useStyles();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,7 +65,7 @@ export default function HomePageContent(props) {
                 handleSubmit={props.handleSubmit}
                 error={props.error}
               />
-              <table className={"table table-borderless "}>
+              <table className={"table table-borderless table-striped "}>
                 <thead>
                   <tr>
                     <th>Ticket No.</th>
@@ -150,25 +178,82 @@ export default function HomePageContent(props) {
                                 )}
 
                                 <br />
-                                <br />
-                                <table className={"table table-striped"}>
-                                  <thead>
-                                    <tr>
-                                      <th>Status</th>
-                                      <th>Remarks</th>
-                                      <th>Date/Time</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {item.logs.map((item) => (
-                                      <tr>
-                                        <td>{item.status}</td>
-                                        <td>{item.remarks}</td>
-                                        <td>{item.dateTime}</td>
-                                      </tr>
-                                    ))}
-                                  </tbody>
-                                </table>
+
+                                <Stepper
+                                  activeStep={props.activeStep}
+                                  orientation="vertical"
+                                >
+                                  {item.logs.map((_item, index) => (
+                                    <Step key={_item.status}>
+                                      <StepLabel
+                                        StepIconComponent={
+                                          FiberManualRecordIcon
+                                        }
+                                        style={{ color: "#2196F3" }}
+                                      >
+                                        <b>{_item.status}</b>
+                                      </StepLabel>
+                                      <StepContent>
+                                        <Typography>
+                                          {" "}
+                                          <span>
+                                            <small>
+                                              {_item.dateTime} <br />
+                                              {_item.remarks}
+                                            </small>
+                                          </span>{" "}
+                                        </Typography>
+                                        <div
+                                          className={classes.actionsContainer}
+                                        >
+                                          <div>
+                                            <button
+                                              disabled={props.activeStep === 0}
+                                              onClick={props.handleBack}
+                                              className={
+                                                "btn btn-outline-primary btn-sm"
+                                              }
+                                            >
+                                             {"<< Previous"} 
+                                            </button>
+                                            &nbsp;
+                                            <button
+                                              variant="contained"
+                                              color="primary"
+                                              onClick={props.handleNext}
+                                              className={
+                                                "btn btn-primary btn-sm"
+                                              }
+                                            >
+                                              {props.activeStep ===
+                                              item.logs.length - 1
+                                                ? "Finish"
+                                                : "Next >>"}
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </StepContent>
+                                    </Step>
+                                  ))}
+                                </Stepper>
+                                {props.activeStep === item.logs.length && (
+                                  <Paper
+                                    square
+                                    elevation={0}
+                                    className={classes.resetContainer}
+                                  >
+                                    <Typography>Go Back to top</Typography>
+                                    <button
+                                      onClick={props.handleReset}
+                                      className={
+                                        "btn btn-outline-primary btn-sm"
+                                      }
+                                    >
+                                      Back to top
+                                    </button>
+                                  </Paper>
+                                )}
+
                               </td>
                             </tr>
                           )}

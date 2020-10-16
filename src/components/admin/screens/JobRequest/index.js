@@ -113,7 +113,7 @@ export default function JobRequest(props) {
                                   className={"btn btn-sm btn-info"}
                                   onClick={props.handleClickOpenRemarksModal.bind(
                                     null,
-                                    { id: item.ticket, title: "Accept" }
+                                    { id: item.ticket, title: "Accepted" }
                                   )}
                                 >
                                   Accept
@@ -123,7 +123,7 @@ export default function JobRequest(props) {
                                   className={"btn btn-sm btn-outline-danger"}
                                   onClick={props.handleClickOpenRemarksModal.bind(
                                     null,
-                                    { id: item.ticket, title: "Reject" }
+                                    { id: item.ticket, title: "Rejected" }
                                   )}
                                 >
                                   Reject

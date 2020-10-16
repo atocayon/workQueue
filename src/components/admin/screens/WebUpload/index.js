@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
 import List from "./List";
 import Request from "./Request";
+import WebUploadConfirmation from "../../../common/WebUploadConfirmation";
 export default function WebUpload(props) {
   const [loading, setLoading] = useState(true);
   const [webUploadView, setWebUploadView] = useState("list");
@@ -20,7 +21,11 @@ export default function WebUpload(props) {
     <>
       {loading && <CircularProgress />}
       <div className={"jumbotron jumbotron-container"}></div>
-
+      <WebUploadConfirmation
+        modal={props.modal}
+        handleOpenWebUploadModal={props.handleOpenWebUploadModal}
+        handleCloseWebUploadModal={props.handleCloseWebUploadModal}
+      />
       <div className={"row"}>
         <div className={"col-md-1"}></div>
         <div className={"col-md-10"}>
@@ -69,7 +74,11 @@ export default function WebUpload(props) {
 
           {webUploadView === "list" && (
             <>
-              <List data={props.list} />
+              <List
+                data={props.list}
+                expand={props.expand}
+                onClickExpand={props.onClickExpand}
+              />
             </>
           )}
 
@@ -79,6 +88,7 @@ export default function WebUpload(props) {
                 data={props.request}
                 expand={props.expand}
                 onClickExpand={props.onClickExpand}
+                handleOpenWebUploadModal={props.handleOpenWebUploadModal}
               />
             </>
           )}

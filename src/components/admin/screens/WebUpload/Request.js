@@ -66,7 +66,7 @@ export default function Request(props) {
                         {item.web_upload_list.upload_title}
                       </li>
                       <li>
-                        <h6>Destination:</h6>
+                        <h6>Upload Destination:</h6>
                         <ol>
                           {item.web_upload_destination.map((des, index) => (
                             <li key={index}>{des.destination}</li>
@@ -74,10 +74,10 @@ export default function Request(props) {
                         </ol>
                       </li>
                       <li>
-                        <h6>Attachment:</h6>
-                        {item.web_upload_file.map((file, index) => (
-                          <ul key={index}>
-                            <li>
+                        <h6>File Attachment:</h6>
+                        <ul>
+                          {item.web_upload_file.map((file, index) => (
+                            <li key={index}>
                               <a
                                 href={
                                   process.env.REACT_APP_UPLOAD_FOLDER +
@@ -90,15 +90,30 @@ export default function Request(props) {
                                 {file.file_name}
                               </a>
                             </li>
-                          </ul>
-                        ))}
+                          ))}
+                        </ul>
                       </li>
                     </ul>
-                    <button className={"btn btn-sm btn-info"}>Accept</button>{" "}
-                    &nbsp;{" "}
-                    <button className={"btn btn-sm btn-outline-danger"}>
+                    <button className={"btn btn-sm btn-outline-danger"} onClick={props.handleOpenWebUploadModal.bind(null, {
+                        id: item.web_upload_list.id,
+                        title: "Reject",
+                        status: "Rejected",
+                      })}>
                       Reject
                     </button>
+                    {" "}
+                    &nbsp;{" "}
+                    <button
+                      className={"btn btn-sm btn-info"}
+                      onClick={props.handleOpenWebUploadModal.bind(null, {
+                        id: item.web_upload_list.id,
+                        title:"Accept",
+                        status: "Accepted",
+                      })}
+                    >
+                      Accept
+                    </button>
+                    
                   </td>
                 </tr>
               )}

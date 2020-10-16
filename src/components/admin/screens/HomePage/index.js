@@ -53,6 +53,14 @@ function AdminHomePage(props) {
     newPassword: "",
   });
   const [uploadPic, setUploadPic] = useState(null);
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [webUploadModal, setWebUploadModal] = useState({
+    open: false,
+    web_upload_id: "",
+    title: "",
+    status: "",
+  });
   useEffect(() => {
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
@@ -246,6 +254,40 @@ function AdminHomePage(props) {
     // setLoading(true);
   };
 
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
+  const handleOpenWebUploadModal = (val) => {
+    console.log(val);
+    setWebUploadModal({
+      ...webUploadModal,
+      open: !webUploadModal.open,
+      web_upload_id: val.id,
+      title: val.title,
+      status: val.status,
+    });
+  };
+
+  const handleCloseWebUploadModal = () => {
+    setWebUploadModal({ ...webUploadModal, open: false });
+  };
+
+  const handleUpdateModal = ({ target }) => {
+    setWebUploadModal({
+      ...webUploadModal,
+      [target.name]: target.value,
+    });
+  };
+
   return (
     <>
       {endSession && <Redirect to={"/login"} />}
@@ -268,7 +310,10 @@ function AdminHomePage(props) {
           </div>
 
           <div className={"col-md-2"}>
-            <AdminSideBar user={props.current_user} />
+            <AdminSideBar
+              user={props.current_user}
+              jobRequest={props._fetch_job_requests}
+            />
           </div>
           <div className={"col-md-8"}>
             <Paper
@@ -293,6 +338,10 @@ function AdminHomePage(props) {
                     handleCloseRemarksModal={handleCloseRemarksModal}
                     handleChangeRemarks={handleChangeRemarks}
                     handleSubmit={handleSubmit}
+                    activeStep={activeStep}
+                    handleNext={handleNext}
+                    handleBack={handleBack}
+                    handleReset={handleReset}
                   />
                 </>
               )}
@@ -351,6 +400,10 @@ function AdminHomePage(props) {
                 props.match.params.route === "webupload" && (
                   <>
                     <WebUpload
+                      modal={webUploadModal}
+                      handleOpenWebUploadModal={handleOpenWebUploadModal}
+                      handleCloseWebUploadModal={handleCloseWebUploadModal}
+                      handleUpdateModal={handleUpdateModal}
                       expand={expand}
                       onClickExpand={onClickExpand}
                       list={props._fetch_admin_web_upload_list}

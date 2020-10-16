@@ -159,10 +159,25 @@ export default function AdminSideBarNavigation(props) {
             style={{ textDecoration: "none", color: "#000" }}
           >
             <ListItem button onClick={handleClick}>
-              <ListItemIcon>
-                <FormatListBulletedIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Job Requests"} />
+              {props.jobRequest.length > 0 ? (
+                <Badge
+                  color="secondary"
+                  badgeContent={props.jobRequest.length}
+                  showZero
+                >
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Job Requests"} />
+                </Badge>
+              ) : (
+                <>
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Job Requests"} />
+                </>
+              )}
             </ListItem>
           </NavLink>
 
