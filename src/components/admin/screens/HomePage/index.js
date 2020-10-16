@@ -31,6 +31,7 @@ import { changePasswordFunction } from "../../../../redux/actions/changePassword
 import { validateCode } from "../../../../redux/actions/changePassword";
 import { fetch_admin_web_upload_list } from "../../../../redux/actions/fetch_web_upload_requests";
 import { fetch_admin_web_upload_request } from "../../../../redux/actions/fetch_web_upload_requests";
+import { web_upload_request_action } from "../../../../redux/actions/web_upload_request_action";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -45,6 +46,12 @@ function AdminHomePage(props) {
     remarks: "",
     update: "",
   });
+  const [webUploadModal, setWebUploadModal] = useState({
+    open: false,
+    web_upload_id: "",
+    title: "",
+    status: "",
+  });
   const [profileView, setProfileView] = useState(true);
   const [changePassword, setChangePassword] = useState(false);
   const [code, setCode] = useState(false);
@@ -55,12 +62,7 @@ function AdminHomePage(props) {
   const [uploadPic, setUploadPic] = useState(null);
 
   const [activeStep, setActiveStep] = useState(0);
-  const [webUploadModal, setWebUploadModal] = useState({
-    open: false,
-    web_upload_id: "",
-    title: "",
-    status: "",
-  });
+
   useEffect(() => {
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
@@ -136,6 +138,20 @@ function AdminHomePage(props) {
         props.clear_message();
       }
     }
+
+    if (props._web_upload_request_action !== "") {
+      if (props._web_upload_request_action === "success") {
+        setWebUploadModal({
+          ...webUploadModal,
+          open: false,
+          web_upload_id: "",
+          title: "",
+          status: "",
+        });
+
+        props.clear_message();
+      }
+    }
   }, [
     props._logout,
     props._job_request_action,
@@ -143,6 +159,7 @@ function AdminHomePage(props) {
     props._generateCode,
     props._validateCode,
     props._changePasswordFunction,
+    props._web_upload_request_action,
     loading,
   ]);
 
@@ -288,6 +305,15 @@ function AdminHomePage(props) {
     });
   };
 
+  const handleConfirmWebUpload = () => {
+    console.log("askjdfhaskjdfh");
+    props.web_upload_request_action(
+      props.current_user.user_id,
+      webUploadModal.web_upload_id,
+      webUploadModal.status
+    );
+  };
+
   return (
     <>
       {endSession && <Redirect to={"/login"} />}
@@ -408,6 +434,7 @@ function AdminHomePage(props) {
                       onClickExpand={onClickExpand}
                       list={props._fetch_admin_web_upload_list}
                       request={props._fetch_admin_web_upload_request}
+                      handleConfirmWebUpload={handleConfirmWebUpload}
                     />
                   </>
                 )}
@@ -434,6 +461,7 @@ const mapStateToProps = (state) => {
     _changePasswordFunction: state.changePasswordFunction,
     _fetch_admin_web_upload_list: state.fetch_admin_web_upload_list,
     _fetch_admin_web_upload_request: state.fetch_admin_web_upload_request,
+    _web_upload_request_action: state.web_upload_request_action,
   };
 };
 
@@ -451,6 +479,7 @@ const mapDispatchToProps = {
   validateCode,
   fetch_admin_web_upload_list,
   fetch_admin_web_upload_request,
+  web_upload_request_action,
 };
 
 export default connect(

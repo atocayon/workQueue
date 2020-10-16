@@ -19,8 +19,17 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0px !important; /* Remove scrollbar space */
-  background: transparent !important; /* Optional: just make scrollbar invisible */
+  height: 5px !important;
+
+  width: 5px !important;
+  /* Remove scrollbar space */
+  background: #e0e0e0 !important;
+  /* Optional: just make scrollbar invisible */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2196f3 !important;
+  height: 5px !important;
 }
 
 .loading {
@@ -42,15 +51,13 @@ body {
   color: #607d8b;
 }
 
-
-.content-container{
+.content-container {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100vh;
   margin-top: 5vh;
-
 }
 
-.jumbotron-container{
+.jumbotron-container {
   height: 1vh !important;
 }

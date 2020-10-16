@@ -10,14 +10,10 @@ import Reactotron from "reactotron-react-js";
 const checkBox = ["NMP Website", "Facebook"];
 export default function RequestForUpload(props) {
   const [loading, setLoading] = useState(true);
-  
-  
+
   useEffect(() => {
     setLoading(false);
-
   }, []);
-
- 
 
   return (
     <>

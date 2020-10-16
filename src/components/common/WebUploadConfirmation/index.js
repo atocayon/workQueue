@@ -17,19 +17,27 @@ export default function WebUploadConfirmation(props) {
         <DialogTitle id="form-dialog-title"></DialogTitle>
         <DialogContent>
           <DialogContentText>
-            You're about to {props.modal.title} this job request.
+            You're about to&nbsp;
+            <span
+              style={
+                props.modal.title === "Reject"
+                  ? { color: "red" }
+                  : { color: "#2196F3" }
+              }
+            >
+              {props.modal.title}
+            </span>
+            &nbsp;this job request.
           </DialogContentText>
           {props.modal.title === "Accept" ||
-          props.modal.title === "Reject" ? (
-           null
-          ) : (
+          props.modal.title === "Reject" ? null : (
             <InputField
-            autoFocus={true}
-            id={"status"}
-            name={"status"}
-            label="Web Upload Status"
-            type="text"
-          />
+              autoFocus={true}
+              id={"status"}
+              name={"status"}
+              label={"Web Upload Status"}
+              type={"text"}
+            />
           )}
         </DialogContent>
         <DialogActions>
@@ -39,7 +47,7 @@ export default function WebUploadConfirmation(props) {
           >
             Cancel
           </button>
-          <button onClick={props.handleClose} className={"btn btn-info btn-sm"}>
+          <button onClick={props.handleConfirmWebUpload} className={"btn btn-info btn-sm"}>
             Confirm
           </button>
         </DialogActions>

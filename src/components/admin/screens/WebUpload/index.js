@@ -25,6 +25,7 @@ export default function WebUpload(props) {
         modal={props.modal}
         handleOpenWebUploadModal={props.handleOpenWebUploadModal}
         handleCloseWebUploadModal={props.handleCloseWebUploadModal}
+        handleConfirmWebUpload={props.handleConfirmWebUpload}
       />
       <div className={"row"}>
         <div className={"col-md-1"}></div>

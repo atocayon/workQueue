@@ -1,14 +1,14 @@
 import actionTypes from "./actionTypes";
 import axios from "axios";
 
-const web_upload_request_action = (web_upload_id, status) => {
+const web_upload_request_action = (validator, web_upload_id, status) => {
   return (dispatch) => {
     return axios
       .post(
         "http://" +
           process.env.REACT_APP_SERVER +
-          "/work-queue/admin/web/upload/request/action",
-        { web_upload_id, status }
+          "/work-queue/admin/web/upload/request/update",
+        { validator, web_upload_id, status }
       )
       .then((res) => {
         dispatch({
