@@ -19,6 +19,7 @@ import fetch_admin_job_request_reports from "./fetch_admin_job_request_reports";
 import fetch_admin_web_upload_list from "./fetch_admin_web_upload_list";
 import fetch_admin_web_upload_request from "./fetch_admin_web_upload_request";
 import web_upload_request_action from "./web_upload_request_action";
+import fetch_total_task_rendered_per_office from "./fetch_total_task_rendered_per_office";
 const rootReducer = combineReducers({
   current_system_user: current_system_user,
   login: login,
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   fetch_admin_web_upload_list: fetch_admin_web_upload_list,
   fetch_admin_web_upload_request: fetch_admin_web_upload_request,
   web_upload_request_action: web_upload_request_action,
+  fetch_total_task_rendered_per_office: fetch_total_task_rendered_per_office,
 });
 
 export default rootReducer;

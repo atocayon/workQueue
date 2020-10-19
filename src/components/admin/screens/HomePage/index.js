@@ -32,6 +32,7 @@ import { validateCode } from "../../../../redux/actions/changePassword";
 import { fetch_admin_web_upload_list } from "../../../../redux/actions/fetch_web_upload_requests";
 import { fetch_admin_web_upload_request } from "../../../../redux/actions/fetch_web_upload_requests";
 import { web_upload_request_action } from "../../../../redux/actions/web_upload_request_action";
+import { fetch_total_task_rendered_per_office } from "../../../../redux/actions/fetch_total_task_rendered_per_office";
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -72,6 +73,7 @@ function AdminHomePage(props) {
       props.fetch_admin_job_request_reports(obj.token);
       props.fetch_admin_web_upload_list();
       props.fetch_admin_web_upload_request();
+      props.fetch_total_task_rendered_per_office(obj.token);
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
@@ -306,7 +308,6 @@ function AdminHomePage(props) {
   };
 
   const handleConfirmWebUpload = () => {
-    
     props.web_upload_request_action(
       props.current_user.user_id,
       webUploadModal.web_upload_id,
@@ -393,7 +394,10 @@ function AdminHomePage(props) {
               )}
               {props.match.params.route === "reports" && (
                 <>
-                  <Reports data={props._fetch_admin_job_request_reports} />
+                  <Reports
+                    data={props._fetch_admin_job_request_reports}
+                    task_per_office={props._fetch_total_task_rendered_per_office}
+                  />
                 </>
               )}
               {props.match.params.route === "user" && (
@@ -466,6 +470,8 @@ const mapStateToProps = (state) => {
     _fetch_admin_web_upload_list: state.fetch_admin_web_upload_list,
     _fetch_admin_web_upload_request: state.fetch_admin_web_upload_request,
     _web_upload_request_action: state.web_upload_request_action,
+    _fetch_total_task_rendered_per_office:
+      state.fetch_total_task_rendered_per_office,
   };
 };
 
@@ -484,6 +490,7 @@ const mapDispatchToProps = {
   fetch_admin_web_upload_list,
   fetch_admin_web_upload_request,
   web_upload_request_action,
+  fetch_total_task_rendered_per_office,
 };
 
 export default connect(
