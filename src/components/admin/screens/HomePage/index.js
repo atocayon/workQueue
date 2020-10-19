@@ -306,7 +306,7 @@ function AdminHomePage(props) {
   };
 
   const handleConfirmWebUpload = () => {
-    console.log("askjdfhaskjdfh");
+    
     props.web_upload_request_action(
       props.current_user.user_id,
       webUploadModal.web_upload_id,
@@ -435,6 +435,10 @@ function AdminHomePage(props) {
                       list={props._fetch_admin_web_upload_list}
                       request={props._fetch_admin_web_upload_request}
                       handleConfirmWebUpload={handleConfirmWebUpload}
+                      activeStep={activeStep}
+                      handleNext={handleNext}
+                      handleBack={handleBack}
+                      handleReset={handleReset}
                     />
                   </>
                 )}

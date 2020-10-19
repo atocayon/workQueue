@@ -79,6 +79,10 @@ export default function WebUpload(props) {
                 data={props.list}
                 expand={props.expand}
                 onClickExpand={props.onClickExpand}
+                activeStep={props.activeStep}
+                handleNext={props.handleNext}
+                handleBack={props.handleBack}
+                handleReset={props.handleReset}
               />
             </>
           )}

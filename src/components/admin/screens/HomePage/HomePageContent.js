@@ -5,7 +5,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import TablePagination from "@material-ui/core/TablePagination";
 import RemarksModal from "../../../common/RemarksModal";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -15,24 +14,9 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
-
+import { useStyles } from "../../../common/StepperMakeStyle";
 const date = new Date();
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  actionsContainer: {
-    marginBottom: theme.spacing(2),
-  },
-  resetContainer: {
-    padding: theme.spacing(3),
-  },
-}));
 export default function HomePageContent(props) {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
@@ -177,8 +161,6 @@ export default function HomePageContent(props) {
                                   </>
                                 )}
 
-                                <br />
-
                                 <Stepper
                                   activeStep={props.activeStep}
                                   orientation="vertical"
@@ -214,7 +196,7 @@ export default function HomePageContent(props) {
                                                 "btn btn-outline-primary btn-sm"
                                               }
                                             >
-                                             {"<< Previous"} 
+                                              {"<< Previous"}
                                             </button>
                                             &nbsp;
                                             <button
@@ -227,7 +209,7 @@ export default function HomePageContent(props) {
                                             >
                                               {props.activeStep ===
                                               item.logs.length - 1
-                                                ? "Finish"
+                                                ? "Done"
                                                 : "Next >>"}
                                             </button>
                                           </div>
@@ -242,7 +224,6 @@ export default function HomePageContent(props) {
                                     elevation={0}
                                     className={classes.resetContainer}
                                   >
-                                    <Typography>Go Back to top</Typography>
                                     <button
                                       onClick={props.handleReset}
                                       className={
@@ -253,7 +234,6 @@ export default function HomePageContent(props) {
                                     </button>
                                   </Paper>
                                 )}
-
                               </td>
                             </tr>
                           )}
