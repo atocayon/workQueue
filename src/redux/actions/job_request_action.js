@@ -4,9 +4,9 @@ const job_request_action = (inspector_id, task_id, status, remarks) => {
   return (dispatch) => {
     return axios
       .post(
-        "http://" +
-          process.env.REACT_APP_SERVER +
-          "/work-queue/admin/job/request/action",
+        `http://
+          ${process.env.REACT_APP_SERVER}
+          /work-queue/admin/job/request/action`,
 
         { inspector_id, task_id, status, remarks }
       )

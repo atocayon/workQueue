@@ -5,8 +5,8 @@ const web_upload_request = (data) => {
   return (dispatch) => {
     return axios({
       method: "post",
-      url: "http://" + process.env.REACT_APP_SERVER + "/work-queue/web_upload",
-      data: data,
+      url: `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload`,
+      data,
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -19,6 +19,5 @@ const web_upload_request = (data) => {
       });
   };
 };
-
 
 export { web_upload_request };

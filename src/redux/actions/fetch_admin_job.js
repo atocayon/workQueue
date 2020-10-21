@@ -5,10 +5,9 @@ const fetch_admin_job = (user_id) => {
   return (dispatch) => {
     return axios
       .get(
-        "http://" +
-          process.env.REACT_APP_SERVER +
-          "/work-queue/admin/job/list/" +
-          user_id
+        `http://
+          ${process.env.REACT_APP_SERVER}
+          /work-queue/admin/job/list/${user_id}`
       )
       .then(async (res) => {
         let arr = [];
@@ -25,7 +24,5 @@ const fetch_admin_job = (user_id) => {
       });
   };
 };
-
-
 
 export { fetch_admin_job };

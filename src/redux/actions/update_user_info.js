@@ -5,7 +5,7 @@ const update_user_info = (data) => {
   return (dispatch) => {
     return axios
       .post(
-        "http://" + process.env.REACT_APP_SERVER + "/work-queue/user/update",
+        `http://${process.env.REACT_APP_SERVER}/work-queue/user/update`,
         { data }
       )
       .then((res) => {
