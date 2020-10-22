@@ -110,7 +110,7 @@ export default function Reports(props) {
                         <tbody>
                           {props.data.length === 0 && (
                             <tr>
-                              <td colSpan={3} style={{ textAlign: "center" }}>
+                              <td colSpan={5} style={{ textAlign: "center" }}>
                                 No job request reports found
                               </td>
                             </tr>

@@ -4,9 +4,7 @@ const fetch_total_task_rendered_per_office = (inspector) => {
   return (dispatch) => {
     return axios
       .get(
-        `http://
-          ${process.env.REACT_APP_SERVER}
-          /work-queue/admin/office/total/task/${inspector}`
+        `http://${process.env.REACT_APP_SERVER}/work-queue/admin/office/total/task/${inspector}`
       )
       .then((res) => {
         let arr = [];

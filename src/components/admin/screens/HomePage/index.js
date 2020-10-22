@@ -71,7 +71,7 @@ function AdminHomePage(props) {
       props.fetch_job_requests(obj.token);
       props.fetch_admin_job(obj.token);
       props.fetch_admin_job_request_reports(obj.token);
-      props.fetch_admin_web_upload_list();
+      props.fetch_admin_web_upload_list(obj.token);
       props.fetch_admin_web_upload_request();
       props.fetch_total_task_rendered_per_office(obj.token);
     }

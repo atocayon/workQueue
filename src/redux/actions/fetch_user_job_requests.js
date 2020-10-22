@@ -4,9 +4,7 @@ const fetch_user_job_request = (user_id) => {
   return (dispatch) => {
     return axios
       .get(
-        `http://
-          ${process.env.REACT_APP_SERVER}
-          /work-queue/client/job-requests/
+        `http://${process.env.REACT_APP_SERVER}/work-queue/client/job-requests/
           ${user_id}`
       )
       .then( async (res) => {

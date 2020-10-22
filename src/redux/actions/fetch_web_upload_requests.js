@@ -1,13 +1,11 @@
 import actionTypes from "./actionTypes";
 import axios from "axios";
 
-const fetch_admin_web_upload_list = () => {
+const fetch_admin_web_upload_list = (validator) => {
   return (dispatch) => {
     return axios
       .get(
-        `http://
-          ${process.env.REACT_APP_SERVER}
-          /work-queue/admin/web/uploads`
+        `http://${process.env.REACT_APP_SERVER}/work-queue/admin/web/uploads/${validator}`
       )
       .then(async (res) => {
         let arr = [];
@@ -41,9 +39,7 @@ const fetch_admin_web_upload_request = () => {
   return (dispatch) => {
     return axios
       .get(
-        `http://
-          ${process.env.REACT_APP_SERVER}
-          /work-queue/admin/web/upload/requests`
+        `http://${process.env.REACT_APP_SERVER}/work-queue/admin/web/upload/requests`
       )
       .then(async (res) => {
         let arr = [];
@@ -77,9 +73,7 @@ const fetch_web_upload_requests = (user_id) => {
   return async (dispatch) => {
     let arr = [];
     const web_upload_list = await axios.get(
-      `http://
-        ${process.env.REACT_APP_SERVER}
-        /work-queue/web_upload_list/${user_id}`
+      `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_list/${user_id}`
     );
 
     for (let i = 0; i < web_upload_list.data.length; i++) {
@@ -113,9 +107,7 @@ const fetch_web_upload_requests = (user_id) => {
 const web_upload_destination = async (id) => {
   let arr = [];
   const destination = await axios.get(
-    `http://
-      ${process.env.REACT_APP_SERVER}
-      /work-queue/web_upload_destination/${id}`
+    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_destination/${id}`
   );
 
   for (let i = 0; i < destination.data.length; i++) {
@@ -128,9 +120,7 @@ const web_upload_destination = async (id) => {
 const web_upload_file = async (id) => {
   let arr = [];
   const file = await axios.get(
-    `http://
-      ${process.env.REACT_APP_SERVER}
-      /work-queue/web_upload_file/
+    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_file/
       ${id}`
   );
 
@@ -145,9 +135,7 @@ const web_upload_logs = async (id) => {
   let arr = [];
 
   const logs = await axios.get(
-    `http://
-      ${process.env.REACT_APP_SERVER}
-      /work-queue/web_upload_logs/
+    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_logs/
       ${id}`
   );
 

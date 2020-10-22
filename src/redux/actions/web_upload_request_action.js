@@ -5,9 +5,7 @@ const web_upload_request_action = (validator, web_upload_id, status) => {
   return (dispatch) => {
     return axios
       .post(
-        `http://
-          ${process.env.REACT_APP_SERVER}
-          /work-queue/admin/web/upload/request/update`,
+        `http://${process.env.REACT_APP_SERVER}/work-queue/admin/web/upload/request/update`,
         { validator, web_upload_id, status }
       )
       .then((res) => {
