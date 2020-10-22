@@ -120,8 +120,7 @@ const web_upload_destination = async (id) => {
 const web_upload_file = async (id) => {
   let arr = [];
   const file = await axios.get(
-    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_file/
-      ${id}`
+    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_file/${id}`
   );
 
   for (let i = 0; i < file.data.length; i++) {
@@ -135,8 +134,7 @@ const web_upload_logs = async (id) => {
   let arr = [];
 
   const logs = await axios.get(
-    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_logs/
-      ${id}`
+    `http://${process.env.REACT_APP_SERVER}/work-queue/web_upload_logs/${id}`
   );
 
   for (let i = 0; i < logs.data.length; i++) {
