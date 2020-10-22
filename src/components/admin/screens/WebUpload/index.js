@@ -26,6 +26,7 @@ export default function WebUpload(props) {
         handleOpenWebUploadModal={props.handleOpenWebUploadModal}
         handleCloseWebUploadModal={props.handleCloseWebUploadModal}
         handleConfirmWebUpload={props.handleConfirmWebUpload}
+        handleUpdateModal={props.handleUpdateModal}
       />
       <div className={"row"}>
         <div className={"col-md-1"}></div>
@@ -83,6 +84,8 @@ export default function WebUpload(props) {
                 handleNext={props.handleNext}
                 handleBack={props.handleBack}
                 handleReset={props.handleReset}
+                handleOpenWebUploadModal={props.handleOpenWebUploadModal}
+                
               />
             </>
           )}

@@ -10,7 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { useStyles } from "../../../common/StepperMakeStyle";
-
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 export default function List(props) {
   const classes = useStyles();
 
@@ -47,7 +47,11 @@ export default function List(props) {
                         list.web_upload_list.id
                       )}
                     >
-                      <ExpandMoreIcon />
+                      {props.expand[list.web_upload_list.id] ? (
+                        <ExpandLessIcon />
+                      ) : (
+                        <ExpandMoreIcon />
+                      )}
                     </button>{" "}
                     {list.web_upload_list.requisitioner}
                   </td>
@@ -62,78 +66,97 @@ export default function List(props) {
                   <td>{list.web_upload_list.date_time_requested}</td>
                 </tr>
 
-                {props.expand[list.web_upload_list.id] && (
-                  <tr>
-                    <td colSpan={4}>
-                      <Stepper
-                        activeStep={props.activeStep}
-                        orientation="vertical"
-                      >
-                        {list.web_upload_logs.map((item) => (
-                          <Step key={item.status}>
-                            <StepLabel
-                              StepIconComponent={FiberManualRecordIcon}
-                              style={{ color: "#2196F3" }}
-                            >
-                              <b>{item.status}</b>
-                            </StepLabel>
-                            <StepContent>
-                              <Typography>
-                                {" "}
-                                <span>
-                                  <small>
-                                    {item.date_time} <br />
-                                    {item.host_computer}
-                                    <br />
-                                    {item.network_group}
-                                  </small>
-                                </span>{" "}
-                              </Typography>
-                              <div className={classes.actionsContainer}>
-                                <div>
-                                  <button
-                                    disabled={props.activeStep === 0}
-                                    onClick={props.handleBack}
-                                    className={"btn btn-outline-primary btn-sm"}
-                                  >
-                                    {"<< Previous"}
-                                  </button>
-                                  &nbsp;
-                                  <button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={props.handleNext}
-                                    className={"btn btn-primary btn-sm"}
-                                  >
-                                    {props.activeStep ===
-                                    list.web_upload_logs.length - 1
-                                      ? "Done"
-                                      : "Next >>"}
-                                  </button>
-                                </div>
-                              </div>
-                            </StepContent>
-                          </Step>
-                        ))}
-                        {props.activeStep === list.web_upload_logs.length && (
-                          <Paper
-                            square
-                            elevation={0}
-                            className={classes.resetContainer}
+                {list.web_upload_logs.length > 0
+                  ? props.expand[list.web_upload_list.id] && (
+                      <tr>
+                        <td colSpan={4}>
+                          <Stepper
+                            activeStep={props.activeStep}
+                            orientation="vertical"
                           >
-                           
-                            <button
-                              onClick={props.handleReset}
-                              className={"btn btn-outline-primary btn-sm"}
-                            >
-                              Back to top
-                            </button>
-                          </Paper>
-                        )}
-                      </Stepper>
-                    </td>
-                  </tr>
-                )}
+                            {list.web_upload_logs.map((item) => (
+                              <Step key={item.status}>
+                                <StepLabel
+                                  StepIconComponent={FiberManualRecordIcon}
+                                  style={{ color: "#2196F3" }}
+                                >
+                                  <b>{item.status}</b>
+                                </StepLabel>
+                                <StepContent>
+                                  <Typography>
+                                    {" "}
+                                    <span>
+                                      <small>
+                                        {item.date_time} <br />
+                                        {item.host_computer}
+                                        <br />
+                                        {item.network_group}
+                                      </small>
+                                    </span>{" "}
+                                  </Typography>
+                                  <div className={classes.actionsContainer}>
+                                    <div>
+                                      <button
+                                        disabled={props.activeStep === 0}
+                                        onClick={props.handleBack}
+                                        className={
+                                          "btn btn-outline-primary btn-sm"
+                                        }
+                                      >
+                                        {"<< Previous"}
+                                      </button>
+                                      &nbsp;
+                                      <button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={props.handleNext}
+                                        className={"btn btn-primary btn-sm"}
+                                      >
+                                        {props.activeStep ===
+                                        list.web_upload_logs.length - 1
+                                          ? "Done"
+                                          : "Next >>"}
+                                      </button>
+                                    </div>
+                                  </div>
+                                </StepContent>
+                              </Step>
+                            ))}
+                            {props.activeStep ===
+                              list.web_upload_logs.length && (
+                              <Paper
+                                square
+                                elevation={0}
+                                className={classes.resetContainer}
+                              >
+                                <button
+                                  onClick={props.handleReset}
+                                  className={"btn btn-outline-primary btn-sm"}
+                                >
+                                  Back to top
+                                </button>
+                              </Paper>
+                            )}
+                          </Stepper>
+                        </td>
+                      </tr>
+                    )
+                  : props.expand[list.web_upload_list.id] && (
+                      <tr>
+                        <td colSpan={4}>
+                          <button
+                            className={"btn btn-sm btn-info"}
+                            onClick={props.handleOpenWebUploadModal.bind(null, {
+                              id: list.web_upload_list.id,
+                              title: "Update",
+                              status: "",
+                            })}
+                          >
+                            Update Status
+                          </button>
+                        </td>
+                      </tr>
+                    )}
               </React.Fragment>
             ))}
         </tbody>

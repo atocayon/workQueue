@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+
 export default function Request(props) {
   return (
     <>
@@ -28,8 +30,11 @@ export default function Request(props) {
                       item.web_upload_list.id
                     )}
                   >
-                    {" "}
-                    <ExpandMoreIcon />
+                    {props.expand[item.web_upload_list.id] ? (
+                      <ExpandLessIcon />
+                    ) : (
+                      <ExpandMoreIcon />
+                    )}
                   </button>
                   &nbsp;{item.web_upload_list.requisitioner}
                 </td>
@@ -94,26 +99,27 @@ export default function Request(props) {
                         </ul>
                       </li>
                     </ul>
-                    <button className={"btn btn-sm btn-outline-danger"} onClick={props.handleOpenWebUploadModal.bind(null, {
+                    <button
+                      className={"btn btn-sm btn-outline-danger"}
+                      onClick={props.handleOpenWebUploadModal.bind(null, {
                         id: item.web_upload_list.id,
                         title: "Reject",
                         status: "Rejected",
-                      })}>
+                      })}
+                    >
                       Reject
-                    </button>
-                    {" "}
+                    </button>{" "}
                     &nbsp;{" "}
                     <button
                       className={"btn btn-sm btn-info"}
                       onClick={props.handleOpenWebUploadModal.bind(null, {
                         id: item.web_upload_list.id,
-                        title:"Accept",
+                        title: "Accept",
                         status: "Accepted",
                       })}
                     >
                       Accept
                     </button>
-                    
                   </td>
                 </tr>
               )}

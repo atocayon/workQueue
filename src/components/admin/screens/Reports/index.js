@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import { spline } from "../../../common/Chart";
 import { pie } from "../../../common/Chart";
 import Reactotron from "reactotron-react-js";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 

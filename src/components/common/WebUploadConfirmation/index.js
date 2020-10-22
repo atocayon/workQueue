@@ -37,6 +37,7 @@ export default function WebUploadConfirmation(props) {
               name={"status"}
               label={"Web Upload Status"}
               type={"text"}
+              onChange={props.handleUpdateModal}
             />
           )}
         </DialogContent>

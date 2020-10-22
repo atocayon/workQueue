@@ -5,16 +5,16 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import TablePagination from "@material-ui/core/TablePagination";
 import RemarksModal from "../../../common/RemarksModal";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+
 const tableHead = ["Ticket No.", "Requisitioner", "Date Requested"];
 
 export default function JobRequest(props) {
   const [loading, setLoading] = useState(true);
-  
 
   useEffect(() => {
     setLoading(false);
   }, []);
-
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function JobRequest(props) {
                   <tbody>
                     {props.job_requests.length === 0 && (
                       <tr>
-                        <td colSpan={3} style={{textAlign: "center"}}>
+                        <td colSpan={3} style={{ textAlign: "center" }}>
                           No job request found
                         </td>
                       </tr>
@@ -69,9 +69,16 @@ export default function JobRequest(props) {
                               <button
                                 className={"btn btn-sm"}
                                 title={"Expand"}
-                                onClick={props.onClickExpand.bind(null, item.ticket)}
+                                onClick={props.onClickExpand.bind(
+                                  null,
+                                  item.ticket
+                                )}
                               >
-                                <ExpandMoreIcon />{" "}
+                                {props.expand[item.ticket] ? (
+                                  <ExpandLessIcon />
+                                ) : (
+                                  <ExpandMoreIcon />
+                                )}
                               </button>
                               &nbsp;{item.ticket}
                             </td>

@@ -15,6 +15,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { useStyles } from "../../../common/StepperMakeStyle";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+
 const date = new Date();
 
 export default function HomePageContent(props) {
@@ -98,7 +100,11 @@ export default function HomePageContent(props) {
                                   item.job.task_id
                                 )}
                               >
-                                <ExpandMoreIcon />
+                                {props.expand[item.job.task_id] ? (
+                                  <ExpandLessIcon />
+                                ) : (
+                                  <ExpandMoreIcon />
+                                )}
                               </button>
                               {item.job.task_id}
                             </td>
