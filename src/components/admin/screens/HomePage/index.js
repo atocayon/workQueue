@@ -286,14 +286,21 @@ function AdminHomePage(props) {
   };
 
   const handleOpenWebUploadModal = (val) => {
-    console.log(val);
-    setWebUploadModal({
-      ...webUploadModal,
-      open: !webUploadModal.open,
-      web_upload_id: val.id,
-      title: val.title,
-      status: val.status,
-    });
+    if (val.status === "Done") {
+      props.web_upload_request_action(
+        props.current_user.user_id,
+        val.id,
+        val.status
+      );
+    } else {
+      setWebUploadModal({
+        ...webUploadModal,
+        open: !webUploadModal.open,
+        web_upload_id: val.id,
+        title: val.title,
+        status: val.status,
+      });
+    }
   };
 
   const handleCloseWebUploadModal = () => {
@@ -396,7 +403,9 @@ function AdminHomePage(props) {
                 <>
                   <Reports
                     data={props._fetch_admin_job_request_reports}
-                    task_per_office={props._fetch_total_task_rendered_per_office}
+                    task_per_office={
+                      props._fetch_total_task_rendered_per_office
+                    }
                   />
                 </>
               )}

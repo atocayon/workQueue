@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { useStyles } from "../../../common/StepperMakeStyle";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 export default function List(props) {
   const classes = useStyles();
 
@@ -71,31 +71,42 @@ export default function List(props) {
                   ? props.expand[list.web_upload_list.id] && (
                       <tr>
                         <td colSpan={4}>
-                        <h6><InfoOutlinedIcon/>&nbsp;Web Upload Logs</h6>
-                        <button
-                            className={"btn btn-sm btn-outline-primary"}
-                            onClick={props.handleOpenWebUploadModal.bind(null, {
-                              id: list.web_upload_list.id,
-                              title: "Update",
-                              status: "Done",
-                            })}
-                          >
-                            Mark as Done
-                          </button>
+                          <h6>
+                            <InfoOutlinedIcon />
+                            &nbsp;Web Upload Logs
+                          </h6>
+                          {list.web_upload_logs[0].status !== "Done" && (
+                            <>
+                              <button
+                                className={"btn btn-sm btn-outline-primary"}
+                                onClick={props.handleOpenWebUploadModal.bind(
+                                  null,
+                                  {
+                                    id: list.web_upload_list.id,
+                                    title: "Update",
+                                    status: "Done",
+                                  }
+                                )}
+                              >
+                                Mark as Done
+                              </button>
+                              &nbsp;&nbsp;
+                              <button
+                                className={"btn btn-sm btn-primary"}
+                                onClick={props.handleOpenWebUploadModal.bind(
+                                  null,
+                                  {
+                                    id: list.web_upload_list.id,
+                                    title: "Update",
+                                    status: "",
+                                  }
+                                )}
+                              >
+                                Update Status
+                              </button>
+                            </>
+                          )}
 
-                          &nbsp;&nbsp;
-                        <button
-                            className={"btn btn-sm btn-primary"}
-                            onClick={props.handleOpenWebUploadModal.bind(null, {
-                              id: list.web_upload_list.id,
-                              title: "Update",
-                              status: "",
-                            })}
-                          >
-                            Update Status
-                          </button>
-                         
-                          
                           <Stepper
                             activeStep={props.activeStep}
                             orientation="vertical"
