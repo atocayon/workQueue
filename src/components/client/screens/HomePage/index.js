@@ -365,6 +365,13 @@ function HomePage(props) {
                 {props.match.params.upload && (
                   <>
                     <RequestForUpload
+                      expand={expand}
+                      activeStep={activeStep}
+                      handleNext={handleNext}
+                      handleBack={handleBack}
+                      handleReset={handleReset}
+                      handleExpand={handleExpand}
+
                       onChangeHandler={webUploadOnChangeHandler}
                       onSubmitForm={onSubmitFormWebUpload}
                       error={error}

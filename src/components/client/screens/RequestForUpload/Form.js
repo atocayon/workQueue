@@ -38,8 +38,9 @@ export default function Form(props) {
       </div>
       <button
         type={"submit"}
-        className={"btn btn-info"}
+        className={"btn btn-info btn-submit-web-upload"}
         id={"submit_web_upload"}
+        title={"Submit web upload request"}
       >
         Submit
       </button>

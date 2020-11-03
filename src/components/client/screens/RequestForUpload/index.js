@@ -34,10 +34,12 @@ export default function RequestForUpload(props) {
                 <div className={"btn-web-upload-view"}>
                   <button
                     type={"button"}
-                    className={"btn btn-sm btn-info"}
+                    className={"btn btn-sm btn-info btn-selection"}
                     onClick={() => {
                       props.setWebUploadView(!props.webUploadView);
                     }}
+
+                    title={props.webUploadView ? "Add Web Upload Request" : "Web Upload List"}
                   >
                     {props.webUploadView ? <AddIcon /> : <ListIcon />}
                   </button>
@@ -53,7 +55,17 @@ export default function RequestForUpload(props) {
                   />
                 )}
 
-                {props.webUploadView && <Table data={props.web_upload_list} />}
+                {props.webUploadView && (
+                  <Table
+                    data={props.web_upload_list}
+                    expand={props.expand}
+                    activeStep={props.activeStep}
+                    handleNext={props.handleNext}
+                    handleBack={props.handleBack}
+                    handleReset={props.handleReset}
+                    handleExpand={props.handleExpand}
+                  />
+                )}
 
                 <div className={"col-md-1"}></div>
               </div>

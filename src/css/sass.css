@@ -230,12 +230,19 @@
   margin-bottom: 20vh;
 }
 .request-for-upload h3 {
-  color: #141F46;
+  color: #141f46;
   text-align: center;
 }
-.request-for-upload button {
+.request-for-upload .btn-selection {
   float: right;
   margin-top: -2vh;
+}
+.request-for-upload thead tr {
+  background-color: aliceblue;
+}
+.request-for-upload .btn-submit-web-upload {
+  width: 100%;
+  padding: 1vw;
 }
 .request-for-upload .files input {
   outline: 2px dashed #92b0b3;
@@ -336,6 +343,9 @@
   text-align: center;
 }
 
+.job-request-container {
+  overflow-x: hidden !important;
+}
 .job-request-container h3 {
   text-align: center;
 }
