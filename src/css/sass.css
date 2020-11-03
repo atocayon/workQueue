@@ -349,6 +349,9 @@
 .job-request-container h3 {
   text-align: center;
 }
+.job-request-container table {
+  margin-top: 2vh;
+}
 
 .btn-webUpload-choices-container {
   text-align: center;

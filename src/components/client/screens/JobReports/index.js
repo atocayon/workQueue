@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SortIcon from "@material-ui/icons/Sort";
 import SearchIcon from "@material-ui/icons/Search";
-
+import ExtensionOutlinedIcon from "@material-ui/icons/ExtensionOutlined";
 import TablePagination from "@material-ui/core/TablePagination";
-
+import FilterModal from "./FilterModal";
 export default function JobReports(props) {
   const [sortAsc, setSortAsc] = useState(true);
   const [page, setPage] = useState(0);
@@ -17,6 +17,7 @@ export default function JobReports(props) {
     );
     setData([..._data]);
   }, [props.data]);
+
   const sort = (e) => {
     e.preventDefault();
 
@@ -56,6 +57,12 @@ export default function JobReports(props) {
 
   return (
     <div className={"job-request-container"}>
+      <FilterModal
+        inputChange={props.inputChange}
+        filterModal={props.filterModal}
+        handleFilterJobReportsModal={props.handleFilterJobReportsModal}
+        filterJobRequestReports={props.filterJobRequestReports}
+      />
       <div className={"row"}>
         <div className={"col-md-12"}>
           <div className={"jumbotron"}>
@@ -69,8 +76,16 @@ export default function JobReports(props) {
         <div className={"col-md-10"}>
           <div className={"row"}>
             <div className={"col-md-6"}>
-              <button className={"btn"} onClick={sort}>
-                <SortIcon /> {sortAsc ? "Sort Descending" : "Sort Ascending"}
+              <button className={"btn"} onClick={props.sortJobRequestReports}>
+                <SortIcon /> {props.sort ? "Sort Descending" : "Sort Ascending"}
+              </button>
+              &nbsp;
+              <button
+                className={"btn btn-sm"}
+                onClick={props.handleFilterJobReportsModal}
+              >
+                <ExtensionOutlinedIcon />
+                &nbsp;Filter
               </button>
             </div>
             <div className={"col-md-6"}>

@@ -20,6 +20,8 @@ import { generate_code } from "../../../../redux/actions/changePassword";
 import { clear_message } from "../../../../redux/actions/clear_message";
 import { changePasswordFunction } from "../../../../redux/actions/changePassword";
 import { validateCode } from "../../../../redux/actions/changePassword";
+import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFilterJobReportsModal";
+import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../../../common/UserProfile";
@@ -51,7 +53,7 @@ function HomePage(props) {
   const [error, setError] = useState({});
   const [expand, setExpand] = useState({});
   const [activeStep, setActiveStep] = useState(0);
-
+  const [sortAsc, setSortAsc] = useState(true);
   useEffect(() => {
     setLoading(false);
     const obj = getFromStorage("work-queue");
@@ -293,6 +295,30 @@ function HomePage(props) {
     setActiveStep(0);
   };
 
+  const sortJobRequestReports = () => {
+    setSortAsc(!sortAsc);
+    if (sortAsc) {
+      return props.current_user_job_request_list.sort((a, b) => {
+        return a.item.inspector - b.item.inspector;
+      });
+    } else {
+      return props.current_user_job_request_list.sort((a, b) => {
+        return b.item.inspector - a.item.inspector;
+      });
+    }
+  };
+
+  const filterJobRequestReports = () => {
+    if (
+      props.job_reports_filter.start !== "" &&
+      props.job_reports_filter.end !== ""
+    ) {
+      props.filterJobRequestReports(props.job_reports_filter);
+
+      props.handleFilterJobReportsModal();
+    }
+  };
+
   return (
     <>
       {redirect && <Redirect to={"/client"} />}
@@ -371,7 +397,6 @@ function HomePage(props) {
                       handleBack={handleBack}
                       handleReset={handleReset}
                       handleExpand={handleExpand}
-
                       onChangeHandler={webUploadOnChangeHandler}
                       onSubmitForm={onSubmitFormWebUpload}
                       error={error}
@@ -413,7 +438,17 @@ function HomePage(props) {
 
                 {props.match.params.job && (
                   <>
-                    <JobReports data={props.current_user_job_request_list} />
+                    <JobReports
+                      data={props.current_user_job_request_list}
+                      sortJobRequestReports={sortJobRequestReports}
+                      sort={sortAsc}
+                      inputChange={props.inputChange}
+                      filterModal={props.job_reports_filter}
+                      handleFilterJobReportsModal={
+                        props.handleFilterJobReportsModal
+                      }
+                      filterJobRequestReports={filterJobRequestReports}
+                    />
                   </>
                 )}
               </Paper>
@@ -440,6 +475,7 @@ const mapStateToProps = (state) => {
     _generateCode: state.generateCode,
     _validateCode: state.validateCode,
     _changePasswordFunction: state.changePasswordFunction,
+    job_reports_filter: state.job_reports_filter,
   };
 };
 
@@ -457,6 +493,8 @@ const mapDispatchToProps = {
   clear_message,
   changePasswordFunction,
   validateCode,
+  handleFilterJobReportsModal,
+  filterJobRequestReports,
 };
 
 export default connect(

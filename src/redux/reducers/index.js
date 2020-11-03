@@ -20,6 +20,7 @@ import fetch_admin_web_upload_list from "./fetch_admin_web_upload_list";
 import fetch_admin_web_upload_request from "./fetch_admin_web_upload_request";
 import web_upload_request_action from "./web_upload_request_action";
 import fetch_total_task_rendered_per_office from "./fetch_total_task_rendered_per_office";
+import job_reports_filter from "./job_reports_filter";
 const rootReducer = combineReducers({
   current_system_user,
   login,
@@ -42,6 +43,7 @@ const rootReducer = combineReducers({
   fetch_admin_web_upload_request,
   web_upload_request_action,
   fetch_total_task_rendered_per_office,
+  job_reports_filter
 });
 
 export default rootReducer;
