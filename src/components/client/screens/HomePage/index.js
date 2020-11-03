@@ -22,12 +22,16 @@ import { changePasswordFunction } from "../../../../redux/actions/changePassword
 import { validateCode } from "../../../../redux/actions/changePassword";
 import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFilterJobReportsModal";
 import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
+import { fetch_active_users } from "../../../../redux/actions/fetch_active_users";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../../../common/UserProfile";
 import JobReports from "../JobReports";
 import CircularProgress from "../../../common/CircularProgress";
 import Reactotron from "reactotron-react-js";
+import io from "socket.io-client";
+import UserList from "../../../common/ActiveUsers";
+let socket;
 const navbarContent = ["Request for upload"];
 
 function HomePage(props) {
@@ -55,6 +59,7 @@ function HomePage(props) {
   const [activeStep, setActiveStep] = useState(0);
   const [sortAsc, setSortAsc] = useState(true);
   useEffect(() => {
+    socket = io(process.env.REACT_APP_SERVER);
     setLoading(false);
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
@@ -63,6 +68,7 @@ function HomePage(props) {
         await props.fetch_section_list();
         await props.fetch_user_job_request(obj.token);
         await props.fetch_web_upload_requests(obj.token);
+        await props.fetch_active_users(socket);
       }
 
       fetch();
@@ -453,7 +459,11 @@ function HomePage(props) {
                 )}
               </Paper>
             </div>
-            <div className={"col-md-2"}></div>
+            <div className={"col-md-2"}>
+              <div className={"userList"}>
+                <UserList users={props._fetch_active_users} />
+              </div>
+            </div>
           </div>
         </>
       )}
@@ -476,6 +486,7 @@ const mapStateToProps = (state) => {
     _validateCode: state.validateCode,
     _changePasswordFunction: state.changePasswordFunction,
     job_reports_filter: state.job_reports_filter,
+    _fetch_active_users: state.fetch_active_users,
   };
 };
 
@@ -495,6 +506,7 @@ const mapDispatchToProps = {
   validateCode,
   handleFilterJobReportsModal,
   filterJobRequestReports,
+  fetch_active_users,
 };
 
 export default connect(

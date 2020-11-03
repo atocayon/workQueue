@@ -51,7 +51,7 @@ export default function FilterModal(props) {
             Cancel
           </Button>
           <Button onClick={props.filterJobRequestReports} color="primary">
-            Confirm
+            Filter
           </Button>
         </DialogActions>
       </Dialog>
