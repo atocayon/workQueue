@@ -3,6 +3,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import SortIcon from "@material-ui/icons/Sort";
 import TablePagination from "@material-ui/core/TablePagination";
 import Reactotron from "reactotron-react-js";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Logs from "./Logs";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 export default function TableData(props) {
   const [sortAsc, setSortAsc] = useState(true);
   const [page, setPage] = useState(0);
@@ -10,8 +14,8 @@ export default function TableData(props) {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([...props.data]);
 
-  useEffect( () => {
-    if(data.length < 1){
+  useEffect(() => {
+    if (data.length < 1) {
       setData([...props.data]);
     }
   }, [data]);
@@ -43,14 +47,14 @@ export default function TableData(props) {
   const searchHandler = (e) => {
     e.preventDefault();
     console.log(search);
-    if(search !== ""){
-      const _data = props.data.filter((item) => item.inspector === search || item.task_id === search);
+    if (search !== "") {
+      const _data = props.data.filter(
+        (item) => item.inspector === search || item.task_id === search
+      );
       setData([..._data]);
-    }else{
+    } else {
       setData([...props.data]);
     }
-    
-   
   };
 
   return (
@@ -97,15 +101,65 @@ export default function TableData(props) {
           {data.length > 0 &&
             data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((item) => (
-                <tr>
-                  <td>{item.task_id}</td>
-                  <td>{item.inspector === null ? "N/A" : item.inspector}</td>
-                  <td>{item.status === null ? "N/A" : item.status}</td>
-                  <td>{item.task_start === null ? "N/A" : item.task_start}</td>
-                  <td>{item.task_end === null ? "N/A" : item.task_end}</td>
-                  <td>{item.date_requested}</td>
-                </tr>
+              .map((data) => (
+                <React.Fragment key={data.item.task_id}>
+                  <tr>
+                    <td>
+                      <button
+                        onClick={props.handleExpand.bind(
+                          null,
+                          data.item.task_id
+                        )}
+                        className={"btn btn-sm"}
+                        title={
+                          props.expand[data.item.task_id]
+                            ? "Expand Less"
+                            : "Expand More"
+                        }
+                      >
+                        {props.expand[data.item.task_id] ? (
+                          <ExpandLessIcon />
+                        ) : (
+                          <ExpandMoreIcon />
+                        )}
+                      </button>
+
+                      {data.item.task_id}
+                    </td>
+                    <td>
+                      {data.item.inspector === null
+                        ? "N/A"
+                        : data.item.inspector}
+                    </td>
+                    <td>
+                      {data.item.status === null ? "N/A" : data.item.status}
+                    </td>
+                    <td>
+                      {data.item.task_start === null
+                        ? "N/A"
+                        : data.item.task_start}
+                    </td>
+                    <td>
+                      {data.item.task_end === null ? "N/A" : data.item.task_end}
+                    </td>
+                    <td>{data.item.date_requested}</td>
+                  </tr>
+                  {props.expand[data.item.task_id] && (
+                    <tr>
+                      <td colSpan={7}>
+                        <h5><InfoOutlinedIcon/>&nbsp;Logs</h5>
+                        <Logs
+                          expand={props.expand}
+                          activeStep={props.activeStep}
+                          handleNext={props.handleNext}
+                          handleBack={props.handleBack}
+                          handleReset={props.handleReset}
+                          steps={data.logs}
+                        />
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
 
           {data.length < 1 && (

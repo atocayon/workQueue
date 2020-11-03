@@ -49,12 +49,14 @@ function HomePage(props) {
   });
   const [uploadPic, setUploadPic] = useState(null);
   const [error, setError] = useState({});
+  const [expand, setExpand] = useState({});
+  const [activeStep, setActiveStep] = useState(0);
+
   useEffect(() => {
     setLoading(false);
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
-
-      async function fetch(){
+      async function fetch() {
         await props.fetch_current_user_info(obj.token);
         await props.fetch_section_list();
         await props.fetch_user_job_request(obj.token);
@@ -62,7 +64,6 @@ function HomePage(props) {
       }
 
       fetch();
-      
 
       if (props.onSubmitJobRequest !== "") {
         if (props.onSubmitJobRequest === "success") {
@@ -137,8 +138,8 @@ function HomePage(props) {
       }
     }
 
-    if(props._changePasswordFunction !== ""){
-      if(props._changePasswordFunction === "success"){
+    if (props._changePasswordFunction !== "") {
+      if (props._changePasswordFunction === "success") {
         const variant = "info";
         props.enqueueSnackbar("Your password is now changed...", {
           variant,
@@ -147,8 +148,6 @@ function HomePage(props) {
       }
     }
 
-    
-   
     setEndSession(!(obj && obj.token));
   }, [
     props._logout,
@@ -274,6 +273,26 @@ function HomePage(props) {
     // setLoading(true);
   };
 
+  const handleExpand = (val) => {
+    if (expand[val]) {
+      setExpand({ ...expand, [val]: !expand[val] });
+    } else {
+      setExpand({ ...expand, [val]: true });
+    }
+  };
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
   return (
     <>
       {redirect && <Redirect to={"/client"} />}
@@ -312,7 +331,15 @@ function HomePage(props) {
                     <div className={"jumbotron jumbotron-container"}></div>
                     <div>
                       {/* Table*/}
-                      <TableData data={props.current_user_job_request_list} />
+                      <TableData
+                        data={props.current_user_job_request_list}
+                        handleExpand={handleExpand}
+                        expand={expand}
+                        activeStep={activeStep}
+                        handleNext={handleNext}
+                        handleBack={handleBack}
+                        handleReset={handleReset}
+                      />
                     </div>
                   </>
                 ) : (
@@ -405,7 +432,7 @@ const mapStateToProps = (state) => {
     _update_user_info: state.update_user_info,
     _generateCode: state.generateCode,
     _validateCode: state.validateCode,
-    _changePasswordFunction: state.changePasswordFunction
+    _changePasswordFunction: state.changePasswordFunction,
   };
 };
 
