@@ -2,16 +2,54 @@ import React, { useEffect, useState } from "react";
 import SortIcon from "@material-ui/icons/Sort";
 import SearchIcon from "@material-ui/icons/Search";
 import ExtensionOutlinedIcon from "@material-ui/icons/ExtensionOutlined";
+import SaveAlt from "@material-ui/icons/SaveAlt";
 import TablePagination from "@material-ui/core/TablePagination";
 import FilterModal from "./FilterModal";
-export default function JobReports(props) {
+import * as FileSaver from "file-saver";
+import * as XLSX from "xlsx";
 
+const Excel = ({ csvData, fileName }) => {
+  let arr = [];
+  let val;
+  for (val of csvData) {
+    arr.push({
+      "Task ID": val.item.task_id,
+      "Inspector": val.item.inspector,
+      "Scope of Work": val.item.scope_of_work,
+      "Deadline": val.item.date_needed,
+      "Task Start": val.item.task_start,
+      "Task End": val.item.task_end,
+      "Date Requested": val.item.date_requested,
+    });
+  }
+  const fileType =
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+  const fileExtension = ".xlsx";
+
+  const exportToCSV = (csvData, fileName) => {
+    const ws = XLSX.utils.json_to_sheet(csvData);
+    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const data = new Blob([excelBuffer], { type: fileType });
+    FileSaver.saveAs(data, fileName + fileExtension);
+  };
+
+  return (
+    <button
+      onClick={(e) => exportToCSV(arr, fileName)}
+      title={"Download data"}
+      className={"btn btn-sm"}
+      // onClick={props.handleFilterJobReportsModal}
+    >
+      <SaveAlt />
+      &nbsp;Reports
+    </button>
+  );
+};
+
+export default function JobReports(props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
- 
-
-
-
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -21,19 +59,6 @@ export default function JobReports(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  // const searchHandler = (e) => {
-  //   e.preventDefault();
-  //   console.log(search);
-  //   if (search !== "") {
-  //     const _data = data.filter(
-  //       (item) => item.item.inspector === search || item.item.task_id === search
-  //     );
-  //     setData([..._data]);
-  //   } else {
-  //     setData([...data]);
-  //   }
-  // };
 
   return (
     <div className={"job-request-container"}>
@@ -56,17 +81,28 @@ export default function JobReports(props) {
         <div className={"col-md-10"}>
           <div className={"row"}>
             <div className={"col-md-6"}>
-              <button className={"btn"} onClick={props.sort.bind(null, props._sort === "asc" ? "dsc" : "asc")}>
-                <SortIcon /> {props._sort === "asc" ? "Sort Descending" : "Sort Ascending"}
+              <button
+                title={"Sort data"}
+                className={"btn"}
+                onClick={props.sort.bind(
+                  null,
+                  props._sort === "asc" ? "dsc" : "asc"
+                )}
+              >
+                <SortIcon />{" "}
+                {props._sort === "asc" ? "Sort Descending" : "Sort Ascending"}
               </button>
               &nbsp;
               <button
+                title={"Filter data"}
                 className={"btn btn-sm"}
                 onClick={props.handleFilterJobReportsModal}
               >
                 <ExtensionOutlinedIcon />
                 &nbsp;Filter
               </button>
+              &nbsp;
+              <Excel csvData={props.data} fileName={"Job Reports"} />
             </div>
             <div className={"col-md-6"}>
               <form>

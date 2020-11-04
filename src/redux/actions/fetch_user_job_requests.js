@@ -18,6 +18,7 @@ const fetch_user_job_request = (user_id) => {
           type: actionTypes.FETCH_USER_JOB_REQUEST,
           data: arr,
         });
+        
       })
       .catch((err) => {
         throw err;
