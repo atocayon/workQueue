@@ -6,34 +6,11 @@ import Reactotron from "reactotron-react-js";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Logs from "./Logs";
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 export default function TableData(props) {
-  const [sortAsc, setSortAsc] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [search, setSearch] = useState("");
-  const [data, setData] = useState([...props.data]);
-
-  useEffect(() => {
-    if (data.length < 1) {
-      setData([...props.data]);
-    }
-  }, [data]);
-  const sort = (e) => {
-    e.preventDefault();
-
-    setSortAsc(!sortAsc);
-    Reactotron.log(sortAsc);
-    if (sortAsc) {
-      return props.data.sort((a, b) => {
-        return a.inspector - b.inspector;
-      });
-    } else {
-      return props.data.sort((a, b) => {
-        return b.inspector - a.inspector;
-      });
-    }
-  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -44,30 +21,24 @@ export default function TableData(props) {
     setPage(0);
   };
 
-  const searchHandler = (e) => {
-    e.preventDefault();
-    console.log(search);
-    if (search !== "") {
-      const _data = props.data.filter(
-        (item) => item.inspector === search || item.task_id === search
-      );
-      setData([..._data]);
-    } else {
-      setData([...props.data]);
-    }
-  };
-
   return (
     <div className={"table-data"}>
       <div className={"row"}>
         <div className={"col-md-6"}>
-          <button className={"btn"} onClick={sort}>
-            <SortIcon /> {sortAsc ? "Sort Descending" : "Sort Ascending"}
+          <button
+            className={"btn"}
+            onClick={props.sort.bind(
+              null,
+              props._sort === "asc" ? "dsc" : "asc"
+            )}
+          >
+            <SortIcon />{" "}
+            {props._sort === "asc" ? "Sort Descending" : "Sort Ascending"}
           </button>
         </div>
 
         <div className={"col-md-6"}>
-          <form onSubmit={searchHandler}>
+          <form >
             <div className={"input-group"}>
               <div className={"input-group-prepend"}>
                 <button type={"submit"} className={"btn btn-outline-info"}>
@@ -77,9 +48,9 @@ export default function TableData(props) {
               <input
                 type={"text"}
                 className={"form-control"}
-                onChange={({ target }) => {
-                  setSearch(target.value);
-                }}
+                // onChange={({ target }) => {
+                //   setSearch(target.value);
+                // }}
                 placeholder={"Search Task Id or Inpector..."}
               />
             </div>
@@ -98,8 +69,8 @@ export default function TableData(props) {
           </tr>
         </thead>
         <tbody>
-          {data.length > 0 &&
-            data
+          {props.data.length > 0 &&
+            props.data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((data) => (
                 <React.Fragment key={data.item.task_id}>
@@ -147,7 +118,10 @@ export default function TableData(props) {
                   {props.expand[data.item.task_id] && (
                     <tr>
                       <td colSpan={7}>
-                        <h5><InfoOutlinedIcon/>&nbsp;Logs</h5>
+                        <h5>
+                          <InfoOutlinedIcon />
+                          &nbsp;Logs
+                        </h5>
                         <Logs
                           expand={props.expand}
                           activeStep={props.activeStep}
@@ -162,7 +136,7 @@ export default function TableData(props) {
                 </React.Fragment>
               ))}
 
-          {data.length < 1 && (
+          {props.data.length < 1 && (
             <tr>
               <td colSpan={6} style={{ textAlign: "center" }}>
                 No data found
@@ -174,7 +148,7 @@ export default function TableData(props) {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={data.length}
+        count={props.data.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

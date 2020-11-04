@@ -23,6 +23,7 @@ import { validateCode } from "../../../../redux/actions/changePassword";
 import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFilterJobReportsModal";
 import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
 import { fetch_active_users } from "../../../../redux/actions/fetch_active_users";
+import { sort } from "../../../../redux/actions/sort";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../../../common/UserProfile";
@@ -371,6 +372,8 @@ function HomePage(props) {
                         handleNext={handleNext}
                         handleBack={handleBack}
                         handleReset={handleReset}
+                        _sort={props._sort}
+                        sort={props.sort}
                       />
                     </div>
                   </>
@@ -454,6 +457,8 @@ function HomePage(props) {
                         props.handleFilterJobReportsModal
                       }
                       filterJobRequestReports={filterJobRequestReports}
+                      _sort={props._sort}
+                      sort={props.sort}
                     />
                   </>
                 )}
@@ -487,6 +492,7 @@ const mapStateToProps = (state) => {
     _changePasswordFunction: state.changePasswordFunction,
     job_reports_filter: state.job_reports_filter,
     _fetch_active_users: state.fetch_active_users,
+    _sort: state.sort,
   };
 };
 
@@ -507,6 +513,7 @@ const mapDispatchToProps = {
   handleFilterJobReportsModal,
   filterJobRequestReports,
   fetch_active_users,
+  sort,
 };
 
 export default connect(
