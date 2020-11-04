@@ -38,7 +38,7 @@ export default function TableData(props) {
         </div>
 
         <div className={"col-md-6"}>
-          <form >
+          <form>
             <div className={"input-group"}>
               <div className={"input-group-prepend"}>
                 <button type={"submit"} className={"btn btn-outline-info"}>
@@ -48,9 +48,7 @@ export default function TableData(props) {
               <input
                 type={"text"}
                 className={"form-control"}
-                // onChange={({ target }) => {
-                //   setSearch(target.value);
-                // }}
+                onChange={props.search}
                 placeholder={"Search Task Id or Inpector..."}
               />
             </div>

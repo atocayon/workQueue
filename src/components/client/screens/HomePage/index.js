@@ -24,6 +24,7 @@ import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFil
 import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
 import { fetch_active_users } from "../../../../redux/actions/fetch_active_users";
 import { sort } from "../../../../redux/actions/sort";
+import {search} from "../../../../redux/actions/search";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../../../common/UserProfile";
@@ -374,6 +375,7 @@ function HomePage(props) {
                         handleReset={handleReset}
                         _sort={props._sort}
                         sort={props.sort}
+                        search={props.search}
                       />
                     </div>
                   </>
@@ -459,6 +461,8 @@ function HomePage(props) {
                       filterJobRequestReports={filterJobRequestReports}
                       _sort={props._sort}
                       sort={props.sort}
+                      search={props.search}
+
                     />
                   </>
                 )}
@@ -514,6 +518,7 @@ const mapDispatchToProps = {
   filterJobRequestReports,
   fetch_active_users,
   sort,
+  search
 };
 
 export default connect(

@@ -80,9 +80,7 @@ export default function JobReports(props) {
                     type={"text"}
                     className={"form-control"}
                     placeholder={"Search Task ID or Inspector"}
-                    // onChange={({ target }) => {
-                    //   setSearch(target.value);
-                    // }}
+                    onChange={props.search}
                   />
                 </div>
               </form>

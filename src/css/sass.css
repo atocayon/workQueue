@@ -67,6 +67,9 @@
   margin-left: 2vw;
   margin-right: 2vw;
 }
+.table-data .table {
+  margin-top: 3vh;
+}
 .table-data .table th {
   font-weight: bold;
   font-size: 14px !important;

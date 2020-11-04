@@ -12,6 +12,7 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import Dashboard from "@material-ui/icons/Dashboard";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -141,6 +142,23 @@ export default function SideBarNavigation(props) {
               </ListItem>
             </Link>
           )}
+          <Divider />
+
+          <NavLink
+            // key={list.secid}
+            activeStyle={activeStyle}
+            to={"/client"}
+            exact
+            style={{ textDecoration: "none", color: "#000" }}
+          >
+            <ListItem>
+              <ListItemIcon>
+                <Dashboard />
+              </ListItemIcon>
+              <ListItemText primary={"Dashboard"} />
+            </ListItem>
+          </NavLink>
+
           <Divider />
           <ListItem button onClick={handleClick}>
             <ListItemIcon>
