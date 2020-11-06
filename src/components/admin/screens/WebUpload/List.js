@@ -12,11 +12,19 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { useStyles } from "../../../common/StepperMakeStyle";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import TableActions from "../../../common/TableActions";
 export default function List(props) {
   const classes = useStyles();
 
   return (
     <>
+    <TableActions
+       sort={props.sort}
+       _sort={props._sort}
+       search={props.search}
+       placeholder={"Search Requisitioner or File Title"}
+    />
+    <br/>
       <table className={"table table-borderless"}>
         <thead>
           <tr>

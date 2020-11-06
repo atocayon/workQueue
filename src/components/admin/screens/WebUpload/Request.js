@@ -4,10 +4,18 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-
+import TableActions from "../../../common/TableActions";
 export default function Request(props) {
   return (
     <>
+      <TableActions
+        sort={props.sort}
+        _sort={props._sort}
+        search={props.search}
+        placeholder={"Search Requisitioner or File Title"}
+
+      />
+      <br/>
       <table className={"table table-borderless table-striped"}>
         <thead>
           <tr>
@@ -18,6 +26,13 @@ export default function Request(props) {
           </tr>
         </thead>
         <tbody>
+        {props.data.length === 0 && (
+            <tr>
+              <td colSpan={4} style={{ textAlign: "center" }}>
+                No web upload request found
+              </td>
+            </tr>
+          )}
           {props.data.map((item) => (
             <React.Fragment key={item.web_upload_list.id}>
               <tr>

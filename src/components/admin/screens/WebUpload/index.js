@@ -85,6 +85,9 @@ export default function WebUpload(props) {
                 handleBack={props.handleBack}
                 handleReset={props.handleReset}
                 handleOpenWebUploadModal={props.handleOpenWebUploadModal}
+                sort={props.sort}
+                _sort={props._sort}
+                search={props.search}
                 
               />
             </>
@@ -97,6 +100,9 @@ export default function WebUpload(props) {
                 expand={props.expand}
                 onClickExpand={props.onClickExpand}
                 handleOpenWebUploadModal={props.handleOpenWebUploadModal}
+                sort={props.sort}
+                _sort={props._sort}
+                search={props.search}
               />
             </>
           )}

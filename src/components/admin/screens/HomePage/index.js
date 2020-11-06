@@ -469,6 +469,9 @@ function AdminHomePage(props) {
                       handleNext={handleNext}
                       handleBack={handleBack}
                       handleReset={handleReset}
+                      sort={props.sort}
+                      _sort={props._sort}
+                      search={props.search}
                     />
                   </>
                 )}
