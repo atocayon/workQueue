@@ -7,7 +7,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import RemarksModal from "../../../common/RemarksModal";
 import Logs from "./Logs";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-
+import TableActions from "../../../common/TableActions";
 const date = new Date();
 
 export default function HomePageContent(props) {
@@ -41,6 +41,16 @@ export default function HomePageContent(props) {
                 handleSubmit={props.handleSubmit}
                 error={props.error}
               />
+
+              <TableActions
+                sort={props.sort}
+                _sort={props._sort}
+                search={props.search}
+                placeholder={"Search Task ID"}
+              />
+
+              <br />
+
               <table className={"table table-borderless table-striped "}>
                 <thead>
                   <tr>

@@ -20,18 +20,18 @@ const fetch_user_job_request = (state = defaultState, action) => {
 
     case actionTypes.SORT:
       if (action.data === "asc") {
-        return state.sort((a, b) => {
+        return [...state].sort((a, b) => {
           return a.item.inspector - b.item.inspector;
         });
       } else {
-        return state.sort((a, b) => {
+        return [...state].sort((a, b) => {
           return b.item.inspector - a.item.inspector;
         });
       }
 
     case actionTypes.SEARCH:
       if (action.data !== "") {
-        return state.filter((item) => {
+        return [...state].filter((item) => {
           if (
             item.item.inspector.charAt(0) === action.data.charAt(0) ||
             item.item.task_id.charAt(0) === action.data.charAt(0) ||

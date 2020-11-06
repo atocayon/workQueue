@@ -33,6 +33,12 @@ import { fetch_admin_web_upload_list } from "../../../../redux/actions/fetch_web
 import { fetch_admin_web_upload_request } from "../../../../redux/actions/fetch_web_upload_requests";
 import { web_upload_request_action } from "../../../../redux/actions/web_upload_request_action";
 import { fetch_total_task_rendered_per_office } from "../../../../redux/actions/fetch_total_task_rendered_per_office";
+import { fetch_active_users } from "../../../../redux/actions/fetch_active_users";
+import { sort } from "../../../../redux/actions/sort";
+import { search } from "../../../../redux/actions/search";
+import ActiveUsers from "../../../common/ActiveUsers";
+import io from "socket.io-client";
+let socket;
 function AdminHomePage(props) {
   const [loading, setLoading] = useState(true);
   const [endSession, setEndSession] = useState(false);
@@ -65,6 +71,7 @@ function AdminHomePage(props) {
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
+    socket = io(process.env.REACT_APP_SERVER);
     const obj = getFromStorage("work-queue");
     if (obj && obj.token) {
       props.fetch_current_user_info(obj.token);
@@ -74,6 +81,7 @@ function AdminHomePage(props) {
       props.fetch_admin_web_upload_list(obj.token);
       props.fetch_admin_web_upload_request();
       props.fetch_total_task_rendered_per_office(obj.token);
+      props.fetch_active_users(socket);
     }
     setLoading(false);
     setEndSession(!(obj && obj.token));
@@ -376,6 +384,9 @@ function AdminHomePage(props) {
                     handleNext={handleNext}
                     handleBack={handleBack}
                     handleReset={handleReset}
+                    sort={props.sort}
+                    _sort={props._sort}
+                    search={props.search}
                   />
                 </>
               )}
@@ -457,7 +468,9 @@ function AdminHomePage(props) {
                 )}
             </Paper>
           </div>
-          <div className={"col-md-2"}></div>
+          <div className={"col-md-2"}>
+            <ActiveUsers users={props._fetch_active_users} />
+          </div>
         </div>
       )}
     </>
@@ -481,6 +494,8 @@ const mapStateToProps = (state) => {
     _web_upload_request_action: state.web_upload_request_action,
     _fetch_total_task_rendered_per_office:
       state.fetch_total_task_rendered_per_office,
+    _fetch_active_users: state.fetch_active_users,
+    _sort: state.sort
   };
 };
 
@@ -500,6 +515,9 @@ const mapDispatchToProps = {
   fetch_admin_web_upload_request,
   web_upload_request_action,
   fetch_total_task_rendered_per_office,
+  fetch_active_users,
+  sort,
+  search,
 };
 
 export default connect(
