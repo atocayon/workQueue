@@ -27,7 +27,7 @@ const fetch_admin_web_upload_list = (validator) => {
           });
         }
 
-        dispatch({ type: actionTypes.FETCH_ADMIN_WEB_UPLOAD_LIST, data: arr });
+        dispatch({ type: actionTypes.FETCH_ADMIN_WEB_UPLOAD_LIST, data: [...arr] });
       })
       .catch((err) => {
         throw err;
@@ -60,7 +60,7 @@ const fetch_admin_web_upload_request = () => {
 
         dispatch({
           type: actionTypes.FETCH_ADMIN_WEB_UPLOAD_REQUESTS,
-          data: arr,
+          data: [...arr],
         });
       })
       .catch((err) => {
@@ -99,7 +99,7 @@ const fetch_web_upload_requests = (user_id) => {
 
     dispatch({
       type: actionTypes.FETCH_WEB_UPLOAD_REQUESTS,
-      data: arr,
+      data: [...arr],
     });
   };
 };

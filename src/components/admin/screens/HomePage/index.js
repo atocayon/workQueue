@@ -39,6 +39,7 @@ import { search } from "../../../../redux/actions/search";
 import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFilterJobReportsModal";
 import { inputChange } from "../../../../redux/actions/inputChange";
 import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
+import { fetch_total_task_rendered } from "../../../../redux/actions/fetch_total_task_rendered";
 import ActiveUsers from "../../../common/ActiveUsers";
 import io from "socket.io-client";
 let socket;
@@ -84,6 +85,7 @@ function AdminHomePage(props) {
       props.fetch_admin_web_upload_list(obj.token);
       props.fetch_admin_web_upload_request();
       props.fetch_total_task_rendered_per_office(obj.token);
+      props.fetch_total_task_rendered(obj.token);
       props.fetch_active_users(socket);
     }
     setLoading(false);
@@ -432,6 +434,7 @@ function AdminHomePage(props) {
                     filterModal={props.job_reports_filter}
                     inputChange={props.inputChange}
                     filterJobRequestReports={props.filterJobRequestReports}
+                    task_rendered={props._fetch_total_task_rendered}
                   />
                 </>
               )}
@@ -512,6 +515,7 @@ const mapStateToProps = (state) => {
     _web_upload_request_action: state.web_upload_request_action,
     _fetch_total_task_rendered_per_office:
       state.fetch_total_task_rendered_per_office,
+    _fetch_total_task_rendered: state.fetch_total_task_rendered,
     _fetch_active_users: state.fetch_active_users,
     _sort: state.sort,
     job_reports_filter: state.job_reports_filter,
@@ -534,6 +538,7 @@ const mapDispatchToProps = {
   fetch_admin_web_upload_request,
   web_upload_request_action,
   fetch_total_task_rendered_per_office,
+  fetch_total_task_rendered,
   fetch_active_users,
   sort,
   search,

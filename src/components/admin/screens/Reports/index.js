@@ -72,14 +72,17 @@ export default function Reports(props) {
             <>
               <div className={"reports-gui-container"}>
                 <div className={"row"}>
-                  <div className={"col-md-6"}>
+                
+                  <div className={"col-md-12"}>
+                  <div style={{height: "5vh"}}></div>
                     <CanvasJSChart
-                      options={spline([], "Number of Job Rendered")}
+                      options={spline(props.task_rendered, "Number of Job Rendered")}
                       /* onRef={ref => this.chart = ref} */
                     />
                   </div>
-
-                  <div className={"col-md-6"}>
+                  
+                  <div className={"col-md-12"}>
+                  <div style={{height: "5vh"}}></div>
                     <CanvasJSChart
                       options={pie(
                         props.task_per_office,
