@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
-import InputField from "../../../common/textField/InputField";
+import InputField from "../textField/InputField";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -50,7 +50,13 @@ export default function FilterReportsModal(props) {
           <Button onClick={props.handleFilterJobReportsModal} color="primary">
             Cancel
           </Button>
-          <Button onClick={props.filterJobRequestReports} color="primary">
+          <Button
+            onClick={() => {
+              props.filterJobRequestReports(props.filterModal);
+              props.handleFilterJobReportsModal();
+            }}
+            color="primary"
+          >
             Filter
           </Button>
         </DialogActions>

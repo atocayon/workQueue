@@ -26,6 +26,19 @@ const fetch_admin_job_request_reports = (state = [], action) => {
           return item;
         }
       });
+
+    case actionTypes.FILTER_JOB_REQUEST_REPORTS:
+      const filter_start = new Date(action.data.start);
+      const filter_end = new Date(action.data.end);
+      return [...state].filter((item) => {
+        let start = new Date(item.data.date_start);
+        let end = new Date(item.data.date_end);
+
+        return (
+          filter_start.toISOString() >= start.toISOString() &&
+          filter_end.toISOString() <= end.toISOString()
+        );
+      });
     default:
       return state;
   }

@@ -36,6 +36,9 @@ import { fetch_total_task_rendered_per_office } from "../../../../redux/actions/
 import { fetch_active_users } from "../../../../redux/actions/fetch_active_users";
 import { sort } from "../../../../redux/actions/sort";
 import { search } from "../../../../redux/actions/search";
+import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFilterJobReportsModal";
+import { inputChange } from "../../../../redux/actions/inputChange";
+import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
 import ActiveUsers from "../../../common/ActiveUsers";
 import io from "socket.io-client";
 let socket;
@@ -423,6 +426,12 @@ function AdminHomePage(props) {
                     sort={props.sort}
                     _sort={props._sort}
                     search={props.search}
+                    handleFilterJobReportsModal={
+                      props.handleFilterJobReportsModal
+                    }
+                    filterModal={props.job_reports_filter}
+                    inputChange={props.inputChange}
+                    filterJobRequestReports={props.filterJobRequestReports}
                   />
                 </>
               )}
@@ -504,7 +513,8 @@ const mapStateToProps = (state) => {
     _fetch_total_task_rendered_per_office:
       state.fetch_total_task_rendered_per_office,
     _fetch_active_users: state.fetch_active_users,
-    _sort: state.sort
+    _sort: state.sort,
+    job_reports_filter: state.job_reports_filter,
   };
 };
 
@@ -527,6 +537,9 @@ const mapDispatchToProps = {
   fetch_active_users,
   sort,
   search,
+  handleFilterJobReportsModal,
+  inputChange,
+  filterJobRequestReports,
 };
 
 export default connect(

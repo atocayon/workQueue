@@ -316,16 +316,16 @@ function HomePage(props) {
     }
   };
 
-  const filterJobRequestReports = () => {
-    if (
-      props.job_reports_filter.start !== "" &&
-      props.job_reports_filter.end !== ""
-    ) {
-      props.filterJobRequestReports(props.job_reports_filter);
+  // const filterJobRequestReports = () => {
+  //   if (
+  //     props.job_reports_filter.start !== "" &&
+  //     props.job_reports_filter.end !== ""
+  //   ) {
+  //     props.filterJobRequestReports(props.job_reports_filter);
 
-      props.handleFilterJobReportsModal();
-    }
-  };
+  //     props.handleFilterJobReportsModal();
+  //   }
+  // };
 
   return (
     <>
@@ -458,7 +458,7 @@ function HomePage(props) {
                       handleFilterJobReportsModal={
                         props.handleFilterJobReportsModal
                       }
-                      filterJobRequestReports={filterJobRequestReports}
+                      filterJobRequestReports={props.filterJobRequestReports}
                       _sort={props._sort}
                       sort={props.sort}
                       search={props.search}

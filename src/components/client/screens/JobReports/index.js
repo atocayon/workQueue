@@ -87,8 +87,6 @@ export default function JobReports(props) {
             data={props.data}
           />
 
-          <Excel csvData={props.data} fileName={"Job Reports"} />
-
           <table className={"table table-hover table-borderless"}>
             <thead>
               <tr>

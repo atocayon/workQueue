@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { spline } from "../../../common/Chart";
 import { pie } from "../../../common/Chart";
 import TableActions from "../../../common/TableActions";
+import FilterReportModal from "../../../common/FilterReportsModal";
 import Reactotron from "reactotron-react-js";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
@@ -100,14 +101,27 @@ export default function Reports(props) {
 
                   <div className={"col-md-10"}>
                     <div>
+                      <FilterReportModal
+                        handleFilterJobReportsModal={
+                          props.handleFilterJobReportsModal
+                        }
+                        filterModal={props.filterModal}
+                        inputChange={props.inputChange}
+                        filterJobRequestReports={props.filterJobRequestReports}
+                      />
                       <TableActions
                         sort={props.sort}
                         _sort={props._sort}
                         search={props.search}
                         placeholder={"Search Task No. or Requisitioner"}
                         filter={true}
+                        data={props.data}
+                        fromAdmin={true}
+                        handleFilterJobReportsModal={
+                          props.handleFilterJobReportsModal
+                        }
                       />
-                      <br/>
+                      <br />
                       <table className={"table table-borderless table-striped"}>
                         <thead>
                           <tr>
