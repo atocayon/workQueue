@@ -7,6 +7,7 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Logs from "./Logs";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import TableActions from "../../../common/TableActions";
 export default function TableData(props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -23,38 +24,13 @@ export default function TableData(props) {
 
   return (
     <div className={"table-data"}>
-      <div className={"row"}>
-        <div className={"col-md-6"}>
-          <button
-            className={"btn"}
-            onClick={props.sort.bind(
-              null,
-              props._sort === "asc" ? "dsc" : "asc"
-            )}
-          >
-            <SortIcon />{" "}
-            {props._sort === "asc" ? "Sort Descending" : "Sort Ascending"}
-          </button>
-        </div>
 
-        <div className={"col-md-6"}>
-          <form>
-            <div className={"input-group"}>
-              <div className={"input-group-prepend"}>
-                <button type={"submit"} className={"btn btn-outline-info"}>
-                  <SearchIcon />
-                </button>
-              </div>
-              <input
-                type={"text"}
-                className={"form-control"}
-                onChange={props.search}
-                placeholder={"Search Task Id or Inpector..."}
-              />
-            </div>
-          </form>
-        </div>
-      </div>
+      <TableActions 
+        sort={props.sort}
+        _sort={props._sort}
+        search={props.search}
+       
+      />
       <table className={"table table-hover table-borderless"}>
         <thead>
           <tr>

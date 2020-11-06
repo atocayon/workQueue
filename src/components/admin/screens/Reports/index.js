@@ -6,6 +6,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import { spline } from "../../../common/Chart";
 import { pie } from "../../../common/Chart";
+import TableActions from "../../../common/TableActions";
 import Reactotron from "reactotron-react-js";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
@@ -99,6 +100,14 @@ export default function Reports(props) {
 
                   <div className={"col-md-10"}>
                     <div>
+                      <TableActions
+                        sort={props.sort}
+                        _sort={props._sort}
+                        search={props.search}
+                        placeholder={"Search Task No. or Requisitioner"}
+                        filter={true}
+                      />
+                      <br/>
                       <table className={"table table-borderless table-striped"}>
                         <thead>
                           <tr>

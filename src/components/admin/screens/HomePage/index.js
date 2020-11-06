@@ -407,6 +407,9 @@ function AdminHomePage(props) {
                     job_requests={props._fetch_job_requests}
                     handleChangeRemarks={handleChangeRemarks}
                     handleSubmit={handleSubmit}
+                    sort={props.sort}
+                    _sort={props._sort}
+                    search={props.search}
                   />
                 </>
               )}
@@ -417,6 +420,9 @@ function AdminHomePage(props) {
                     task_per_office={
                       props._fetch_total_task_rendered_per_office
                     }
+                    sort={props.sort}
+                    _sort={props._sort}
+                    search={props.search}
                   />
                 </>
               )}

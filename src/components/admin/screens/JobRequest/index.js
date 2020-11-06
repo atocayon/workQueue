@@ -6,7 +6,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import TablePagination from "@material-ui/core/TablePagination";
 import RemarksModal from "../../../common/RemarksModal";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-
+import TableActions from "../../../common/TableActions";
 const tableHead = ["Ticket No.", "Requisitioner", "Date Requested"];
 
 export default function JobRequest(props) {
@@ -41,6 +41,12 @@ export default function JobRequest(props) {
                 error={props.error}
               />
               <div className={"job-request-container"}>
+                <TableActions
+                  sort={props.sort}
+                  _sort={props._sort}
+                  search={props.search}
+                  placeholder={"Search Ticket No. or Requisitioner"}
+                />
                 <table className={"table table-borderless"}>
                   <thead>
                     <tr>

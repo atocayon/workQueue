@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import SortIcon from "@material-ui/icons/Sort";
 import SearchIcon from "@material-ui/icons/Search";
-import ExtensionOutlinedIcon from "@material-ui/icons/ExtensionOutlined";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import TablePagination from "@material-ui/core/TablePagination";
 import FilterModal from "./FilterModal";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
-
+import TableActions from "../../../common/TableActions";
 const Excel = ({ csvData, fileName }) => {
   let arr = [];
   let val;
   for (val of csvData) {
     arr.push({
       "Task ID": val.item.task_id,
-      "Inspector": val.item.inspector,
+      Inspector: val.item.inspector,
       "Scope of Work": val.item.scope_of_work,
-      "Deadline": val.item.date_needed,
+      Deadline: val.item.date_needed,
       "Task Start": val.item.task_start,
       "Task End": val.item.task_end,
       "Date Requested": val.item.date_requested,
@@ -79,49 +78,17 @@ export default function JobReports(props) {
         </div>
         <div className={"col-md-1"}></div>
         <div className={"col-md-10"}>
-          <div className={"row"}>
-            <div className={"col-md-6"}>
-              <button
-                title={"Sort data"}
-                className={"btn"}
-                onClick={props.sort.bind(
-                  null,
-                  props._sort === "asc" ? "dsc" : "asc"
-                )}
-              >
-                <SortIcon />{" "}
-                {props._sort === "asc" ? "Sort Descending" : "Sort Ascending"}
-              </button>
-              &nbsp;
-              <button
-                title={"Filter data"}
-                className={"btn btn-sm"}
-                onClick={props.handleFilterJobReportsModal}
-              >
-                <ExtensionOutlinedIcon />
-                &nbsp;Filter
-              </button>
-              &nbsp;
-              <Excel csvData={props.data} fileName={"Job Reports"} />
-            </div>
-            <div className={"col-md-6"}>
-              <form>
-                <div className={"input-group"}>
-                  <div className={"input-group-prepend"}>
-                    <button type={"submit"} className={"btn btn-outline-info"}>
-                      <SearchIcon />
-                    </button>
-                  </div>
-                  <input
-                    type={"text"}
-                    className={"form-control"}
-                    placeholder={"Search Task ID or Inspector"}
-                    onChange={props.search}
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
+          <TableActions
+            sort={props.sort}
+            _sort={props._sort}
+            search={props.search}
+            filter={true}
+            handleFilterJobReportsModal={props.handleFilterJobReportsModal}
+            data={props.data}
+          />
+
+          <Excel csvData={props.data} fileName={"Job Reports"} />
+
           <table className={"table table-hover table-borderless"}>
             <thead>
               <tr>
