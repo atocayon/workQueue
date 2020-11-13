@@ -24,12 +24,10 @@ export default function TableData(props) {
 
   return (
     <div className={"table-data"}>
-
-      <TableActions 
+      <TableActions
         sort={props.sort}
         _sort={props._sort}
         search={props.search}
-       
       />
       <table className={"table table-hover table-borderless"}>
         <thead>
@@ -45,6 +43,7 @@ export default function TableData(props) {
         <tbody>
           {props.data.length > 0 &&
             props.data
+              .filter((data) => data.item.status !== "Confirmed")
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((data) => (
                 <React.Fragment key={data.item.task_id}>
@@ -96,6 +95,22 @@ export default function TableData(props) {
                           <InfoOutlinedIcon />
                           &nbsp;Logs
                         </h5>
+                        {data.item.status === "Done" && (
+                          <>
+                            <button
+                              className={"btn btn-success btn-sm"}
+                              onClick={props.handleConfirmJob.bind(null, {
+                                task_id: data.item.task_id,
+                                status: "Confirmed",
+                                remarks: "Done",
+                              })}
+                            >
+                              Confirm Job
+                            </button>
+                            <br />
+                            <br />
+                          </>
+                        )}
                         <Logs
                           expand={props.expand}
                           activeStep={props.activeStep}
@@ -110,13 +125,15 @@ export default function TableData(props) {
                 </React.Fragment>
               ))}
 
-          {props.data.length < 1 && (
+          {props.data.length < 1 ||
+          props.data.filter((item) => item.item.status !== "Confirmed")
+            .length === 0 ? (
             <tr>
               <td colSpan={6} style={{ textAlign: "center" }}>
                 No data found
               </td>
             </tr>
-          )}
+          ) : null}
         </tbody>
       </table>
       <TablePagination

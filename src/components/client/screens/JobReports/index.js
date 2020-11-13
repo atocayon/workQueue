@@ -102,8 +102,8 @@ export default function JobReports(props) {
             <tbody>
               {props.data.length > 0 &&
                 props.data
-                .filter(item => item.item.task_end !== null)  
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .filter((item) => item.item.status === "Confirmed")
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((item, index) => (
                     <tr key={index}>
                       <td>{item.item.task_id}</td>
@@ -116,13 +116,15 @@ export default function JobReports(props) {
                     </tr>
                   ))}
 
-              {props.data.length < 1 && (
+              {props.data.length < 1 ||
+              props.data.filter((item) => item.item.status === "Confirmed")
+                .length === 0 ? (
                 <tr>
                   <td colSpan={7} style={{ textAlign: "center" }}>
                     No data found
                   </td>
                 </tr>
-              )}
+              ) : null}
             </tbody>
           </table>
           <TablePagination

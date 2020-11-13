@@ -24,7 +24,8 @@ import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFil
 import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
 import { fetch_active_users } from "../../../../redux/actions/fetch_active_users";
 import { sort } from "../../../../redux/actions/sort";
-import {search} from "../../../../redux/actions/search";
+import { search } from "../../../../redux/actions/search";
+import { handleConfirmJob } from "../../../../redux/actions/handleConfirmJob";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../../../common/UserProfile";
@@ -158,6 +159,16 @@ function HomePage(props) {
       }
     }
 
+    if (props._handleConfirmJob !== "") {
+      if (props._handleConfirmJob === "success") {
+        const variant = "info";
+        props.enqueueSnackbar("Job request is now moved to your history...", {
+          variant,
+        });
+        props.clear_message();
+      }
+    }
+
     setEndSession(!(obj && obj.token));
   }, [
     props._logout,
@@ -168,6 +179,7 @@ function HomePage(props) {
     props._generateCode,
     props._validateCode,
     props._changePasswordFunction,
+    props._handleConfirmJob,
     loading,
   ]);
 
@@ -356,7 +368,7 @@ function HomePage(props) {
               />
             </div>
             <div className={"col-md-8"}>
-              <Paper elevation={3} className={"paper content-container"}>
+              <Paper elevation={2} className={"paper content-container"}>
                 {!props.match.params.office &&
                 !props.match.params.upload &&
                 !props.match.params.user &&
@@ -376,6 +388,7 @@ function HomePage(props) {
                         _sort={props._sort}
                         sort={props.sort}
                         search={props.search}
+                        handleConfirmJob={props.handleConfirmJob}
                       />
                     </div>
                   </>
@@ -462,7 +475,6 @@ function HomePage(props) {
                       _sort={props._sort}
                       sort={props.sort}
                       search={props.search}
-
                     />
                   </>
                 )}
@@ -497,6 +509,7 @@ const mapStateToProps = (state) => {
     job_reports_filter: state.job_reports_filter,
     _fetch_active_users: state.fetch_active_users,
     _sort: state.sort,
+    _handleConfirmJob: state.handleConfirmJob,
   };
 };
 
@@ -518,7 +531,8 @@ const mapDispatchToProps = {
   filterJobRequestReports,
   fetch_active_users,
   sort,
-  search
+  search,
+  handleConfirmJob,
 };
 
 export default connect(

@@ -22,6 +22,7 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import PrintIcon from "@material-ui/icons/Print";
 import InfoIcon from "@material-ui/icons/Info";
 import Reactotron from "reactotron-react-js";
+import HistoryIcon from '@material-ui/icons/History';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "none",
@@ -210,9 +211,9 @@ export default function SideBarNavigation(props) {
           >
             <ListItem>
               <ListItemIcon>
-                <PrintIcon />
+                <HistoryIcon />
               </ListItemIcon>
-              <ListItemText primary={"Generate reports"} />
+              <ListItemText primary={"History"} />
             </ListItem>
           </NavLink>
 

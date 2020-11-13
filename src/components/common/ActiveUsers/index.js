@@ -74,7 +74,7 @@ export default function ActiveUsers(props) {
       {props.users.length > 0 && (
         <h6
           style={{
-            paddingTop: "10vh",
+            paddingTop: "15vh",
             paddingLeft: 10,
             paddingBottom: 30,
             fontWeight: "bold",
@@ -86,7 +86,7 @@ export default function ActiveUsers(props) {
           &nbsp;Active Users
         </h6>
       )}
-      <List  className={classes.root} subheader={<li />}>
+      <List className={classes.root} subheader={<li />}>
         {props.users.map((item) => (
           <ListItem alignItems="flex-start" key={item.user_id}>
             <ListItemAvatar>

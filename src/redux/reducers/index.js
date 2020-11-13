@@ -24,6 +24,7 @@ import job_reports_filter from "./job_reports_filter";
 import fetch_active_users from "./fetch_active_users";
 import sort from "./sort";
 import fetch_total_task_rendered from "./fetch_total_task_rendered";
+import handleConfirmJob from "./handleConfirmJob";
 const rootReducer = combineReducers({
   current_system_user,
   login,
@@ -49,7 +50,8 @@ const rootReducer = combineReducers({
   fetch_total_task_rendered,
   job_reports_filter,
   fetch_active_users,
-  sort
+  sort,
+  handleConfirmJob,
 });
 
 export default rootReducer;
