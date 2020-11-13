@@ -475,6 +475,12 @@ function HomePage(props) {
                       _sort={props._sort}
                       sort={props.sort}
                       search={props.search}
+                      handleExpand={handleExpand}
+                      expand={expand}
+                      activeStep={activeStep}
+                      handleNext={handleNext}
+                      handleBack={handleBack}
+                      handleReset={handleReset}
                     />
                   </>
                 )}

@@ -7,44 +7,10 @@ import FilterModal from "./FilterModal";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import TableActions from "../../../common/TableActions";
-const Excel = ({ csvData, fileName }) => {
-  let arr = [];
-  let val;
-  for (val of csvData) {
-    arr.push({
-      "Task ID": val.item.task_id,
-      Inspector: val.item.inspector,
-      "Scope of Work": val.item.scope_of_work,
-      Deadline: val.item.date_needed,
-      "Task Start": val.item.task_start,
-      "Task End": val.item.task_end,
-      "Date Requested": val.item.date_requested,
-    });
-  }
-  const fileType =
-    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
-  const fileExtension = ".xlsx";
-
-  const exportToCSV = (csvData, fileName) => {
-    const ws = XLSX.utils.json_to_sheet(csvData);
-    const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
-    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
-    const data = new Blob([excelBuffer], { type: fileType });
-    FileSaver.saveAs(data, fileName + fileExtension);
-  };
-
-  return (
-    <button
-      onClick={(e) => exportToCSV(arr, fileName)}
-      title={"Download data"}
-      className={"btn btn-sm"}
-      // onClick={props.handleFilterJobReportsModal}
-    >
-      <SaveAlt />
-      &nbsp;Reports
-    </button>
-  );
-};
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import Logs from "./Logs";
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 
 export default function JobReports(props) {
   const [page, setPage] = useState(0);
@@ -90,6 +56,7 @@ export default function JobReports(props) {
           <table className={"table table-hover table-borderless"}>
             <thead>
               <tr>
+                <th></th>
                 <th>Task ID</th>
                 <th>Inspector</th>
                 <th>Scope of work</th>
@@ -105,15 +72,51 @@ export default function JobReports(props) {
                   .filter((item) => item.item.status === "Confirmed")
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.item.task_id}</td>
-                      <td>{item.item.inspector}</td>
-                      <td>{item.item.scope_of_work}</td>
-                      <td>{item.item.date_needed}</td>
-                      <td>{item.item.task_start}</td>
-                      <td>{item.item.task_end}</td>
-                      <td>{item.item.date_requested}</td>
-                    </tr>
+                    <React.Fragment key={index}>
+                      <tr>
+                        <td>
+                          <button
+                            className={"btn btn-sm"}
+                            onClick={props.handleExpand.bind(
+                              null,
+                              item.item.task_id
+                            )}
+                          >
+                            {props.expand[item.item.task_id] ? (
+                              <ExpandLessIcon />
+                            ) : (
+                              <ExpandMoreIcon />
+                            )}
+                          </button>
+                        </td>
+                        <td>{item.item.task_id}</td>
+                        <td>{item.item.inspector}</td>
+                        <td>{item.item.scope_of_work}</td>
+                        <td>{item.item.date_needed}</td>
+                        <td>{item.item.task_start}</td>
+                        <td>{item.item.task_end}</td>
+                        <td>{item.item.date_requested}</td>
+                      </tr>
+
+                      {props.expand[item.item.task_id] && (
+                        <tr>
+                          <td colSpan={8}>
+                            <h5>
+                              <InfoOutlinedIcon />
+                              &nbsp;Logs
+                            </h5>
+                            <Logs
+                              expand={props.expand}
+                              activeStep={props.activeStep}
+                              handleNext={props.handleNext}
+                              handleBack={props.handleBack}
+                              handleReset={props.handleReset}
+                              steps={item.logs}
+                            />
+                          </td>
+                        </tr>
+                      )}
+                    </React.Fragment>
                   ))}
 
               {props.data.length < 1 ||

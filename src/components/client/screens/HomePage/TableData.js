@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Logs from "./Logs";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import TableActions from "../../../common/TableActions";
+import DoneIcon from "@material-ui/icons/Done";
 export default function TableData(props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -95,7 +96,8 @@ export default function TableData(props) {
                           <InfoOutlinedIcon />
                           &nbsp;Logs
                         </h5>
-                        {data.item.status === "Done" && (
+                        {data.item.status === "Done" &&
+                        data.item.task_end !== null ? (
                           <>
                             <button
                               className={"btn btn-success btn-sm"}
@@ -105,12 +107,13 @@ export default function TableData(props) {
                                 remarks: "Done",
                               })}
                             >
-                              Confirm Job
+                              <DoneIcon />
+                              &nbsp; Confirm Job Done
                             </button>
                             <br />
                             <br />
                           </>
-                        )}
+                        ) : null}
                         <Logs
                           expand={props.expand}
                           activeStep={props.activeStep}
