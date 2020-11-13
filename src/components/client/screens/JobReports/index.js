@@ -102,7 +102,8 @@ export default function JobReports(props) {
             <tbody>
               {props.data.length > 0 &&
                 props.data
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .filter(item => item.item.task_end !== null)  
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((item, index) => (
                     <tr key={index}>
                       <td>{item.item.task_id}</td>
