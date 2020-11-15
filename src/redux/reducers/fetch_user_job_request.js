@@ -35,12 +35,18 @@ const fetch_user_job_request = (state = defaultState, action) => {
           .filter((item) => item.item.inspector !== null)
           .filter((item) => {
             if (
-              item.item.inspector.charAt(0) === action.data.charAt(0) ||
-              item.item.task_id.charAt(0) === action.data.charAt(0) ||
-              item.item.inspector.charAt(item.item.inspector.length - 1) ===
-                action.data.charAt(action.data.length - 1) ||
-              item.item.task_id.charAt(item.item.task_id.length - 1) ===
-                action.data.charAt(action.data.length - 1)
+              item.item.inspector.charAt(0).toLowerCase() ===
+                action.data.charAt(0).toLowerCase() ||
+              item.item.task_id.charAt(0).toLowerCase() ===
+                action.data.charAt(0).toLowerCase() ||
+              item.item.inspector
+                .charAt(item.item.inspector.length - 1)
+                .toLowerCase() ===
+                action.data.charAt(action.data.length - 1).toLowerCase() ||
+              item.item.task_id
+                .charAt(item.item.task_id.length - 1)
+                .toLowerCase() ===
+                action.data.charAt(action.data.length - 1).toLowerCase()
             ) {
               return item;
             }

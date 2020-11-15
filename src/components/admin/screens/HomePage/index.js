@@ -40,6 +40,12 @@ import { handleFilterJobReportsModal } from "../../../../redux/actions/handleFil
 import { inputChange } from "../../../../redux/actions/inputChange";
 import { filterJobRequestReports } from "../../../../redux/actions/filterJobRequestReports";
 import { fetch_total_task_rendered } from "../../../../redux/actions/fetch_total_task_rendered";
+import { handleOpen } from "../../../../redux/actions/handleRemarksModal";
+import { handleClose } from "../../../../redux/actions/handleRemarksModal";
+import { handleOpenJobDoneModal } from "../../../../redux/actions/handleJobDoneModal";
+import { handleCloseJobDoneModal } from "../../../../redux/actions/handleJobDoneModal";
+import { handle_job_done_specification } from "../../../../redux/actions/handle_job_done_specification";
+import { handle_submit_job_done } from "../../../../redux/actions/handle_submit_job_done";
 import ActiveUsers from "../../../common/ActiveUsers";
 import io from "socket.io-client";
 let socket;
@@ -50,13 +56,7 @@ function AdminHomePage(props) {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [expand, setExpand] = useState({});
   const [error, setError] = useState({});
-  const [remarksModal, setRemarksModal] = useState({
-    open: false,
-    title: "",
-    task_id: "",
-    remarks: "",
-    update: "",
-  });
+
   const [webUploadModal, setWebUploadModal] = useState({
     open: false,
     web_upload_id: "",
@@ -92,14 +92,6 @@ function AdminHomePage(props) {
     setEndSession(!(obj && obj.token));
     if (props._job_request_action !== "") {
       if (props._job_request_action === "success") {
-        setRemarksModal({
-          ...remarksModal,
-          open: false,
-          title: "",
-          task_id: "",
-          remarks: "",
-          update: "",
-        });
         setError({});
         props.clear_message();
       }
@@ -167,6 +159,12 @@ function AdminHomePage(props) {
         props.clear_message();
       }
     }
+
+    if (props.jobDoneModal.message !== "") {
+      if (props.jobDoneModal.message === "success") {
+        props.clear_message();
+      }
+    }
   }, [
     props._logout,
     props._job_request_action,
@@ -175,6 +173,7 @@ function AdminHomePage(props) {
     props._validateCode,
     props._changePasswordFunction,
     props._web_upload_request_action,
+    props.jobDoneModal.message,
     loading,
   ]);
 
@@ -196,44 +195,27 @@ function AdminHomePage(props) {
     setPage(0);
   };
 
-  const handleClickOpenRemarksModal = (val) => {
-    setRemarksModal({
-      ...remarksModal,
-      task_id: val.id,
-      title: val.title,
-      open: !remarksModal.open,
-    });
-  };
-
-  const handleCloseRemarksModal = () => {
-    setRemarksModal({ ...remarksModal, open: !remarksModal.open });
-  };
-
-  const handleChangeRemarks = ({ target }) => {
-    setRemarksModal({ ...remarksModal, [target.name]: target.value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (
-      remarksModal.title === "Update" &&
-      remarksModal.update !== "" &&
-      remarksModal.remarks !== ""
+      props.remarksModal.title === "Update" &&
+      props.remarksModal.update !== "" &&
+      props.remarksModal.remarks !== ""
     ) {
       props.job_request_action(
         props.current_user.user_id,
-        remarksModal.task_id,
-        remarksModal.update,
-        remarksModal.remarks
+        props.remarksModal.task_id,
+        props.remarksModal.update,
+        props.remarksModal.remarks
       );
       return;
     }
 
     if (
-      remarksModal.title === "Update" &&
-      remarksModal.update === "" &&
-      remarksModal.remarks === ""
+      props.remarksModal.title === "Update" &&
+      props.remarksModal.update === "" &&
+      props.remarksModal.remarks === ""
     ) {
       return setError({
         ...error,
@@ -242,16 +224,22 @@ function AdminHomePage(props) {
       });
     }
 
-    if (remarksModal.title !== "Update" && remarksModal.remarks !== "") {
+    if (
+      props.remarksModal.title !== "Update" &&
+      props.remarksModal.remarks !== ""
+    ) {
       props.job_request_action(
         props.current_user.user_id,
-        remarksModal.task_id,
-        remarksModal.title,
-        remarksModal.remarks
+        props.remarksModal.task_id,
+        props.remarksModal.title,
+        props.remarksModal.remarks
       );
       return;
     }
-    if (remarksModal.title !== "Update" && remarksModal.remarks == "") {
+    if (
+      props.remarksModal.title !== "Update" &&
+      props.remarksModal.remarks === ""
+    ) {
       return setError({ ...error, remarks: "Remarks is required" });
     }
   };
@@ -374,16 +362,16 @@ function AdminHomePage(props) {
                   <HomePageContent
                     error={error}
                     data={props._fetch_admin_job}
-                    remarksModal={remarksModal}
+                    remarksModal={props.remarksModal}
                     expand={expand}
                     page={page}
                     rowsPerPage={rowsPerPage}
                     onClickExpand={onClickExpand}
                     handleChangePage={handleChangePage}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
-                    handleClickOpenRemarksModal={handleClickOpenRemarksModal}
-                    handleCloseRemarksModal={handleCloseRemarksModal}
-                    handleChangeRemarks={handleChangeRemarks}
+                    handleClickOpenRemarksModal={props.handleOpen}
+                    handleCloseRemarksModal={props.handleClose}
+                    handleChangeRemarks={props.inputChange}
                     handleSubmit={handleSubmit}
                     activeStep={activeStep}
                     handleNext={handleNext}
@@ -392,6 +380,13 @@ function AdminHomePage(props) {
                     sort={props.sort}
                     _sort={props._sort}
                     search={props.search}
+                    jobDoneModal={props.jobDoneModal}
+                    handleOpenJobDoneModal={props.handleOpenJobDoneModal}
+                    handleCloseJobDoneModal={props.handleCloseJobDoneModal}
+                    handle_job_done_specification={
+                      props.handle_job_done_specification
+                    }
+                    handle_submit_job_done={props.handle_submit_job_done}
                   />
                 </>
               )}
@@ -400,17 +395,17 @@ function AdminHomePage(props) {
                 <>
                   <JobRequest
                     error={error}
-                    remarksModal={remarksModal}
+                    remarksModal={props.remarksModal}
                     expand={expand}
                     page={page}
                     rowsPerPage={rowsPerPage}
                     onClickExpand={onClickExpand}
                     handleChangePage={handleChangePage}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
-                    handleClickOpenRemarksModal={handleClickOpenRemarksModal}
-                    handleCloseRemarksModal={handleCloseRemarksModal}
+                    handleClickOpenRemarksModal={props.handleOpen}
+                    handleCloseRemarksModal={props.handleClose}
                     job_requests={props._fetch_job_requests}
-                    handleChangeRemarks={handleChangeRemarks}
+                    handleChangeRemarks={props.inputChange}
                     handleSubmit={handleSubmit}
                     sort={props.sort}
                     _sort={props._sort}
@@ -519,6 +514,8 @@ const mapStateToProps = (state) => {
     _fetch_active_users: state.fetch_active_users,
     _sort: state.sort,
     job_reports_filter: state.job_reports_filter,
+    remarksModal: state.remarksModal,
+    jobDoneModal: state.jobDoneModal,
   };
 };
 
@@ -545,6 +542,12 @@ const mapDispatchToProps = {
   handleFilterJobReportsModal,
   inputChange,
   filterJobRequestReports,
+  handleOpen,
+  handleClose,
+  handleOpenJobDoneModal,
+  handleCloseJobDoneModal,
+  handle_job_done_specification,
+  handle_submit_job_done,
 };
 
 export default connect(

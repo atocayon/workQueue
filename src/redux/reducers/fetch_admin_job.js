@@ -19,9 +19,10 @@ const fetch_admin_job = (state = [], action) => {
     case actionTypes.SEARCH:
       return [...state].filter((item) => {
         if (
-          item.job.task_id.charAt(0) === action.data.charAt(0) ||
-          item.job.task_id.charAt(item.job.task_id.length - 1) ===
-            action.data.charAt(action.data.length - 1)
+          item.job.task_id.charAt(0).toLowerCase() ===
+            action.data.charAt(0).toLowerCase() ||
+          item.job.task_id.charAt(item.job.task_id.length - 1).toLowerCase() ===
+            action.data.charAt(action.data.length - 1).toLowerCase()
         ) {
           return item;
         }

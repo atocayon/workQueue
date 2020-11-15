@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SortIcon from "@material-ui/icons/Sort";
 import SearchIcon from "@material-ui/icons/Search";
 import SaveAlt from "@material-ui/icons/SaveAlt";
@@ -11,8 +11,12 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import Logs from "./Logs";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-
+import ReactToPrint from "react-to-print";
+import JobRequestPrintable from "../../../common/JobRequestPrintable";
+import PrintIcon from "@material-ui/icons/Print";
 export default function JobReports(props) {
+  const componentRef = useRef();
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -101,10 +105,28 @@ export default function JobReports(props) {
                       {props.expand[item.item.task_id] && (
                         <tr>
                           <td colSpan={8}>
+                            <ReactToPrint
+                              trigger={() => (
+                                <button
+                                  className={"btn btn-primary btn-sm"}
+                                  title={"Print Job Request"}
+                                >
+                                  <PrintIcon />
+                                  &nbsp;Print Job Request
+                                </button>
+                              )}
+                              content={() => componentRef.current}
+                            />
+                            <br />
+                            <br />
                             <h5>
                               <InfoOutlinedIcon />
                               &nbsp;Logs
                             </h5>
+                            <JobRequestPrintable
+                              ref={componentRef}
+                              data={item.item}
+                            />
                             <Logs
                               expand={props.expand}
                               activeStep={props.activeStep}
@@ -123,7 +145,7 @@ export default function JobReports(props) {
               props.data.filter((item) => item.item.status === "Confirmed")
                 .length === 0 ? (
                 <tr>
-                  <td colSpan={7} style={{ textAlign: "center" }}>
+                  <td colSpan={8} style={{ textAlign: "center" }}>
                     No data found
                   </td>
                 </tr>

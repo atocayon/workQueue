@@ -6,7 +6,7 @@ import Reactotron from "reactotron-react-js";
 export function login({ usernameOrEmail, password }) {
   return function (dispatch) {
     return axios
-      .post(`http://${process.env.REACT_APP_SERVER}/work-queue/login`, {
+      .post(`http://${process.env.REACT_APP_SERVER}/login`, {
         usernameOrEmail,
         password,
       })
@@ -26,7 +26,7 @@ export function login({ usernameOrEmail, password }) {
 export function logout(user_id) {
   return function (dispatch) {
     return axios
-      .post(`http://${process.env.REACT_APP_SERVER}/work-queue/logout`, {
+      .post(`http://${process.env.REACT_APP_SERVER}/logout`, {
         user_id,
       })
       .then(async (res) => {

@@ -19,9 +19,12 @@ const fetch_job_requests = (state = [], action) => {
     case actionTypes.SEARCH:
       return [...state].filter((item) => {
         if (
-          item.ticket.charAt(0) === action.data.charAt(0) ||
-          item.requisitioner.charAt(item.requisitioner.length - 1) ===
-            action.data.charAt(action.data.length - 1)
+          item.ticket.charAt(0).toLowerCase() ===
+            action.data.charAt(0).toLowerCase() ||
+          item.requisitioner
+            .charAt(item.requisitioner.length - 1)
+            .toLowerCase() ===
+            action.data.charAt(action.data.length - 1).toLowerCase()
         ) {
           return item;
         }

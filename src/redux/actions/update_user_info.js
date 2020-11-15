@@ -4,10 +4,7 @@ import axios from "axios";
 const update_user_info = (data) => {
   return (dispatch) => {
     return axios
-      .post(
-        `http://${process.env.REACT_APP_SERVER}/work-queue/user/update`,
-        { data }
-      )
+      .post(`http://${process.env.REACT_APP_SERVER}/user/update`, { data })
       .then((res) => {
         dispatch({ type: actionTypes.UPDATE_USER_INFO, data: "success" });
       })
@@ -16,7 +13,5 @@ const update_user_info = (data) => {
       });
   };
 };
-
-
 
 export { update_user_info };

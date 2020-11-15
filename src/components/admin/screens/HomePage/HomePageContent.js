@@ -8,6 +8,7 @@ import RemarksModal from "../../../common/RemarksModal";
 import Logs from "./Logs";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import TableActions from "../../../common/TableActions";
+import JobDoneModal from "../../../common/JobDoneModal";
 const date = new Date();
 
 export default function HomePageContent(props) {
@@ -40,6 +41,16 @@ export default function HomePageContent(props) {
                 onChange={props.handleChangeRemarks}
                 handleSubmit={props.handleSubmit}
                 error={props.error}
+              />
+
+              <JobDoneModal
+                modal={props.jobDoneModal}
+                handleClose={props.handleCloseJobDoneModal}
+                onChange={props.handleChangeRemarks}
+                handle_job_done_specification={
+                  props.handle_job_done_specification
+                }
+                handle_submit_job_done={props.handle_submit_job_done}
               />
 
               <TableActions
@@ -157,9 +168,9 @@ export default function HomePageContent(props) {
                                     &nbsp;
                                     <button
                                       className={"btn btn-sm btn-outline-info"}
-                                      onClick={props.handleClickOpenRemarksModal.bind(
+                                      onClick={props.handleOpenJobDoneModal.bind(
                                         null,
-                                        { id: item.job.task_id, title: "Done" }
+                                        { task_id: item.job.task_id }
                                       )}
                                     >
                                       Mark as done

@@ -404,6 +404,7 @@ body {
   overflow-y: scroll;
   height: 100vh;
   margin-top: 3vh;
+  padding-bottom: 10vh;
 }
 
 .jumbotron-container {
@@ -413,4 +414,136 @@ body {
 .userList {
   overflow-y: scroll !important;
   overflow-x: hidden !important;
+}
+
+.printable-form {
+  display: none;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-top: 1vh;
+  padding: 0;
+}
+.printable-form .form-number {
+  font-size: 0.5rem;
+}
+.printable-form .form-title {
+  text-align: center;
+}
+.printable-form .job-number {
+  text-align: right;
+  margin-right: 5vw;
+}
+.printable-form .box-1 {
+  padding: 2vw;
+  border: 0.5px solid #000;
+  height: 12vh;
+  font-size: 0.8rem;
+}
+.printable-form .box {
+  padding: 2vw;
+  border: 0.5px solid #000;
+  height: 12vh;
+  font-size: 0.8rem;
+  line-height: 1%;
+}
+.printable-form .box-description {
+  padding: 2vw;
+  border-left: 0.5px solid #000;
+  border-bottom: 0.5px solid #000;
+  height: 12vh;
+  font-size: 0.8rem;
+  line-height: 1%;
+}
+.printable-form .box-info-system-specification {
+  padding: 2vw;
+  border-right: 0.5px solid #000;
+  border-bottom: 0.5px solid #000;
+  height: 12vh;
+  font-size: 0.8rem;
+  line-height: 1%;
+}
+.printable-form .box-signature {
+  padding: 2vw;
+  border: 0.5px solid #000;
+  height: 7vh;
+  font-size: 0.8rem;
+  line-height: 1%;
+}
+.printable-form .section-title {
+  padding: 2vw;
+  border: 0.5px solid #000;
+  height: 2vh;
+  font-size: 0.8rem;
+  font-weight: bold;
+  line-height: 1%;
+}
+.printable-form .content {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+.col-print-1 {
+  width: 8%;
+  float: left;
+}
+
+.col-print-2 {
+  width: 16%;
+  float: left;
+}
+
+.col-print-3 {
+  width: 25%;
+  float: left;
+}
+
+.col-print-4 {
+  width: 33%;
+  float: left;
+}
+
+.col-print-5 {
+  width: 42%;
+  float: left;
+}
+
+.col-print-6 {
+  width: 50%;
+  float: left;
+}
+
+.col-print-7 {
+  width: 58%;
+  float: left;
+}
+
+.col-print-8 {
+  width: 66%;
+  float: left;
+}
+
+.col-print-9 {
+  width: 75%;
+  float: left;
+}
+
+.col-print-10 {
+  width: 83%;
+  float: left;
+}
+
+.col-print-11 {
+  width: 92%;
+  float: left;
+}
+
+.col-print-12 {
+  width: 100%;
+  float: left;
+}
+
+@media print {
+  .printable-form {
+    display: block;
+  }
 }

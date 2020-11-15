@@ -26,6 +26,7 @@ import { fetch_active_users } from "../../../../redux/actions/fetch_active_users
 import { sort } from "../../../../redux/actions/sort";
 import { search } from "../../../../redux/actions/search";
 import { handleConfirmJob } from "../../../../redux/actions/handleConfirmJob";
+import { handlePrint } from "../../../../redux/actions/handlePrint";
 import JobRequestForm from "../JobRequest";
 import RequestForUpload from "../RequestForUpload";
 import UserProfile from "../../../common/UserProfile";
@@ -389,6 +390,8 @@ function HomePage(props) {
                         sort={props.sort}
                         search={props.search}
                         handleConfirmJob={props.handleConfirmJob}
+                        print={props.print}
+                        handlePrint={props.handlePrint}
                       />
                     </div>
                   </>
@@ -430,6 +433,9 @@ function HomePage(props) {
                       webUploadView={webUploadView}
                       setWebUploadView={setWebUploadView}
                       web_upload_list={props.list_web_upload_requests}
+                      _sort={props._sort}
+                      sort={props.sort}
+                      search={props.search}
                     />
                   </>
                 )}
@@ -481,6 +487,8 @@ function HomePage(props) {
                       handleNext={handleNext}
                       handleBack={handleBack}
                       handleReset={handleReset}
+                      print={props.print}
+                      handlePrint={props.handlePrint}
                     />
                   </>
                 )}
@@ -516,6 +524,7 @@ const mapStateToProps = (state) => {
     _fetch_active_users: state.fetch_active_users,
     _sort: state.sort,
     _handleConfirmJob: state.handleConfirmJob,
+    print: state.print,
   };
 };
 
@@ -539,6 +548,7 @@ const mapDispatchToProps = {
   sort,
   search,
   handleConfirmJob,
+  handlePrint,
 };
 
 export default connect(

@@ -3,7 +3,7 @@ import axios from "axios";
 const fetch_current_user_info = (user_id) => {
   return (dispatch) => {
     return axios
-      .get(`http://${process.env.REACT_APP_SERVER}/work-queue/user/${user_id}`)
+      .get(`http://${process.env.REACT_APP_SERVER}/user/${user_id}`)
       .then((res) => {
         return dispatch({
           type: actionTypes.CURRENT_USER_INFO,

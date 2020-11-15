@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Logs from "./Logs";
+import SearchIcon from "@material-ui/icons/Search";
+import SortIcon from "@material-ui/icons/Sort";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableActions from "../../../common/TableActions";
+
 export default function Table(props) {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
   return (
     <div>
+      <TableActions
+        sort={props.sort}
+        _sort={props._sort}
+        search={props.search}
+        placeholder={"Search Title or Validator"}
+      />
+      <br />
       <table className={"table table-borderless table-striped"}>
         <thead>
           <tr>
@@ -18,6 +41,13 @@ export default function Table(props) {
           </tr>
         </thead>
         <tbody>
+          {props.data.length === 0 && (
+            <tr>
+              <td colSpan={6} style={{ textAlign: "center" }}>
+                No data found
+              </td>
+            </tr>
+          )}
           {props.data &&
             props.data.map((item, index) => (
               <React.Fragment key={item.web_upload_list.id}>

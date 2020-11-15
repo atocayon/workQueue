@@ -131,16 +131,6 @@ export default function JobRequest(props) {
                                 >
                                   Accept
                                 </button>{" "}
-                                &nbsp;
-                                <button
-                                  className={"btn btn-sm btn-outline-danger"}
-                                  onClick={props.handleClickOpenRemarksModal.bind(
-                                    null,
-                                    { id: item.ticket, title: "Rejected" }
-                                  )}
-                                >
-                                  Reject
-                                </button>
                               </td>
                             </tr>
                           )}

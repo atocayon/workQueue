@@ -38,8 +38,11 @@ export default function RequestForUpload(props) {
                     onClick={() => {
                       props.setWebUploadView(!props.webUploadView);
                     }}
-
-                    title={props.webUploadView ? "Add Web Upload Request" : "Web Upload List"}
+                    title={
+                      props.webUploadView
+                        ? "Add Web Upload Request"
+                        : "Web Upload List"
+                    }
                   >
                     {props.webUploadView ? <AddIcon /> : <ListIcon />}
                   </button>
@@ -64,6 +67,9 @@ export default function RequestForUpload(props) {
                     handleBack={props.handleBack}
                     handleReset={props.handleReset}
                     handleExpand={props.handleExpand}
+                    _sort={props._sort}
+                    sort={props.sort}
+                    search={props.search}
                   />
                 )}
 
